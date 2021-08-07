@@ -8,7 +8,6 @@ class SearchFilterRepository {
   const SearchFilterRepository();
 
   static const List<Country> countries = [
-    Country(name: 'Brazil'),
     Country(name: 'USA'),
     Country(name: 'Nicaragua'),
     Country(name: 'Costa Rica'),

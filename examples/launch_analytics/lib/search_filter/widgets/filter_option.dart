@@ -1,14 +1,15 @@
 // stores ExpansionPanel state information
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:launch_analytics/search_filter/bloc/search_filter_bloc.dart';
+import 'package:search_filter_repository/search_filter_repository.dart';
 
 class Item {
   Item({
-    required this.expandedValue,
     required this.headerValue,
     this.isExpanded = false,
   });
 
-  String expandedValue;
   String headerValue;
   bool isExpanded;
 }
@@ -17,7 +18,6 @@ List<Item> generateItems(int numberOfItems) {
   return List<Item>.generate(numberOfItems, (int index) {
     return Item(
       headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
     );
   });
 }
@@ -32,7 +32,7 @@ class FilterOptions extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _FilterOptionsState extends State<FilterOptions> {
-  final List<Item> _data = generateItems(3);
+  final List<bool> _isExpandedList = [false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -40,30 +40,79 @@ class _FilterOptionsState extends State<FilterOptions> {
       child: ExpansionPanelList(
         expansionCallback: (int index, bool isExpanded) {
           setState(() {
-            _data[index].isExpanded = !isExpanded;
+            _isExpandedList[index] = !isExpanded;
           });
         },
-        children: _data.map<ExpansionPanel>((Item item) {
-          return ExpansionPanel(
+        children: [
+          ExpansionPanel(
             headerBuilder: (BuildContext context, bool isExpanded) {
-              return ListTile(
-                title: Text(item.headerValue),
+              return const ListTile(
+                title: Text('Option 1'),
               );
             },
-            body: ListTile(
-                title: Text(item.expandedValue),
-                subtitle:
-                    const Text('To delete this panel, tap the trash can icon'),
-                trailing: const Icon(Icons.delete),
-                onTap: () {
-                  setState(() {
-                    _data
-                        .removeWhere((Item currentItem) => item == currentItem);
-                  });
-                }),
-            isExpanded: item.isExpanded,
-          );
-        }).toList(),
+            body: BlocSelector<SearchFilterBloc, SearchFilterState, Country>(
+              selector: (state) => state.country,
+              builder: (context, selectedCountry) => ListView.builder(
+                shrinkWrap: true,
+                itemCount: SearchFilterRepository.countries.length,
+                itemBuilder: (context, index) {
+                  final country = SearchFilterRepository.countries[index];
+                  return Container(
+                    color: country == selectedCountry
+                        ? Colors.green
+                        : Colors.transparent,
+                    child: ListTile(
+                      onTap: () {
+                        context.read<SearchFilterBloc>().add(
+                              SearchFilterCountrySelected(country),
+                            );
+                      },
+                      title: Text(country.name),
+                    ),
+                  );
+                },
+              ),
+            ),
+            isExpanded: _isExpandedList[0],
+          ),
+          ExpansionPanel(
+            headerBuilder: (BuildContext context, bool isExpanded) {
+              return const ListTile(
+                title: Text('Option 2'),
+              );
+            },
+            body: ListView.builder(
+              shrinkWrap: true,
+              itemCount: SearchFilterRepository.categories.length,
+              itemBuilder: (context, index) {
+                final category = SearchFilterRepository.categories[index];
+                return ListTile(
+                  title: Text(category.name),
+                );
+              },
+            ),
+            isExpanded: _isExpandedList[1],
+          ),
+          ExpansionPanel(
+            headerBuilder: (BuildContext context, bool isExpanded) {
+              return const ListTile(
+                title: Text('Option 3'),
+              );
+            },
+            body: ListView.builder(
+              shrinkWrap: true,
+              itemCount: SearchFilterRepository.nutritionType.length,
+              itemBuilder: (context, index) {
+                final nutritionType =
+                    SearchFilterRepository.nutritionType[index];
+                return ListTile(
+                  title: Text(nutritionType.name),
+                );
+              },
+            ),
+            isExpanded: _isExpandedList[2],
+          ),
+        ],
       ),
     );
   }

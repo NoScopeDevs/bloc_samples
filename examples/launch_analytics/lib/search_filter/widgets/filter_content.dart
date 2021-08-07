@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:launch_analytics/search_filter/bloc/search_filter_bloc.dart';
 import 'package:launch_analytics/search_filter/search_filter.dart';
 
 class FilterContent extends StatelessWidget {
   const FilterContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => SearchFilterBloc(),
+      child: const FilterContentView(),
+    );
+  }
+}
+
+class FilterContentView extends StatelessWidget {
+  const FilterContentView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +26,8 @@ class FilterContent extends StatelessWidget {
       height: size.height * .85,
       child: Center(
         child: Column(
-          children: <Widget>[
-            const FilterTitle(),
+          children: const <Widget>[
+            FilterTitle(),
             FilterOptions(),
           ],
         ),

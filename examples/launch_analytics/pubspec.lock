@@ -226,6 +226,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   local_analytics_api:
     dependency: "direct main"
     description:
@@ -380,6 +387,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  search_filter_api:
+    dependency: transitive
+    description:
+      path: "packages/search_filter_api"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  search_filter_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/search_filter_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   shared_preferences:
     dependency: "direct main"
     description:
