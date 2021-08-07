@@ -1,4 +1,13 @@
-name: my_project
+name: bloc_samples
 
 packages:
   - examples/**
+
+script:
+  test:
+    run: flutter test #--no-pub --coverage --test-randomize-ordering-seed random
+    description: Run all tests
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.5 <2.0.0"
