@@ -15,7 +15,7 @@ jobs:
         run: pub global activate melos
       - name: Export melos
         working-directory: examples
-        run: export PATH="$PATH":"$HOME/.pub-cache/bin"
+        run: echo "$GITHUB_WORKSPACE/_flutter/bin" >> $GITHUB_PATH
       - name: Initialize melos
         working-directory: examples
         run: melos bs
