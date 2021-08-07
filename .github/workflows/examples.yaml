@@ -12,7 +12,8 @@ jobs:
       - uses: subosito/flutter-action@v1.5.0
       - name: "Install Tools"
         run: |
-          workflows/scripts/install-tools.sh
+          flutter pub global activate melos
+          flutter pub global activate tuneup
       - name: Initialize melos
         run: melos bs
       - name: Run test
