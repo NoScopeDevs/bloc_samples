@@ -7,7 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 part 'app_event.dart';
 part 'app_state.dart';
 
-class AppBloc extends HydratedBloc<AppEvent, AppState> {
+class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({
     required AnalyticsRepository localAnalyticsRepository,
   })  : _localAnalyticsRepository = localAnalyticsRepository,
@@ -32,28 +32,5 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
     } catch (e) {
       yield const AppAnalyticsError();
     }
-  }
-
-  @override
-  AppState? fromJson(Map<String, dynamic> json) {
-    final runtimeType = json['runtimeType'] as String;
-
-    switch (runtimeType) {
-      case 'AppInitial':
-        return const AppInitial();
-      case 'AppAnalyticsLoaded':
-        final count = json['count'] as int;
-        return AppAnalyticsLoaded(count);
-      case 'AppAnalyticsError':
-        return const AppAnalyticsError();
-    }
-  }
-
-  @override
-  Map<String, dynamic>? toJson(AppState state) {
-    return <String, dynamic>{
-      'runtimeType': '${state.runtimeType}',
-      if (state is AppAnalyticsLoaded) 'count': state.openingsCount,
-    };
   }
 }
