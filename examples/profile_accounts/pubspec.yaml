@@ -1,0 +1,24 @@
+name: profile_accounts
+description: A Flutter project that manages user accounts with flutter_bloc.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^7.1.0
+  profile_core:
+    path: packages/profile_core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^2.3.0
+
+flutter:
+  uses-material-design: true
