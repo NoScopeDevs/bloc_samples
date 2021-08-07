@@ -13,12 +13,12 @@ jobs:
       - name: Install melos
         working-directory: examples
         run: pub global activate melos
-      - name: Initialize melos
-        working-directory: examples
-        run: melos bs
       - name: Export melos
         working-directory: examples
         run: export PATH="$PATH":"$HOME/.pub-cache/bin"
+      - name: Initialize melos
+        working-directory: examples
+        run: melos bs
       - name: Run test
         working-directory: examples
         run: melos run test:all
