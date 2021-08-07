@@ -17,9 +17,9 @@ jobs:
       - name: Export dart
         run: echo "$GITHUB_WORKSPACE/_flutter/bin/cache/dart-sdk/bin" >> $GITHUB_PATH
       - name: Initialize melos
-        run: melos bs
+        run: pub global run melos bs
       - name: Run test
-        run: melos run test:all
+        run: pub global run melos run test:all
   build:
     needs: [examples]
     runs-on: ubuntu-latest
