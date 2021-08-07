@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:local_analytics_api/local_analytics_api.dart';
 import 'package:analytics_repository/analytics_repository.dart';
 
-import 'package:mentoring/app/app.dart';
+import 'package:launch_analytics/app/app.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();

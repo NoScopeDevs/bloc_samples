@@ -1,7 +1,7 @@
 import 'package:analytics_repository/analytics_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mentoring/app/bloc/app_bloc.dart';
+import 'package:launch_analytics/app/bloc/app_bloc.dart';
 
 class App extends StatelessWidget {
   const App({
