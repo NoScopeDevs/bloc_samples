@@ -4,7 +4,7 @@ packages:
   - examples/**
 
 scripts:
-  test:
+  test:all:
     run: melos exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
     description: Run all tests
  

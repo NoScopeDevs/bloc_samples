@@ -1,0 +1,32 @@
+name: examples
+
+on:
+  push:
+    paths:
+      - "examples/**"
+
+  pull_request:
+    paths:
+      - "examples/**"
+
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.5.0
+      - name: Install Melos
+        working-directory: examples
+        run: pub global activate melos
+      - name: Initialize melos
+        working-directory: examples
+        run: melos bs
+      - name: Run test
+        working-directory: examples
+        run: melos run test:all
+  build:
+    needs: [examples]
+    runs-on: ubuntu-latest
+    steps:
+      - name: noop
+        run: echo 'noop'
