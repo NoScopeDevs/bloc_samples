@@ -10,16 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.5.0
-      - name: Install melos
-        run: pub global activate melos
-      - name: Export melos
-        run: echo "$GITHUB_WORKSPACE/_flutter/.pub-cache/bin" >> $GITHUB_PATH
-      - name: Export dart
-        run: echo "$GITHUB_WORKSPACE/_flutter/bin/cache/dart-sdk/bin" >> $GITHUB_PATH
+      - name: "Install Tools"
+        run: |
+          ./.github/workflows/scripts/install-tools.sh
       - name: Initialize melos
-        run: pub global run melos bs
+        run: melos bs
       - name: Run test
-        run: pub global run melos run test:all
+        run: melos run test:all
   build:
     needs: [examples]
     runs-on: ubuntu-latest
