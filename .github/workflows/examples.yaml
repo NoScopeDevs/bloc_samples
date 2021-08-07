@@ -2,12 +2,7 @@ name: examples
 
 on:
   push:
-    paths:
-      - "examples/**"
-
   pull_request:
-    paths:
-      - "examples/**"
 
 jobs:
   examples:
