@@ -2,6 +2,7 @@ import 'package:analytics_repository/analytics_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:launch_analytics/app/bloc/app_bloc.dart';
+import 'package:launch_analytics/home/home.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -44,11 +45,7 @@ class AppView extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Hello'),
-          ),
-        ),
+        child: const HomePage(),
       ),
     );
   }
