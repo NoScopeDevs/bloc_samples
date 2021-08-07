@@ -12,7 +12,7 @@ jobs:
       - uses: subosito/flutter-action@v1.5.0
       - name: "Install Tools"
         run: |
-          ./.github/workflows/scripts/install-tools.sh
+          workflows/scripts/install-tools.sh
       - name: Initialize melos
         run: melos bs
       - name: Run test
