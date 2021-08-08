@@ -2,7 +2,6 @@ import 'package:analytics_repository/analytics_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:launch_analytics/app/bloc/app_bloc.dart';
-import 'package:launch_analytics/home/home.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -45,7 +44,23 @@ class AppView extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
-        child: const HomePage(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Hello'),
+          ),
+          body: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
+              child: Text(
+                'Increase the counter by closing and re opening the app',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
