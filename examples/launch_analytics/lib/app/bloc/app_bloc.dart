@@ -42,8 +42,7 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
       case 'AppInitial':
         return const AppInitial();
       case 'AppAnalyticsLoaded':
-        final count = json['count'] as int;
-        return AppAnalyticsLoaded(count);
+        return AppAnalyticsLoaded.fromJson(json);
       case 'AppAnalyticsError':
         return const AppAnalyticsError();
     }
@@ -51,9 +50,14 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
   @override
   Map<String, dynamic>? toJson(AppState state) {
-    return <String, dynamic>{
+    final map = <String, dynamic>{
       'runtimeType': '${state.runtimeType}',
-      if (state is AppAnalyticsLoaded) 'count': state.openingsCount,
     };
+
+    if (state is AppAnalyticsLoaded) {
+      map.addAll(state.toJson());
+    }
+
+    return map;
   }
 }
