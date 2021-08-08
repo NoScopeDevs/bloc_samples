@@ -7,7 +7,7 @@ scripts:
   test:all:
     run: melos exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
     description: Run all tests
- 
+
   test:dart:
     run: melos --no-flutter exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
     description: Run all tests for dart dependent projects
@@ -15,7 +15,18 @@ scripts:
   test:flutter:
     run: melos --flutter exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
     description: Run all tests for flutter dependent projects
-  
+
+  cov:gen:
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage --test-randomize-ordering-seed random
+    description: Run all test and generate coverage data per package
+
+  cov:merge-linux:
+    run: melos exec -- sh MELOS_ROOT_PATH/merge-coverage.sh
+    description: Merge all coverage data
+
+  cov:merge-win32:
+    run: melos exec -- MELOS_ROOT_PATH\merge-coverage.bat
+    description: Merge all coverage data
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
