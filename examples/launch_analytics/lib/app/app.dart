@@ -48,6 +48,18 @@ class AppView extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Hello'),
           ),
+          body: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
+              child: Text(
+                'Increase the counter by closing and re opening the app',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

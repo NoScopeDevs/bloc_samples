@@ -1,0 +1,3 @@
+class LocalSearchFilterApi {
+  const LocalSearchFilterApi();
+}
