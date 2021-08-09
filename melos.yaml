@@ -4,29 +4,73 @@ packages:
   - examples/**
 
 scripts:
+  #
+  # Tests without coverage
+
   test:all:
-    run: melos exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
+    run: melos exec -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests
 
   test:dart:
-    run: melos --no-flutter exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
+    run: melos --no-flutter exec -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests for dart dependent projects
 
   test:flutter:
-    run: melos --flutter exec flutter test #--no-pub --coverage --test-randomize-ordering-seed random
+    run: melos --flutter exec -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests for flutter dependent projects
+
+  # Coverage management
 
   cov:gen:
     run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage --test-randomize-ordering-seed random
     description: Run all test and generate coverage data per package
 
-  cov:merge-linux:
-    run: melos exec -- sh MELOS_ROOT_PATH/merge-coverage.sh
-    description: Merge all coverage data
+  cov:merge:l:
+    run: rm -dfr coverage/lcov.info && melos exec -- sh MELOS_ROOT_PATH/merge-coverage.sh
+    description: Merge all coverage data (Linux)
 
-  cov:merge-win32:
-    run: melos exec -- MELOS_ROOT_PATH\merge-coverage.bat
-    description: Merge all coverage data
+  cov:merge:m:
+    run: rm -dfr coverage/lcov.info && melos exec -- sh MELOS_ROOT_PATH/merge-coverage.sh
+    description: Merge all coverage data (macOS)
+
+  cov:merge:w:
+    run: if exist Coverage\lcov.info ( del /f /q coverage\lcov.info ) && melos exec -- MELOS_ROOT_PATH\merge-coverage.bat
+    description: Merge all coverage data (Windows)
+
+  # Local usage
+
+  cov:wipe:
+    # To use this script, you need to:
+    #  1. Install the remove_from_coverage package (https://pub.dev/packages/remove_from_coverage).
+    run: remove_from_coverage -f coverage/lcov.info -r "\.freezed\.dart$","\.g\.dart$","\.gr\.dart$"
+    description: Remove coverage data about generated Dart files
+
+  cov:rep:l:
+    run: genhtml coverage/lcov.info -o coverage/html/ && open coverage/html/index.html
+    description: Generate and preview the global coverage report (Linux)
+
+  cov:rep:m:
+    run: genhtml coverage/lcov.info -o coverage/html/ && open coverage/html/index.html
+    description: Generate and preview the global coverage report (macOS)
+
+  cov:rep:w:
+    # To use this script, you need to:
+    #  1. Install `lcov` utils with Chocolatey.
+    #  2. Set the `LCOV_TOOLS_PATH` env variable to the `lcov\tools\bin` folder absolute path (Often `C:\ProgramData\chocolatey\lib\lcov\tools\bin`).
+    run: perl %LCOV_TOOLS_PATH%\genhtml -o coverage\html coverage\lcov.info && start coverage\html\index.html
+    description: Generate and preview the global coverage report (Windows)
+
+  wf:l:
+    run: melos run cov:gen && melos run cov:merge:l && melos run cov:wipe && melos run cov:rep:l
+    description: Run full workflow (Linux)
+
+  wf:m:
+    run: melos run cov:gen && melos run cov:merge:m && melos run cov:wipe && melos run cov:rep:m
+    description: Run full workflow (macOS)
+
+  wf:w:
+    run: melos run cov:gen && melos run cov:merge:w && melos run cov:wipe && melos run cov:rep:w
+    description: Run full workflow (Windows)
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
