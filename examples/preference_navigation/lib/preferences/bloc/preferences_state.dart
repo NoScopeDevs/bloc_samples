@@ -8,20 +8,35 @@ abstract class PreferencesState extends Equatable {
   const PreferencesState();
 }
 
+/// {@template preferences_initial_state}
 /// [PreferencesBloc] initial state.
+/// {@endtemplate}
 class PreferencesInitial extends PreferencesState {
+  /// {@macro preferences_initial_state}
+  const PreferencesInitial();
+
   @override
   List<Object?> get props => [];
 }
 
+/// {@template preferences_loading_state}
 /// [PreferencesBloc] loading state.
+/// {@endtemplate}
 class PreferencesLoading extends PreferencesState {
+  /// {@macro preferences_loading_state}
+  const PreferencesLoading();
+
   @override
   List<Object?> get props => [];
 }
 
+/// {@template preferences_empty_state}
 /// [PreferencesBloc] empty state.
+/// {@endtemplate}
 class PreferencesEmpty extends PreferencesState {
+  /// {@macro preferences_empty_state}
+  const PreferencesEmpty();
+
   @override
   List<Object?> get props => [];
 }

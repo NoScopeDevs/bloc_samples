@@ -15,7 +15,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   PreferencesBloc({
     required PreferencesRepository repository,
   })  : _repository = repository,
-        super(PreferencesInitial());
+        super(const PreferencesInitial());
 
   final PreferencesRepository _repository;
 
@@ -37,19 +37,19 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
       final key = event.entry.keys.first;
       final value = event.entry.values.first as Object;
 
-      yield PreferencesLoading();
+      yield const PreferencesLoading();
       await _repository.saveValue(key, value);
 
       yield* _mapPreferencesCheckedToState();
     } catch (e) {
-      _handleError(e);
+      yield _handleError(e);
     }
   }
 
   Stream<PreferencesState> _mapPreferencesCheckedToState() async* {
     try {
       final keys = _repository.getKeys();
-      if (keys.isEmpty) yield PreferencesEmpty();
+      if (keys.isEmpty) yield const PreferencesEmpty();
 
       final preferences = <String, dynamic>{};
       for (final key in keys) {
@@ -58,21 +58,21 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
 
       yield PreferencesLoaded(preferences);
     } catch (e) {
-      yield* _handleError(e);
+      yield _handleError(e);
     }
   }
 
   Stream<PreferencesState> _mapPreferencesClearedToState() async* {
     try {
       await _repository.clearValues();
-      yield PreferencesEmpty();
+      yield const PreferencesEmpty();
     } catch (e) {
-      _handleError(e);
+      yield _handleError(e);
     }
   }
 
-  Stream<PreferencesState> _handleError(Object e) async* {
-    if (e is PreferencesError) yield PreferencesError(e.error, e.stackTrace);
-    yield const PreferencesError();
+  PreferencesState _handleError(Object e) {
+    if (e is PreferencesError) return PreferencesError(e.error, e.stackTrace);
+    return const PreferencesError();
   }
 }

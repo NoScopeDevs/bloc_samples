@@ -59,8 +59,8 @@ void main() {
         when(() => preferencesBloc.state).thenReturn(FakePreferencesState());
         whenListen(
           preferencesBloc,
-          Stream.fromIterable([PreferencesEmpty()]),
-          initialState: PreferencesInitial(),
+          Stream.fromIterable([const PreferencesEmpty()]),
+          initialState: const PreferencesInitial(),
         );
 
         await tester.pumpApp(
