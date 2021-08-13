@@ -73,5 +73,21 @@ void main() {
         verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
       },
     );
+
+    testWidgets(
+      'renders PreferencesList when state is PreferencesLoaded',
+      (tester) async {
+        final preferencesBloc = MockPreferencesBloc();
+        when(() => preferencesBloc.state).thenReturn(
+            const PreferencesLoaded(<String, dynamic>{'key': 'value'}));
+
+        await tester.pumpApp(
+          const HomeView(),
+          preferencesBloc: preferencesBloc,
+        );
+        await tester.pump();
+        expect(find.byType(PreferencesList), findsOneWidget);
+      },
+    );
   });
 }
