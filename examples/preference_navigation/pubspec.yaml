@@ -1,6 +1,6 @@
 name: preference_navigation
 description: A Flutter project to show how to start an app based on a state.
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -20,6 +20,7 @@ dev_dependencies:
   bloc_test: ^8.1.0
   flutter_test:
     sdk: flutter
+  mockingjay: ^0.1.0
   mocktail: ^0.1.4
   very_good_analysis: ^2.3.0
 
