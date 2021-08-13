@@ -11,7 +11,7 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.0.1
+  flutter_bloc: ^7.1.0
   preferences_repository:
     path: packages/preferences_repository
   shared_preferences: ^2.0.6

@@ -56,7 +56,6 @@ void main() {
         when(() => navigator.push(any())).thenAnswer((_) async {});
 
         final preferencesBloc = MockPreferencesBloc();
-        when(() => preferencesBloc.state).thenReturn(FakePreferencesState());
         whenListen(
           preferencesBloc,
           Stream.fromIterable([const PreferencesEmpty()]),

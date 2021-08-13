@@ -32,7 +32,7 @@ class PreferencesPage extends StatelessWidget {
               );
             }
           },
-          child: const PreferenceForm(),
+          child: const PreferencesForm(),
         ),
       ),
     );
@@ -42,15 +42,15 @@ class PreferencesPage extends StatelessWidget {
 /// {@template preferences_form}
 /// Handles the input of preferences.
 /// {@endtemplate}
-class PreferenceForm extends StatefulWidget {
+class PreferencesForm extends StatefulWidget {
   /// {@macro preferences_form}
-  const PreferenceForm({Key? key}) : super(key: key);
+  const PreferencesForm({Key? key}) : super(key: key);
 
   @override
-  _PreferenceFormState createState() => _PreferenceFormState();
+  _PreferencesFormState createState() => _PreferencesFormState();
 }
 
-class _PreferenceFormState extends State<PreferenceForm> {
+class _PreferencesFormState extends State<PreferencesForm> {
   final formKey = GlobalKey<FormState>();
   final keyController = TextEditingController();
   final valueController = TextEditingController();
@@ -65,11 +65,20 @@ class _PreferenceFormState extends State<PreferenceForm> {
         padding: const EdgeInsets.symmetric(horizontal: 30),
         shrinkWrap: true,
         children: [
-          TextFormField(controller: keyController, validator: validate),
+          TextFormField(
+            key: const Key('preferencesForm_keyInput_textField'),
+            controller: keyController,
+            validator: validate,
+          ),
           const SizedBox(height: 10),
-          TextFormField(controller: valueController, validator: validate),
+          TextFormField(
+            key: const Key('preferencesForm_valueInput_textField'),
+            controller: valueController,
+            validator: validate,
+          ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
+            key: const Key('preferencesForm_save_elevatedButton'),
             onPressed: () {
               if (!formKey.currentState!.validate()) return;
 

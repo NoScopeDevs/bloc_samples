@@ -79,6 +79,7 @@ class NoPreferences extends StatelessWidget {
         const Text('No prefs.'),
         const SizedBox(height: 15),
         TextButton(
+          key: const Key('noPreferences_go_textButton'),
           onPressed: () => Navigator.of(context).push<void>(
             PreferencesPage.go(),
           ),
