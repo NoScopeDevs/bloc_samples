@@ -1,0 +1,17 @@
+name: preferences_repository
+description: A Flutter package to manage preferences business rules.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.1.4
+  very_good_analysis: ^2.1.1
