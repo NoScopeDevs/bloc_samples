@@ -23,7 +23,6 @@ void main() {
         const StartPage(),
         preferencesBloc: preferencesBloc,
       );
-      await tester.pump();
       expect(find.byType(StartView), findsOneWidget);
     });
   });

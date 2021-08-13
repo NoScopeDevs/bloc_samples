@@ -26,7 +26,6 @@ void main() {
         App(preferencesRepository: mockPreferenceRepository),
         preferencesBloc: preferencesBloc,
       );
-      await tester.pump();
       expect(find.byType(AppView), findsOneWidget);
     });
   });

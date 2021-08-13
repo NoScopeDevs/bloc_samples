@@ -22,7 +22,6 @@ void main() {
         const PreferencesPage(),
         preferencesBloc: preferencesBloc,
       );
-      await tester.pump();
       expect(find.byType(PreferencesForm), findsOneWidget);
     });
 

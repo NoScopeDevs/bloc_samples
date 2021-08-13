@@ -27,7 +27,6 @@ void main() {
         const HomePage(),
         preferencesBloc: preferencesBloc,
       );
-      await tester.pump();
       expect(find.byType(HomeView), findsOneWidget);
     });
   });
@@ -43,7 +42,6 @@ void main() {
           const HomeView(),
           preferencesBloc: preferencesBloc,
         );
-        await tester.pump();
         await tester.tap(find.byType(IconButton));
         verify(() => preferencesBloc.add(PreferencesCleared()));
       },
@@ -84,7 +82,6 @@ void main() {
           const HomeView(),
           preferencesBloc: preferencesBloc,
         );
-        await tester.pump();
         expect(find.byType(PreferencesList), findsOneWidget);
       },
     );
