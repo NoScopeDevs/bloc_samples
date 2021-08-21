@@ -16,8 +16,9 @@ Future<void> main() async {
 
   await runZonedGuarded<Future<void>>(
     () async {
+      WidgetsFlutterBinding.ensureInitialized();
       final preferences = await SharedPreferences.getInstance();
-      final preferencesRepository = PreferencesRepository(
+      final preferencesRepository = SharedPreferencesRepository(
         sharedPreferences: preferences,
       );
 

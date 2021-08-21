@@ -180,7 +180,7 @@ void main() {
 
       test(
         'throws PreferenceError with noPreferences reason '
-        'when preferences\'s set is empty',
+        "when preferences's set is empty",
         () {
           when(() => mockPreferences.getKeys()).thenReturn({});
           try {
