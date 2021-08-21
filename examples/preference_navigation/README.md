@@ -1,10 +1,18 @@
 # preference_navigation
 
-Project to manage navigation from saved preferences.
+Project to handle navigation based on locally stored preferences.
 
-It has two types of implementation based on the type of preferences that you choose as a dependency injection.
+Make sure to use `WidgetsFlutterBinding.ensureInitialized()` to avoid errors when launching the app.
 
-## [SharedPreference](https://pub.dev/packages/shared_preferences)
+It has two implementations based on the type of local storage that you choose as a dependency.
+
+In case of using `Hive` as a preference, you should only inject `HivePreferencesRepository` into the `PreferencesBloc`.
+
+You must change the Mock defined in line `27` of the `pump_app.dart` file in the `test/helpers/` folder to `MockHivePreferencesRepository`.
+
+## Example
+
+Using `shared_preferences` as dependency and in turn `SharedPreferencesRepository` as repository.
 
 ```dart
 class App extends StatelessWidget {
@@ -18,10 +26,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider.value(value: _preferencesRepository),
-      ],
+    return BlocProvider(
+      create: (context) => PreferencesBloc(repository: _preferencesRepository)
+        ..add(PreferencesChecked()),
       child: const AppView(),
     );
   }
@@ -32,68 +39,16 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PreferencesBloc(
-        repository: context.read<SharedPreferencesRepository>(),
-      )..add(PreferencesChecked()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Bloc Navigation App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const StartPage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Bloc Navigation App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: const StartPage(),
     );
   }
 }
-
-```
-
-## [Hive](https://pub.dev/packages/hive)
-
-```dart
-class App extends StatelessWidget {
-  const App({
-    Key? key,
-    required HivePreferencesRepository  preferencesRepository,
-  })  : _preferencesRepository = preferencesRepository,
-        super(key: key);
-
-  final HivePreferencesRepository  _preferencesRepository;
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider.value(value: _preferencesRepository),
-      ],
-      child: const AppView(),
-    );
-  }
-}
-
-class AppView extends StatelessWidget {
-  const AppView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PreferencesBloc(
-        repository: context.read<HivePreferencesRepository >(),
-      )..add(PreferencesChecked()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Bloc Navigation App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const StartPage(),
-      ),
-    );
-  }
-}
-
 ```
 
 ## Getting Started

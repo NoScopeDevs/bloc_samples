@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:preferences_repository/preferences_repository.dart';
+import 'package:preferences/preferences.dart';
 
 part 'preferences_event.dart';
 part 'preferences_state.dart';

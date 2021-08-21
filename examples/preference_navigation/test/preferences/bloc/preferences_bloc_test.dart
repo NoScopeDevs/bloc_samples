@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:preference_navigation/preferences/preferences.dart';
-import 'package:preferences_repository/preferences_repository.dart';
+import 'package:preferences/preferences.dart';
 
 import '../../helpers/helpers.dart';
 
