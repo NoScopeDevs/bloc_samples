@@ -17,12 +17,7 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PreferencesBloc(
-        repository: context.read<PreferencesRepository>(),
-      )..add(PreferencesChecked()),
-      child: const StartView(),
-    );
+    return const StartView();
   }
 }
 
