@@ -17,7 +17,7 @@ import 'mocks.dart';
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
-    IPreferencesRepository? preferencesRepository,
+    PreferencesRepository? preferencesRepository,
     PreferencesBloc? preferencesBloc,
   }) {
     return pumpWidget(

@@ -3,7 +3,7 @@ import 'package:preferences_repository/src/i_repository.dart';
 import 'package:preferences_repository/src/preferences_repository.dart';
 
 /// Implementation the repository in Hive
-class HiveRepository extends IPreferencesRepository {
+class HiveRepository extends PreferencesRepository {
   /// Constructor for Hive repository
   HiveRepository({required Box<Object> box}) : _box = box;
 

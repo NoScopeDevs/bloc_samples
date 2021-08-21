@@ -13,11 +13,11 @@ part 'preferences_state.dart';
 class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   /// {@macro preferences_bloc}
   PreferencesBloc({
-    required IPreferencesRepository repository,
+    required PreferencesRepository repository,
   })  : _repository = repository,
         super(const PreferencesInitial());
 
-  final IPreferencesRepository _repository;
+  final PreferencesRepository _repository;
 
   @override
   Stream<PreferencesState> mapEventToState(PreferencesEvent event) async* {

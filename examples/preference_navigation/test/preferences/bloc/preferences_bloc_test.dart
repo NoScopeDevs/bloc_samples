@@ -7,7 +7,7 @@ import 'package:preferences_repository/preferences_repository.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  late IPreferencesRepository preferencesRepository;
+  late PreferencesRepository preferencesRepository;
 
   group('PreferencesBloc', () {
     const mockPreferences = {'key': 'value'};
