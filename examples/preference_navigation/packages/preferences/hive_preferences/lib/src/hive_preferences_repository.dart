@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:preferences_repository/src/preferences_repository.dart';
-import 'package:preferences_repository/src/preferences_failure.dart';
+import 'package:preferences/preferences.dart';
 
 /// {@template hive_preferences_repository}
 /// Implementation the [PreferencesRepository] with Hive

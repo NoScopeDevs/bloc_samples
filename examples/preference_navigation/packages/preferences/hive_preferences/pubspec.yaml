@@ -1,0 +1,17 @@
+name: hive_preferences
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  hive: ^2.0.4
+  preferences:
+    path: ../preferences
+
+dev_dependencies:
+  test: ^1.17.0
+  mocktail: ^0.1.4
+  very_good_analysis: ^2.3.0
