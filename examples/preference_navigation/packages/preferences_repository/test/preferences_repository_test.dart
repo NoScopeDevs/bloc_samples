@@ -10,18 +10,19 @@ class MockPreferences extends Mock implements SharedPreferences {}
 class FakePreferences extends Fake implements SharedPreferences {}
 
 void main() {
-  late PreferencesRepository repository;
+  late SharedPreferencesRepository repository;
   late SharedPreferences mockPreferences;
 
   setUpAll(() {
     mockPreferences = MockPreferences();
-    repository = PreferencesRepository(sharedPreferences: mockPreferences);
+    repository =
+        SharedPreferencesRepository(sharedPreferences: mockPreferences);
   });
 
   group('PreferencesRepository', () {
     test('can be instantiated', () {
       expect(
-        PreferencesRepository(sharedPreferences: mockPreferences),
+        SharedPreferencesRepository(sharedPreferences: mockPreferences),
         isNotNull,
       );
     });

@@ -1,3 +1,4 @@
+import 'package:preferences_repository/preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Possible reasons why preferences failed.
@@ -32,16 +33,15 @@ class PreferenceFailure implements Exception {
 /// {@template preferences_repository}
 /// A Flutter package to manage preferences business rules.
 /// {@endtemplate}
-class PreferencesRepository {
+class SharedPreferencesRepository extends IPreferencesRepository {
   /// {@macro preferences_repository}
-  const PreferencesRepository({
+  SharedPreferencesRepository({
     required SharedPreferences sharedPreferences,
   }) : _preferences = sharedPreferences;
 
   final SharedPreferences _preferences;
 
-  /// Saves an object to preferences.
-  /// Expects a [key] and a [value].
+  @override
   Future<void> saveValue(String key, Object value) async {
     try {
       if (value is int) {
@@ -75,7 +75,7 @@ class PreferencesRepository {
     }
   }
 
-  /// Returns a [List] containing all the keys for values stored in preferences.
+  @override
   List<String> getKeys() {
     try {
       final preferencesKeys = _preferences.getKeys();
@@ -90,7 +90,7 @@ class PreferencesRepository {
     }
   }
 
-  /// Returns an [Object] based on a given key.
+  @override
   Object getValue(String key) {
     final Object? value;
     try {
@@ -104,7 +104,7 @@ class PreferencesRepository {
     return value;
   }
 
-  /// Clears every stored value on preferences.
+  @override
   Future<void> clearValues() async {
     try {
       await _preferences.clear();
