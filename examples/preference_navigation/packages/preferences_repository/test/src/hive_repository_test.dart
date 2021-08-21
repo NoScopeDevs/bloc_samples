@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:preferences_repository/preferences_repository.dart';
-import 'package:preferences_repository/src/hive_repository.dart';
+import 'package:preferences_repository/src/hive_preferences_repository.dart';
 
 class MockHiveBox extends Mock implements Box<Object> {}
 
