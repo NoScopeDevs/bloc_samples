@@ -18,7 +18,8 @@ void main() {
       mockHivePreferenceRepository = MockHivePreferencesRepository();
     });
 
-    testWidgets('renders AppView with HiveRepository instance', (tester) async {
+    testWidgets('renders AppView with HivePreferencesRepository  instance',
+        (tester) async {
       final preferencesBloc = MockPreferencesBloc();
       when(() => preferencesBloc.state).thenReturn(FakePreferencesState());
 

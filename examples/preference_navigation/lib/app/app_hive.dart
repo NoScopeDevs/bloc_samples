@@ -11,11 +11,11 @@ class App extends StatelessWidget {
   /// {@macro app}
   const App({
     Key? key,
-    required HiveRepository preferencesRepository,
+    required HivePreferencesRepository preferencesRepository,
   })  : _preferencesRepository = preferencesRepository,
         super(key: key);
 
-  final HiveRepository _preferencesRepository;
+  final HivePreferencesRepository _preferencesRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PreferencesBloc(
-        repository: context.read<HiveRepository>(),
+        repository: context.read<HivePreferencesRepository>(),
       )..add(PreferencesChecked()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

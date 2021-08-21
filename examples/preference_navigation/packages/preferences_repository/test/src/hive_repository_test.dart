@@ -12,7 +12,7 @@ class FakeModelHive extends HiveObject {}
 
 void main() {
   late MockHiveBox mockHiveBox;
-  late HiveRepository hiveRepository;
+  late HivePreferencesRepository hiveRepository;
   late FakeModelHive tFakeModelHive;
 
   const keyTest1 = 'keyTest1';
@@ -21,7 +21,7 @@ void main() {
   setUp(() async {
     tFakeModelHive = FakeModelHive();
     mockHiveBox = MockHiveBox();
-    hiveRepository = HiveRepository(box: mockHiveBox);
+    hiveRepository = HivePreferencesRepository(box: mockHiveBox);
   });
 
   test('getValue', () {
@@ -67,18 +67,6 @@ void main() {
           .thenAnswer((_) async => Future<int>.value(0));
 
       expect(hiveRepository.saveValue('object_key', tFakeModelHive), completes);
-    });
-
-    test(
-        'throws PreferenceFailure with typeNotSupported '
-        'when TypeError is thrown', () {
-      when(() => mockHiveBox.add(tFakeModelHive))
-          .thenAnswer((_) async => Future<int>.value());
-
-      expect(
-        hiveRepository.saveValue('object_key', tFakeModelHive),
-        throwsA(isA<TypeError>()),
-      );
     });
 
     test(

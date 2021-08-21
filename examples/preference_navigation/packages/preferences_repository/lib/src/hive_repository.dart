@@ -2,10 +2,12 @@ import 'package:hive/hive.dart';
 import 'package:preferences_repository/src/i_repository.dart';
 import 'package:preferences_repository/src/preferences_repository.dart';
 
-/// Implementation the repository in Hive
-class HiveRepository extends PreferencesRepository {
+/// {@template hive_preferences_repository}
+/// Implementation the [PreferencesRepository] with Hive
+/// {@endtemplate}
+class HivePreferencesRepository extends PreferencesRepository {
   /// Constructor for Hive repository
-  HiveRepository({required Box<Object> box}) : _box = box;
+  HivePreferencesRepository({required Box<Object> box}) : _box = box;
 
   final Box<Object> _box;
 
@@ -50,20 +52,13 @@ class HiveRepository extends PreferencesRepository {
   @override
   Future<void> saveValue(String key, Object value) async {
     try {
-      if (value is int ||
-          value is double ||
-          value is String ||
-          value is bool ||
-          value is List<String>) {
-        return _box.put(key, value);
-      }
       if (value is HiveObject) {
         await _box.add(value);
         return;
       }
-    } catch (_) {
-      throw TypeError();
+      return _box.put(key, value);
+    } catch (e) {
+      throw PreferenceFailure(PreferenceFailureReason.typeNotSupported);
     }
-    throw PreferenceFailure(PreferenceFailureReason.typeNotSupported);
   }
 }

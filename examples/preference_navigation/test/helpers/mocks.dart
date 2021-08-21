@@ -7,7 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MockSharedPreferencesRepository extends Mock
     implements SharedPreferencesRepository {}
 
-class MockHivePreferencesRepository extends Mock implements HiveRepository {}
+class MockHivePreferencesRepository extends Mock
+    implements HivePreferencesRepository {}
 
 class MockPreferencesBloc extends MockBloc<PreferencesEvent, PreferencesState>
     implements PreferencesBloc {}
