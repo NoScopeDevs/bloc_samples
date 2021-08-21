@@ -4,28 +4,26 @@ import 'package:mocktail/mocktail.dart';
 import 'package:preferences_repository/preferences_repository.dart';
 import 'package:preferences_repository/src/hive_preferences_repository.dart';
 
-class MockHiveBox extends Mock implements Box<Object> {}
+class MockBox extends Mock implements Box<Object> {}
 
-class FakePreferences extends Fake implements Box<Object> {}
-
-class FakeModelHive extends HiveObject {}
+class FakeHiveObject extends HiveObject {}
 
 void main() {
-  late MockHiveBox mockHiveBox;
+  late MockBox mockBox;
   late HivePreferencesRepository hiveRepository;
-  late FakeModelHive tFakeModelHive;
+  late FakeHiveObject tFakeHiveObject;
 
   const keyTest1 = 'keyTest1';
   const responseTest1 = 'value11';
 
   setUp(() async {
-    tFakeModelHive = FakeModelHive();
-    mockHiveBox = MockHiveBox();
-    hiveRepository = HivePreferencesRepository(box: mockHiveBox);
+    tFakeHiveObject = FakeHiveObject();
+    mockBox = MockBox();
+    hiveRepository = HivePreferencesRepository(box: mockBox);
   });
 
   test('getValue', () {
-    when(() => mockHiveBox.get(keyTest1)).thenReturn(responseTest1);
+    when(() => mockBox.get(keyTest1)).thenReturn(responseTest1);
 
     final result = hiveRepository.getValue(keyTest1);
 
@@ -42,15 +40,15 @@ void main() {
     };
 
     test('saves primitive types of values', () async {
-      when(() => mockHiveBox.put('int', 42))
+      when(() => mockBox.put('int', 42))
           .thenAnswer((_) async => Future.value());
-      when(() => mockHiveBox.put('double', 42.0))
+      when(() => mockBox.put('double', 42.0))
           .thenAnswer((_) async => Future.value());
-      when(() => mockHiveBox.put('bool', true))
+      when(() => mockBox.put('bool', true))
           .thenAnswer((_) async => Future.value());
-      when(() => mockHiveBox.put('String', 'foo'))
-          .thenAnswer((_) async => Future.value());
-      when(() => mockHiveBox.put(
+      when(() => mockBox.put('String', 'foo'))
+          .thenAnswer((m) async => Future.value());
+      when(() => mockBox.put(
             'List<String>',
             ['foo', 'bar'],
           )).thenAnswer((_) async => Future.value());
@@ -63,20 +61,19 @@ void main() {
     });
 
     test('save model HiveObject', () {
-      when(() => mockHiveBox.add(tFakeModelHive))
+      when(() => mockBox.add(tFakeHiveObject))
           .thenAnswer((_) async => Future<int>.value(0));
 
-      expect(hiveRepository.saveValue('object_key', tFakeModelHive), completes);
+      expect(
+          hiveRepository.saveValue('object_key', tFakeHiveObject), completes);
     });
 
     test(
       'throws PreferenceFailure with typeNotSupported '
       'when value type is not supported',
       () async {
-        final fakeValue = FakePreferences();
-
         await expectLater(
-          hiveRepository.saveValue('key', fakeValue),
+          hiveRepository.saveValue('key', mockBox),
           throwsA(
             isA<PreferenceFailure>().having(
               (e) => e.reason,
@@ -93,7 +90,7 @@ void main() {
     const testKeys = {'foo', 'bar'};
 
     test('returns the set of string keys as a list', () {
-      when(() => mockHiveBox.keys).thenReturn(testKeys);
+      when(() => mockBox.keys).thenReturn(testKeys);
       expect(hiveRepository.getKeys(), testKeys.toList());
     });
 
@@ -101,7 +98,7 @@ void main() {
       'throws PreferenceError with noPreferences reason when '
       "preferences's set is empty",
       () {
-        when(() => mockHiveBox.keys).thenReturn(<dynamic>[]);
+        when(() => mockBox.keys).thenReturn(<dynamic>[]);
         try {
           hiveRepository.getKeys();
         } catch (e) {
@@ -121,7 +118,7 @@ void main() {
       'throws PreferenceError with unknown reason '
       'when generic Exception is thrown',
       () {
-        when(() => mockHiveBox.keys).thenThrow(Exception());
+        when(() => mockBox.keys).thenThrow(Exception());
         try {
           hiveRepository.getKeys();
         } catch (e) {
@@ -142,13 +139,13 @@ void main() {
     const testValue = 42;
 
     test('returns value a non-null value', () {
-      when(() => mockHiveBox.get(any<dynamic>())).thenReturn(testValue);
+      when(() => mockBox.get(any<dynamic>())).thenReturn(testValue);
 
       expect(hiveRepository.getValue('key'), isNotNull);
     });
 
     test('returns value correctly', () {
-      when(() => mockHiveBox.get(any<dynamic>())).thenReturn(testValue);
+      when(() => mockBox.get(any<dynamic>())).thenReturn(testValue);
 
       expect(hiveRepository.getValue('key'), testValue);
     });
@@ -157,7 +154,7 @@ void main() {
       'throws PreferenceError with reason unknown '
       'when preferences.get throws any Exception',
       () {
-        when(() => mockHiveBox.get(any<dynamic>())).thenThrow(Exception());
+        when(() => mockBox.get(any<dynamic>())).thenThrow(Exception());
 
         try {
           final _ = hiveRepository.getValue('key');
@@ -178,7 +175,7 @@ void main() {
       'throws PreferenceError with reason nullValue '
       'when preferences.get returns a null value',
       () {
-        when(() => mockHiveBox.get(any<dynamic>())).thenReturn(null);
+        when(() => mockBox.get(any<dynamic>())).thenReturn(null);
         try {
           hiveRepository.getValue('key');
         } catch (e) {
@@ -197,7 +194,7 @@ void main() {
 
   group('clearValues', () {
     test('clears correctly', () async {
-      when(() => mockHiveBox.clear()).thenAnswer((_) async => 1);
+      when(() => mockBox.clear()).thenAnswer((_) async => 1);
 
       await expectLater(hiveRepository.clearValues(), completes);
     });
@@ -206,7 +203,7 @@ void main() {
       'throws PreferenceError with clearWentWrong reason '
       'when preferences.clear throws a generic Exception',
       () async {
-        when(() => mockHiveBox.clear()).thenThrow(Exception());
+        when(() => mockBox.clear()).thenThrow(Exception());
         await expectLater(
           hiveRepository.clearValues(),
           throwsA(

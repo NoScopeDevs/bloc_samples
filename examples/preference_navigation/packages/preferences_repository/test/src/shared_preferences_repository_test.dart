@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MockPreferences extends Mock implements SharedPreferences {}
 
-class FakePreferences extends Fake implements SharedPreferences {}
+class FakeSharedPreferences extends Fake implements SharedPreferences {}
 
 void main() {
   late SharedPreferencesRepository repository;
@@ -59,7 +59,7 @@ void main() {
         'throws PreferenceFailure with typeNotSupported '
         'when value type is not supported',
         () async {
-          final fakeValue = FakePreferences();
+          final fakeValue = FakeSharedPreferences();
 
           await expectLater(
             repository.saveValue('key', fakeValue),
