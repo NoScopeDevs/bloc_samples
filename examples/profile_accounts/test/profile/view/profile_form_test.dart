@@ -26,7 +26,9 @@ void main() {
         final profileBloc = MockProfileBloc();
 
         await tester.pumpApp(
-          const Material(child: ProfileForm()),
+          const Material(
+            child: ProfileForm(),
+          ),
           profileBloc: profileBloc,
         );
         await tester.enterText(find.byKey(profileNameInputKey), mockName);
