@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -27,9 +26,7 @@ void main() {
         final profileBloc = MockProfileBloc();
 
         await tester.pumpApp(
-          Material(
-            child: ProfileForm(),
-          ),
+          const Material(child: ProfileForm()),
           profileBloc: profileBloc,
         );
         await tester.enterText(find.byKey(profileNameInputKey), mockName);
