@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:preference_navigation/preferences/preferences.dart';
+import 'package:preferences_repository/preferences_repository.dart';
 
 import 'mocks.dart';
 

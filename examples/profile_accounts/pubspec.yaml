@@ -16,8 +16,10 @@ dependencies:
     path: packages/profile_core
 
 dev_dependencies:
+  bloc_test: ^8.1.0
   flutter_test:
     sdk: flutter
+  mocktail: ^0.1.4
   very_good_analysis: ^2.3.0
 
 flutter:

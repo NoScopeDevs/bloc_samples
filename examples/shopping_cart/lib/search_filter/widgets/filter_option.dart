@@ -1,8 +1,8 @@
 // stores ExpansionPanel state information
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_cart/search_filter/bloc/search_filter_bloc.dart';
 import 'package:search_filter_repository/search_filter_repository.dart';
+import 'package:shopping_cart/search_filter/bloc/search_filter_bloc.dart';
 
 class Item {
   Item({

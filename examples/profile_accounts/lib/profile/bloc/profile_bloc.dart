@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:profile_core/profile_core.dart';
-export 'package:profile_core/profile_core.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';
