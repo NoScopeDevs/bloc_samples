@@ -13,6 +13,15 @@ class AppInitial extends AppState {
 
 class AppAnalyticsLoaded extends AppState {
   const AppAnalyticsLoaded(this.openingsCount);
+
+  factory AppAnalyticsLoaded.fromJson(Map<String, dynamic> json) {
+    return AppAnalyticsLoaded(json['openingCount'] as int);
+  }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'openingCount': openingsCount,
+      };
+
   final int openingsCount;
 }
 
