@@ -44,6 +44,7 @@ class _PreferencesFormState extends State<PreferencesForm> {
             key: const Key('preferencesForm_save_elevatedButton'),
             onPressed: () {
               if (!formKey.currentState!.validate()) return;
+              formKey.currentState!.save();
 
               final key = keyController.text;
               final value = valueController.text;
