@@ -17,7 +17,7 @@ class ProfileDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               child: const ProfileHeader(),
             ),
