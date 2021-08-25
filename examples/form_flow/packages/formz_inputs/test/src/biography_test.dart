@@ -7,7 +7,7 @@ void main() {
     Iterable.generate(140, (_) => 1),
   );
 
-  group('Biography', () {
+  group('BiographyFormInput', () {
     group('constructors', () {
       test('pure creates correct instance', () {
         final biography = BiographyFormInput.pure();
