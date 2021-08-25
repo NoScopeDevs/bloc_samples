@@ -4,11 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 part 'authentication_event.dart';
-part 'authentication_state.dart';
+
+enum AuthenticationState {
+  authenticated,
+  unauthenticated,
+}
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc() : super(AuthenticationInitial());
+  AuthenticationBloc() : super(AuthenticationState.unauthenticated);
 
   @override
   Stream<AuthenticationState> mapEventToState(
