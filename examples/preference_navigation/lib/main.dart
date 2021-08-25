@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:preference_navigation/app/app.dart';
 import 'package:preference_navigation/app/app_bloc_observer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shared_preferences_nsd/shared_preferences.dart';
+import 'package:shared_preferences_repository/shared_preferences_repository.dart';
 
 Future<void> main() async {
   EquatableConfig.stringify = kDebugMode;

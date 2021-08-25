@@ -18,8 +18,8 @@ dependencies:
     path: packages/preferences/preferences_repository
   hive_preferences_repository:
     path: packages/preferences/hive_preferences_repository
-  shared_preferences_nsd:
-    path: packages/preferences/shared_preferences_nsd
+  shared_preferences_repository:
+    path: packages/preferences/shared_preferences_repository
   shared_preferences: ^2.0.6
 
 dev_dependencies:

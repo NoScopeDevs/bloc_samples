@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preference_navigation/preferences/preferences.dart';
 import 'package:preference_navigation/start/start.dart';
-import 'package:shared_preferences_nsd/shared_preferences.dart';
+import 'package:shared_preferences_repository/shared_preferences_repository.dart';
 
 /// {@template app}
 /// Main app widget for dependency injection.
