@@ -2,7 +2,6 @@
 
 Project to handle navigation based on locally stored preferences.
 
-
 It has two implementations based on the type of local storage that you choose as a dependency.
 
 In case of using `hive` as a preference, you should only inject `HivePreferencesRepository` into the `PreferencesBloc`.
@@ -25,10 +24,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PreferencesBloc(repository: _preferencesRepository)
-        ..add(PreferencesChecked()),
-      child: const AppView(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider.value(value: _preferencesRepository),
+      ],
+      child: BlocProvider(
+        create: (context) => PreferencesBloc(
+            repository: context.read<SharedPreferencesRepository>())
+          ..add(PreferencesChecked()),
+        child: const AppView(),
+      ),
     );
   }
 }
