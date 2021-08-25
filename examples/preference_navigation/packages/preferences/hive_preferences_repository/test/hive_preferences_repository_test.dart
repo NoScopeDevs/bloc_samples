@@ -16,8 +16,7 @@ void main() {
   late HivePreferencesRepository hiveRepository;
   late FakeHiveObject tFakeHiveObject;
 
-  const keyTest1 = 'keyTest1';
-  const responseTest1 = 'value11';
+  const mockKeyValue = {'keyTest1': 'value11'};
 
   setUp(() async {
     tFakeHiveObject = FakeHiveObject();
@@ -26,11 +25,12 @@ void main() {
   });
 
   test('getValue', () {
-    when(() => mockBox.get(keyTest1)).thenReturn(responseTest1);
+    when(() => mockBox.get(mockKeyValue.keys.first))
+        .thenReturn(mockKeyValue.values.first);
 
-    final result = hiveRepository.getValue(keyTest1);
+    final result = hiveRepository.getValue(mockKeyValue.keys.first);
 
-    expect(result, responseTest1);
+    expect(result, mockKeyValue.values.first);
   });
 
   group('saveValue', () {
