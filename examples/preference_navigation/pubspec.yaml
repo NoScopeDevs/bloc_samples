@@ -16,8 +16,8 @@ dependencies:
   path_provider: ^2.0.2
   preferences_repository:
     path: packages/preferences/preferences_repository
-  hive_preferences:
-    path: packages/preferences/hive_preferences
+  hive_preferences_repository:
+    path: packages/preferences/hive_preferences_repository
   shared_preferences_nsd:
     path: packages/preferences/shared_preferences_nsd
   shared_preferences: ^2.0.6
