@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   shared_preferences: ^2.0.6
-  preferences:
-    path: ../preferences
+  preferences_repository:
+    path: ../preferences_repository
     
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-import 'package:preferences/preferences.dart';
+import 'package:preferences_repository/preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template preferences_repository}

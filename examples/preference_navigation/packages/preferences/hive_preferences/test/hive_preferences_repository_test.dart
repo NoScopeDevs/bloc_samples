@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:hive_preferences/hive_preferences.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:preferences/preferences.dart';
+import 'package:preferences_repository/preferences_repository.dart';
 import 'package:test/test.dart';
 
 class MockHivePreferencesRepository extends Mock

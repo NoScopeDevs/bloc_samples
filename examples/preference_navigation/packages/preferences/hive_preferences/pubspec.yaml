@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   hive: ^2.0.4
-  preferences:
-    path: ../preferences
+  preferences_repository:
+    path: ../preferences_repository
 
 dev_dependencies:
   test: ^1.17.0
