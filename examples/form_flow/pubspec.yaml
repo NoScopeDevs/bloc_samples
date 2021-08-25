@@ -9,11 +9,14 @@ environment:
 dependencies:
   bloc: ^7.0.0
   equatable: ^2.0.3
+  flow_builder: ^0.0.4
   flutter:
     sdk: flutter
   flutter_bloc: ^7.0.0
   flutter_localizations:
     sdk: flutter
+  formz_inputs:
+    path: packages/formz_inputs
   intl: ^0.17.0
 
 dev_dependencies:
