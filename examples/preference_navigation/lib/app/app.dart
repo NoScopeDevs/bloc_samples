@@ -26,7 +26,7 @@ class App extends StatelessWidget {
       child: BlocProvider(
         create: (context) => PreferencesBloc(
             repository: _preferencesRepository,
-            )
+        )
           ..add(PreferencesChecked()),
         child: const AppView(),
       ),
