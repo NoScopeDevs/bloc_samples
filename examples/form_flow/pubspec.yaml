@@ -18,6 +18,8 @@ dependencies:
   formz_inputs:
     path: packages/formz_inputs
   intl: ^0.17.0
+  profile:
+    path: packages/profile
 
 dev_dependencies:
   bloc_test: ^8.1.0

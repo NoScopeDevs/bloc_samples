@@ -1,0 +1,13 @@
+name: profile
+description: Dart package with models for a profile account.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dev_dependencies:
+  test: ^1.17.0
+  very_good_analysis: ^2.1.0
+dependencies:
+  equatable: ^2.0.3
