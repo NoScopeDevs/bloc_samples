@@ -1,7 +1,7 @@
 import 'package:preferences_repository/preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// {@template preferences_repository}
+/// {@template shared_preferences_repository}
 /// A Flutter package to manage preferences business rules.
 /// {@endtemplate}
 class SharedPreferencesRepository extends PreferencesRepository {
