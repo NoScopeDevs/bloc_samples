@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:hive/hive.dart';
+import 'package:local_analytics_api/local_analytics_api.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:local_analytics_api/local_analytics_api.dart';
 
 class MockBox extends Mock implements Box<int> {}
 

@@ -17,7 +17,7 @@ class ProfileDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               child: const ProfileHeader(),
             ),
@@ -37,16 +37,11 @@ class ProfileHeader extends StatelessWidget {
     const textHeaderStyle = TextStyle(color: Colors.black);
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (_, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (state is ProfileInitial)
-              const Text('no-user', style: textHeaderStyle),
-            if (state is ProfileLoaded)
-              Text(state.current.email, style: textHeaderStyle),
-          ],
-        );
+        if (state is ProfileLoaded) {
+          return Text(state.current.email, style: textHeaderStyle);
+        }
+
+        return const Text('no-user', style: textHeaderStyle);
       },
     );
   }

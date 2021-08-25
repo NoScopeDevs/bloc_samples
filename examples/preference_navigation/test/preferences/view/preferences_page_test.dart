@@ -88,7 +88,9 @@ void main() {
         final preferencesBloc = MockPreferencesBloc();
 
         await tester.pumpApp(
-          const Material(child: PreferencesForm()),
+          const Material(
+            child: PreferencesForm(),
+          ),
           preferencesBloc: preferencesBloc,
         );
         await tester.enterText(

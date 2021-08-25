@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:hive_preferences/hive_preferences.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:preference_navigation/preferences/preferences.dart';
+import 'package:preferences_repository/preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_nsd/shared_preferences.dart';
 

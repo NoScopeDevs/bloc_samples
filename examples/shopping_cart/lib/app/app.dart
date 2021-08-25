@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_cart/home/home.dart';
 import 'package:search_filter_repository/search_filter_repository.dart';
+import 'package:shopping_cart/home/home.dart';
 
 class App extends StatelessWidget {
   const App({
