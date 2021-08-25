@@ -5,7 +5,7 @@ import 'package:preferences/preferences.dart';
 /// Implementation the [PreferencesRepository] with Hive
 /// {@endtemplate}
 class HivePreferencesRepository extends PreferencesRepository {
-  /// Constructor for Hive repository
+  /// {@macro hive_preferences_repository}
   HivePreferencesRepository({required Box<Object> box}) : _box = box;
 
   final Box<Object> _box;
