@@ -27,7 +27,6 @@ class App extends StatelessWidget {
         create: (context) => PreferencesBloc(
             repository: _preferencesRepository,
         )
-          ..add(PreferencesChecked()),
         child: const AppView(),
       ),
     );
