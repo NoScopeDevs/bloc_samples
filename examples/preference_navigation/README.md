@@ -2,7 +2,6 @@
 
 Project to handle navigation based on locally stored preferences.
 
-Make sure to use `WidgetsFlutterBinding.ensureInitialized()` to avoid errors when launching the app.
 
 It has two implementations based on the type of local storage that you choose as a dependency.
 
