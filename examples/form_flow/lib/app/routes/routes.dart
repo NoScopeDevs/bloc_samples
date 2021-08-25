@@ -1,12 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:form_flow/authentication/authentication.dart';
-import 'package:form_flow/info/info.dart';
+import 'package:form_flow/app/app.dart';
+import 'package:form_flow/profile/profile.dart';
+import 'package:form_flow/signup/signup.dart';
 
-List<Page> onGenerateAppViewPages(AuthenticationState state, List<Page> pages) {
-  switch (state) {
-    case AuthenticationState.unauthenticated:
-      return [FormPage.page()];
-    case AuthenticationState.authenticated:
-      return [InfoPage.page()];
+List<Page> onGenerateAppViewPages(AppState state, List<Page> pages) {
+  if (state is AppAuthenticated) {
+    return [ProfilePage.page()];
+  } else if (state is AppUnauthenticated) {
+    return [SignUpPage.page()];
+  } else {
+    return [SignUpPage.page()];
   }
 }

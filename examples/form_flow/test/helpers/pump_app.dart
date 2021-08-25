@@ -7,20 +7,31 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:form_flow/app/app.dart';
 import 'package:form_flow/l10n/l10n.dart';
 
+import 'helpers.dart';
+
 extension PumpApp on WidgetTester {
-  Future<void> pumpApp(Widget widget) {
+  Future<void> pumpApp(Widget widget, {AppBloc? appBloc}) {
     return pumpWidget(
-      MaterialApp(
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
+      MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: appBloc ?? MockAppBloc()),
         ],
-        supportedLocales: AppLocalizations.supportedLocales,
-        home: widget,
+        child: MaterialApp(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: Material(
+            child: widget,
+          ),
+        ),
       ),
     );
   }

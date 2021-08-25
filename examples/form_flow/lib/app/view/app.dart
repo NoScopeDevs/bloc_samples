@@ -9,8 +9,8 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:form_flow/app/app.dart';
 import 'package:form_flow/app/routes/routes.dart';
-import 'package:form_flow/authentication/authentication.dart';
 import 'package:form_flow/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AuthenticationBloc(),
+      create: (_) => AppBloc(),
       child: const AppView(),
     );
   }
@@ -41,7 +41,7 @@ class AppView extends StatelessWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       home: FlowBuilder(
-        state: context.select((AuthenticationBloc bloc) => bloc.state),
+        state: context.select((AppBloc bloc) => bloc.state),
         onGeneratePages: onGenerateAppViewPages,
       ),
     );

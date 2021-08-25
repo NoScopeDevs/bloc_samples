@@ -7,13 +7,21 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_flow/app/app.dart';
-import 'package:form_flow/authentication/authentication.dart';
+import 'package:form_flow/signup/view/view.dart';
+import 'package:mocktail/mocktail.dart';
+
+import 'helpers/helpers.dart';
 
 void main() {
   group('App', () {
-    testWidgets('renders CounterPage', (tester) async {
-      await tester.pumpWidget(const App());
-      expect(find.byType(AuthenticationPage), findsOneWidget);
-    });
+    testWidgets(
+      'renders SignUpPage when app state is unauthenticated',
+      (tester) async {
+        final appBloc = MockAppBloc();
+        when(() => appBloc.state).thenReturn(AppUnauthenticated());
+        await tester.pumpApp(const App());
+        expect(find.byType(SignUpPage), findsOneWidget);
+      },
+    );
   });
 }
