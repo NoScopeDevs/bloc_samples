@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// {@template shared_preferences_repository}
 /// A Flutter package to manage preferences business rules.
 /// {@endtemplate}
-class SharedPreferencesRepository extends PreferencesRepository {
-  /// {@macro preferences_repository}
+class SharedPreferencesRepository implements PreferencesRepository {
+  /// {@macro shared_preferences_repository}
   SharedPreferencesRepository({
     required SharedPreferences sharedPreferences,
   }) : _preferences = sharedPreferences;

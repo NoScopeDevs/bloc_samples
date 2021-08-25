@@ -2,11 +2,10 @@
 
 Project to handle navigation based on locally stored preferences.
 
-Make sure to use `WidgetsFlutterBinding.ensureInitialized()` to avoid errors when launching the app.
 
 It has two implementations based on the type of local storage that you choose as a dependency.
 
-In case of using `Hive` as a preference, you should only inject `HivePreferencesRepository` into the `PreferencesBloc`.
+In case of using `hive` as a preference, you should only inject `HivePreferencesRepository` into the `PreferencesBloc`.
 
 You must change the Mock defined in line `27` of the `pump_app.dart` file in the `test/helpers/` folder to `MockHivePreferencesRepository`.
 
