@@ -9,4 +9,11 @@ abstract class AppState extends Equatable {
 
 class AppUnauthenticated extends AppState {}
 
-class AppAuthenticated extends AppState {}
+class AppAuthenticated extends AppState {
+  const AppAuthenticated(this.profile);
+
+  final Profile profile;
+
+  @override
+  List<Object> get props => [profile];
+}
