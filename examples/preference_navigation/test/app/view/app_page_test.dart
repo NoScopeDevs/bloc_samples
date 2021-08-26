@@ -6,7 +6,7 @@ import 'package:preference_navigation/preferences/preferences.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  late MockPreferencesRepository mockPreferenceRepository;
+  late MockSharedPreferencesRepository mockSharedPreferenceRepository;
 
   setUpAll(() {
     registerFallbackValue<PreferencesState>(FakePreferencesState());
@@ -15,15 +15,16 @@ void main() {
 
   group('App', () {
     setUp(() {
-      mockPreferenceRepository = MockPreferencesRepository();
+      mockSharedPreferenceRepository = MockSharedPreferencesRepository();
     });
 
-    testWidgets('renders AppView', (tester) async {
+    testWidgets('renders AppView with SharedPreferences instance',
+        (tester) async {
       final preferencesBloc = MockPreferencesBloc();
       when(() => preferencesBloc.state).thenReturn(FakePreferencesState());
 
       await tester.pumpApp(
-        App(preferencesRepository: mockPreferenceRepository),
+        App(preferencesRepository: mockSharedPreferenceRepository),
         preferencesBloc: preferencesBloc,
       );
       expect(find.byType(AppView), findsOneWidget);

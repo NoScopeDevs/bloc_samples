@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:preference_navigation/home/home.dart';
 import 'package:preference_navigation/preferences/preferences.dart';
-import 'package:preferences_repository/preferences_repository.dart';
 
 /// {@template start_page}
 /// Handles the initial page dependency injection.
@@ -18,12 +17,7 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PreferencesBloc(
-        repository: context.read<PreferencesRepository>(),
-      )..add(PreferencesChecked()),
-      child: const StartView(),
-    );
+    return const StartView();
   }
 }
 

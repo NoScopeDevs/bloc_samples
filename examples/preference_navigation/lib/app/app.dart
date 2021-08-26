@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:preference_navigation/preferences/preferences.dart';
 import 'package:preference_navigation/start/start.dart';
-import 'package:preferences_repository/preferences_repository.dart';
+import 'package:shared_preferences_repository/shared_preferences_repository.dart';
 
 /// {@template app}
 /// Main app widget for dependency injection.
@@ -10,11 +11,11 @@ class App extends StatelessWidget {
   /// {@macro app}
   const App({
     Key? key,
-    required PreferencesRepository preferencesRepository,
+    required SharedPreferencesRepository preferencesRepository,
   })  : _preferencesRepository = preferencesRepository,
         super(key: key);
 
-  final PreferencesRepository _preferencesRepository;
+  final SharedPreferencesRepository _preferencesRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,12 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(value: _preferencesRepository),
       ],
-      child: const AppView(),
+      child: BlocProvider(
+        create: (context) => PreferencesBloc(
+            repository: _preferencesRepository,
+        )..add(PreferencesChecked()),
+        child: const AppView(),
+      ),
     );
   }
 }

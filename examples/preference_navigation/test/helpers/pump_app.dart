@@ -24,7 +24,7 @@ extension PumpApp on WidgetTester {
       MultiRepositoryProvider(
         providers: [
           RepositoryProvider.value(
-            value: preferencesRepository ?? MockPreferencesRepository(),
+            value: preferencesRepository ?? MockSharedPreferencesRepository(),
           ),
         ],
         child: MultiBlocProvider(
