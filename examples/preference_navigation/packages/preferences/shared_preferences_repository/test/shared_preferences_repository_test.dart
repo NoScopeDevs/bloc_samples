@@ -4,24 +4,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:preferences_repository/preferences_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences_repository/shared_preferences_repository.dart';
 
 class MockPreferences extends Mock implements SharedPreferences {}
 
-class FakePreferences extends Fake implements SharedPreferences {}
+class FakeSharedPreferences extends Fake implements SharedPreferences {}
 
 void main() {
-  late PreferencesRepository repository;
+  late SharedPreferencesRepository repository;
   late SharedPreferences mockPreferences;
 
   setUpAll(() {
     mockPreferences = MockPreferences();
-    repository = PreferencesRepository(sharedPreferences: mockPreferences);
+    repository =
+        SharedPreferencesRepository(sharedPreferences: mockPreferences);
   });
 
   group('PreferencesRepository', () {
     test('can be instantiated', () {
       expect(
-        PreferencesRepository(sharedPreferences: mockPreferences),
+        SharedPreferencesRepository(sharedPreferences: mockPreferences),
         isNotNull,
       );
     });
@@ -58,7 +60,7 @@ void main() {
         'throws PreferenceFailure with typeNotSupported '
         'when value type is not supported',
         () async {
-          final fakeValue = FakePreferences();
+          final fakeValue = FakeSharedPreferences();
 
           await expectLater(
             repository.saveValue('key', fakeValue),
@@ -179,7 +181,7 @@ void main() {
 
       test(
         'throws PreferenceError with noPreferences reason '
-        'when preferences\'s set is empty',
+        "when preferences's set is empty",
         () {
           when(() => mockPreferences.getKeys()).thenReturn({});
           try {

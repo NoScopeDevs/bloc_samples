@@ -1,6 +1,59 @@
 # preference_navigation
 
-A new Flutter project.
+Project to handle navigation based on locally stored preferences.
+
+It has two implementations based on the type of local storage that you choose as a dependency.
+
+In case of using `hive` as a preference, you should only inject `HivePreferencesRepository` into the `PreferencesBloc`.
+
+You must change the Mock defined in line `27` of the `pump_app.dart` file in the `test/helpers/` folder to `MockHivePreferencesRepository`.
+
+## Example
+
+Using `shared_preferences` as dependency and in turn `SharedPreferencesRepository` as repository.
+
+```dart
+class App extends StatelessWidget {
+  const App({
+    Key? key,
+    required SharedPreferencesRepository preferencesRepository,
+  })  : _preferencesRepository = preferencesRepository,
+        super(key: key);
+
+  final SharedPreferencesRepository _preferencesRepository;
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider.value(value: _preferencesRepository),
+      ],
+      child: BlocProvider(
+        create: (context) => PreferencesBloc(
+            repository: context.read<SharedPreferencesRepository>())
+          ..add(PreferencesChecked()),
+        child: const AppView(),
+      ),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  const AppView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Bloc Navigation App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const StartPage(),
+    );
+  }
+}
+```
 
 ## Getting Started
 

@@ -14,7 +14,7 @@ void main() {
     const mockSavedPreferences = {'key1': 'value1'};
 
     setUp(() {
-      preferencesRepository = MockPreferencesRepository();
+      preferencesRepository = MockSharedPreferencesRepository();
     });
 
     group('PreferenceAdded', () {
