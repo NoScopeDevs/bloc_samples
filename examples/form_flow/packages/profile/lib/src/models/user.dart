@@ -1,19 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-/// {@template profile}
-/// Profile model.
+/// {@template user}
+/// User model.
 /// {@endtemplate}
-class Profile extends Equatable {
-  /// {@macro profile}
-  const Profile({
+class User extends Equatable {
+  /// {@macro user}
+  const User({
     required this.email,
     required this.name,
     required this.biography,
     required this.pin,
   });
 
-  /// Returns a `Profile` object with default properties.
-  const Profile.empty() : this(email: '', name: '', biography: '', pin: '');
+  /// Returns a `User` object with default properties.
+  const User.empty() : this(email: '', name: '', biography: '', pin: '');
 
   /// The user's email address.
   final String email;
@@ -28,5 +28,5 @@ class Profile extends Equatable {
   final String pin;
 
   @override
-  List<Object> get props => [email, name, biography];
+  List<Object> get props => [email, name, biography, pin];
 }

@@ -10,10 +10,10 @@ abstract class AppState extends Equatable {
 class AppUnauthenticated extends AppState {}
 
 class AppAuthenticated extends AppState {
-  const AppAuthenticated(this.profile);
+  const AppAuthenticated(this.user);
 
-  final Profile profile;
+  final User user;
 
   @override
-  List<Object> get props => [profile];
+  List<Object> get props => [user];
 }

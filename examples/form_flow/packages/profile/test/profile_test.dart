@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() {
   group('Profile', () {
     test('can be instantiated', () {
-      expect(Profile(name: '', email: '', biography: '', pin: ''), isNotNull);
+      expect(User(name: '', email: '', biography: '', pin: ''), isNotNull);
     });
   });
 }

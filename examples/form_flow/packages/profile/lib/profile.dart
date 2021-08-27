@@ -1,3 +1,3 @@
 library profile;
 
-export 'src/profile.dart';
+export 'src/models/models.dart';

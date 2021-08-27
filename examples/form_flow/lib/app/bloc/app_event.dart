@@ -8,10 +8,10 @@ abstract class AppEvent extends Equatable {
 }
 
 class AppSignUpComplete extends AppEvent {
-  const AppSignUpComplete(this.profile);
+  const AppSignUpComplete(this.user);
 
-  final Profile profile;
+  final User user;
 
   @override
-  List<Object> get props => [profile];
+  List<Object> get props => [user];
 }

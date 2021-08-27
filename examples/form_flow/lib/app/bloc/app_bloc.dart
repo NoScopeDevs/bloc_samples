@@ -11,6 +11,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _onSignUpComplete(AppSignUpComplete event, Emitter emit) {
-    emit(AppAuthenticated(event.profile));
+    emit(AppAuthenticated(event.user));
   }
 }
