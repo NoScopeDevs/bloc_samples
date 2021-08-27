@@ -15,11 +15,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   void _onCredentialsSubmitted(SignUpCredentialsSubmitted event, Emitter emit) {
     emit(
       state.copyWith(
-        profile: User(
+        user: User(
           email: event.email,
           name: event.name,
-          biography: state.profile.biography,
-          pin: state.profile.pin,
+          biography: state.user.biography,
+          pin: state.user.pin,
         ),
       ),
     );
@@ -28,11 +28,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   void _onBiographySubmitted(SignUpBiographySubmitted event, Emitter emit) {
     emit(
       state.copyWith(
-        profile: User(
-          email: state.profile.email,
-          name: state.profile.name,
+        user: User(
+          email: state.user.email,
+          name: state.user.name,
           biography: event.biography,
-          pin: state.profile.pin,
+          pin: state.user.pin,
         ),
       ),
     );
@@ -41,10 +41,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   void _onPinSubmitted(SignUpPinSubmitted event, Emitter emit) {
     emit(
       state.copyWith(
-        profile: User(
-          email: state.profile.email,
-          name: state.profile.name,
-          biography: state.profile.biography,
+        user: User(
+          email: state.user.email,
+          name: state.user.name,
+          biography: state.user.biography,
           pin: event.pin,
         ),
         complete: true,

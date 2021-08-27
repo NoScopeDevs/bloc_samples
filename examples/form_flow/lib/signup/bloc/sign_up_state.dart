@@ -2,22 +2,22 @@ part of 'sign_up_bloc.dart';
 
 class SignUpState extends Equatable {
   const SignUpState({
-    this.profile = const User.empty(),
+    this.user = const User.empty(),
     this.complete = false,
   });
 
-  final User profile;
+  final User user;
   final bool complete;
 
   @override
-  List<Object> get props => [profile];
+  List<Object> get props => [user];
 
   SignUpState copyWith({
-    User? profile,
+    User? user,
     bool? complete,
   }) {
     return SignUpState(
-      profile: profile ?? this.profile,
+      user: user ?? this.user,
       complete: complete ?? this.complete,
     );
   }

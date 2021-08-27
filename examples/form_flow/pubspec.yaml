@@ -26,7 +26,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.1.0
-  very_good_analysis: ^2.1.0
+  very_good_analysis: ^2.3.0
 
 dependency_overrides:
   bloc:
@@ -34,15 +34,15 @@ dependency_overrides:
       url: https://github.com/felangel/bloc
       path: packages/bloc
       ref: 7a679116aed916d2452c917a52b70bdd2b7ae142
-  flutter_bloc:
-    git:
-      url: https://github.com/felangel/bloc
-      path: packages/flutter_bloc
-      ref: 7a679116aed916d2452c917a52b70bdd2b7ae142
   bloc_test:
     git:
       url: https://github.com/felangel/bloc
       path: packages/bloc_test
+      ref: 7a679116aed916d2452c917a52b70bdd2b7ae142
+  flutter_bloc:
+    git:
+      url: https://github.com/felangel/bloc
+      path: packages/flutter_bloc
       ref: 7a679116aed916d2452c917a52b70bdd2b7ae142
 
 flutter:
