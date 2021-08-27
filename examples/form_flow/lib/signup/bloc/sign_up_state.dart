@@ -2,35 +2,23 @@ part of 'sign_up_bloc.dart';
 
 class SignUpState extends Equatable {
   const SignUpState({
-    this.email = const EmailFormInput.pure(),
-    this.name = const NameFormInput.pure(),
-    this.biography = const BiographyFormInput.pure(),
-    this.pin = const PinFormInput.pure(),
-    this.status = FormzStatus.pure,
+    this.profile = const Profile.empty(),
+    this.complete = false,
   });
 
-  final EmailFormInput email;
-  final NameFormInput name;
-  final BiographyFormInput biography;
-  final PinFormInput pin;
-  final FormzStatus status;
+  final Profile profile;
+  final bool complete;
 
   @override
-  List<Object> get props => [email, name, biography, pin];
+  List<Object> get props => [profile];
 
   SignUpState copyWith({
-    EmailFormInput? email,
-    NameFormInput? name,
-    BiographyFormInput? biography,
-    PinFormInput? pin,
-    FormzStatus? status,
+    Profile? profile,
+    bool? complete,
   }) {
     return SignUpState(
-      email: email ?? this.email,
-      name: name ?? this.name,
-      biography: biography ?? this.biography,
-      pin: pin ?? this.pin,
-      status: status ?? this.status,
+      profile: profile ?? this.profile,
+      complete: complete ?? this.complete,
     );
   }
 }

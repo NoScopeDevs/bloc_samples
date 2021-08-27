@@ -12,6 +12,9 @@ class Profile extends Equatable {
     required this.pin,
   });
 
+  /// Returns a `Profile` object with default properties.
+  const Profile.empty() : this(email: '', name: '', biography: '', pin: '');
+
   /// The user's email address.
   final String email;
 

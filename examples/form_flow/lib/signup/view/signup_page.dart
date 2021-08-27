@@ -11,42 +11,21 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlowBuilder(
-      state: context.select((SignUpBloc bloc) => bloc.state),
-      onGeneratePages: onGenerateSignUpPages,
+    return BlocProvider(
+      create: (_) => SignUpBloc(),
+      child: const SignUpView(),
     );
   }
 }
 
-class CredentialsForm extends StatelessWidget {
-  const CredentialsForm({Key? key}) : super(key: key);
-
-  static Page page() => const MaterialPage<void>(child: CredentialsForm());
+class SignUpView extends StatelessWidget {
+  const SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class BiographyInput extends StatelessWidget {
-  const BiographyInput({Key? key}) : super(key: key);
-
-  static Page page() => const MaterialPage<void>(child: BiographyInput());
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class PinInput extends StatelessWidget {
-  const PinInput({Key? key}) : super(key: key);
-
-  static Page page() => const MaterialPage<void>(child: PinInput());
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+    return FlowBuilder<SignUpState>(
+      state: context.select((SignUpBloc bloc) => bloc.state),
+      onGeneratePages: onGenerateSignUpPages,
+    );
   }
 }

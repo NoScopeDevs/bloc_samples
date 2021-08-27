@@ -1,7 +1,33 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "nextButtonText": "Siguiente",
+    "@nextButtonText": {
+        "description": "Texto en los botones de siguiente",
+        "type": "text",
+        "placeholders": {}
+    },
+    "emailInputLabelText": "Correo electrónico",
+    "@emailInputLabelText": {
+        "description": "Texto de etiqueta para correo electrónico en el formulario de registro",
+        "type": "text",
+        "placeholders": {}
+    },
+    "invalidEmailInputErrorText": "Correo electrónico inválido",
+    "@invalidEmailInputErrorText": {
+        "description": "Texto de error en formulario de registro cuando el correo es inválido",
+        "type": "text",
+        "placeholders": {}
+    },
+    "nameInputLabelText": "Nombre",
+    "@nameInputLabelText": {
+        "description": "Texto de etiqueta para nombre en el formulario de registro",
+        "type": "text",
+        "placeholders": {}
+    },
+    "shortNameInputErrorText": "Nombre muy corto",
+    "@shortNameInputErrorText": {
+        "description": "Texto de error en formulario de registro cuando el nombre es muy corto",
+        "type": "text",
+        "placeholders": {}
     }
 }

@@ -1,7 +1,33 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "nextButtonText": "Next",
+    "@nextButtonText": {
+        "description": "Button text on the next buttons",
+        "type": "text",
+        "placeholders": {}
+    },
+    "emailInputLabelText": "Email",
+    "@emailInputLabelText": {
+        "description": "Email label on sign up form",
+        "type": "text",
+        "placeholders": {}
+    },
+    "invalidEmailInputErrorText": "Invalid email",
+    "@invalidEmailInputErrorText": {
+        "description": "Email error text on sign up form when email is invalid",
+        "type": "text",
+        "placeholders": {}
+    },
+    "nameInputLabelText": "Name",
+    "@nameInputLabelText": {
+        "description": "Name label on sign up form",
+        "type": "text",
+        "placeholders": {}
+    },
+    "shortNameInputErrorText": "Name is too short",
+    "@shortNameInputErrorText": {
+        "description": "Name error text on sign up form when name is too short",
+        "type": "text",
+        "placeholders": {}
     }
 }
