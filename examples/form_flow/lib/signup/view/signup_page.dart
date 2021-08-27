@@ -23,7 +23,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlowBuilder<SignUpState>(
+    return FlowBuilder(
       state: context.select((SignUpBloc bloc) => bloc.state),
       onGeneratePages: onGenerateSignUpPages,
     );
