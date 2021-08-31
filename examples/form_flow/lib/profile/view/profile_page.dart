@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_flow/app/app.dart';
 import 'package:profile/profile.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -20,6 +22,12 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(user.name),
+        actions: [
+          IconButton(
+            onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Center(
         child: Padding(
