@@ -54,6 +54,7 @@ class _NameInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           autocorrect: false,
+          textCapitalization: TextCapitalization.words,
           onChanged: (name) {
             context.read<CredentialsCubit>().changeName(name);
           },

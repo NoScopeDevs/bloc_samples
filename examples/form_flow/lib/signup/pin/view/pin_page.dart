@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_flow/l10n/l10n.dart';
 import 'package:form_flow/signup/signup.dart';
@@ -46,11 +47,15 @@ class _PinInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           autocorrect: false,
+          obscureText: true,
           onChanged: (pin) => context.read<PinCubit>().changePin(pin),
           decoration: InputDecoration(
             labelText: l10n.pinInputLabelText,
-            errorText: l10n.invalidPinInputErrorText,
+            errorText: state.invalid ? l10n.invalidPinInputErrorText : null,
           ),
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(PinFormInput.maxLength),
+          ],
         );
       },
     );
