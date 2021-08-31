@@ -14,7 +14,6 @@ class CredentialsForm extends StatelessWidget {
       children: const [
         _EmailInput(),
         _NameInput(),
-        _SubmitButton(),
       ],
     );
   }
@@ -62,33 +61,6 @@ class _NameInput extends StatelessWidget {
             labelText: l10n.nameInputLabelText,
             errorText: state.invalid ? l10n.shortNameInputErrorText : null,
           ),
-        );
-      },
-    );
-  }
-}
-
-class _SubmitButton extends StatelessWidget {
-  const _SubmitButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return BlocBuilder<CredentialsCubit, CredentialsState>(
-      builder: (context, state) {
-        if (state.status.isInvalid || state.status.isPure) {
-          return const SizedBox.shrink();
-        }
-
-        return TextButton(
-          onPressed: () {
-            final event = SignUpCredentialsSubmitted(
-              email: state.email.value,
-              name: state.name.value,
-            );
-            context.read<SignUpBloc>().add(event);
-          },
-          child: Text(l10n.nextButtonText),
         );
       },
     );

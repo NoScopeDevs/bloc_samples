@@ -8,25 +8,43 @@
     },
     "emailInputLabelText": "Email",
     "@emailInputLabelText": {
-        "description": "Email label on sign up form",
+        "description": "Email label on email input",
         "type": "text",
         "placeholders": {}
     },
     "invalidEmailInputErrorText": "Invalid email",
     "@invalidEmailInputErrorText": {
-        "description": "Email error text on sign up form when email is invalid",
+        "description": "Email error text on email input when email is invalid",
         "type": "text",
         "placeholders": {}
     },
     "nameInputLabelText": "Name",
     "@nameInputLabelText": {
-        "description": "Name label on sign up form",
+        "description": "Name label on name input",
         "type": "text",
         "placeholders": {}
     },
     "shortNameInputErrorText": "Name is too short",
     "@shortNameInputErrorText": {
-        "description": "Name error text on sign up form when name is too short",
+        "description": "Name error text on name input when name is too short",
+        "type": "text",
+        "placeholders": {}
+    },
+    "biographyInputLabelText": "Biography",
+    "@biographyInputLabelText": {
+        "description": "Biography label on biography input",
+        "type": "text",
+        "placeholders": {}
+    },
+    "emptyBiographyInputErrorText": "Biography can't be empty",
+    "@emptyBiographyInputErrorText": {
+        "description": "Biography error text on biography input when biography is empty",
+        "type": "text",
+        "placeholders": {}
+    },
+    "longBiographyInputErrorText": "Biography is too long",
+    "@longBiographyInputErrorText": {
+        "description": "Biography error text on biography input when biography is too long",
         "type": "text",
         "placeholders": {}
     }
