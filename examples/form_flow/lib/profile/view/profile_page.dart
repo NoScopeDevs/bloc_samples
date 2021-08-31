@@ -21,13 +21,16 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(user.name),
       ),
-      body: ListView(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        shrinkWrap: true,
-        children: [
-          Text(user.email),
-          Text(user.biography),
-        ],
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(user.email),
+            Text(user.biography),
+          ],
+        ),
       ),
     );
   }
