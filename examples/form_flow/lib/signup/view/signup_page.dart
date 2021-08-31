@@ -1,6 +1,7 @@
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/routes/routes.dart';
 import 'package:form_flow/signup/signup.dart';
 
@@ -23,9 +24,16 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlowBuilder(
-      state: context.select((SignUpBloc bloc) => bloc.state),
-      onGeneratePages: onGenerateSignUpPages,
+    return BlocListener<SignUpBloc, SignUpState>(
+      listener: (context, state) {
+        if (state.complete) {
+          context.read<AppBloc>().add(AppSignUpComplete(state.user));
+        }
+      },
+      child: FlowBuilder(
+        state: context.select((SignUpBloc bloc) => bloc.state),
+        onGeneratePages: onGenerateSignUpPages,
+      ),
     );
   }
 }

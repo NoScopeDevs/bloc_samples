@@ -6,6 +6,12 @@
         "type": "text",
         "placeholders": {}
     },
+    "completeButtonText": "Complete",
+    "@completeButtonText": {
+        "description": "Button text on the complete buttons",
+        "type": "text",
+        "placeholders": {}
+    },
     "emailInputLabelText": "Email",
     "@emailInputLabelText": {
         "description": "Email label on email input",
@@ -45,6 +51,18 @@
     "longBiographyInputErrorText": "Biography is too long",
     "@longBiographyInputErrorText": {
         "description": "Biography error text on biography input when biography is too long",
+        "type": "text",
+        "placeholders": {}
+    },
+    "pinInputLabelText": "Pin",
+    "@pinInputLabelText": {
+        "description": "Pin label on pin input",
+        "type": "text",
+        "placeholders": {}
+    },
+    "invalidPinInputErrorText": "Invalid pin",
+    "@invalidPinInputErrorText": {
+        "description": "Pin error text on pin input when pin is invalid",
         "type": "text",
         "placeholders": {}
     }
