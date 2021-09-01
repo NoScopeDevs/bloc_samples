@@ -13,14 +13,14 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^7.1.0
   hive: ^2.0.4
-  hive_preferences_repository:
-    path: packages/preferences/hive_preferences_repository
   path_provider: ^2.0.2
   preferences_repository:
     path: packages/preferences/preferences_repository
-  shared_preferences: ^2.0.6
+  hive_preferences_repository:
+    path: packages/preferences/hive_preferences_repository
   shared_preferences_repository:
     path: packages/preferences/shared_preferences_repository
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   bloc_test: ^8.1.0

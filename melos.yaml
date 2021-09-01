@@ -8,23 +8,16 @@ scripts:
   # Tests without coverage
 
   test:all:
-    run: melos run test:dart --no-select && melos run test:flutter --no-select
+    run: melos exec --dir-exists="test" -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests
 
   test:dart:
-    run: melos exec -- dart test --test-randomize-ordering-seed random 
+    run: melos --no-flutter exec --dir-exists="test" -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests for dart dependent projects
-    select-package:
-      flutter: false
-      dir-exists: test
-
 
   test:flutter:
-    run: melos exec -- flutter test --test-randomize-ordering-seed random
+    run: melos --flutter exec --dir-exists="test" -- flutter test --no-pub --test-randomize-ordering-seed random
     description: Run all tests for flutter dependent projects
-    select-package:
-      flutter: true
-      dir-exists: test
 
   # Coverage management
 

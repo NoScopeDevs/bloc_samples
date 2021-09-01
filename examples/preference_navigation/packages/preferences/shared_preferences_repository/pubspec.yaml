@@ -9,10 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.0.6
   preferences_repository:
     path: ../preferences_repository
-  shared_preferences: ^2.0.6
-
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter
