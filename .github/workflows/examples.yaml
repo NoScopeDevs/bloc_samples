@@ -15,8 +15,8 @@ jobs:
         run: |
           flutter pub global activate melos
 
-      - name: Initialize melos
-        run: melos bs
+      - name: Initialize melos and get dependencies
+        run: melos bs && melos run pub-get
 
-      - name: Run test
+      - name: Run tests
         run: melos run test:all
