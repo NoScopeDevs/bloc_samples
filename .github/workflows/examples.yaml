@@ -5,22 +5,18 @@ on:
   pull_request:
 
 jobs:
-  examples:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.5.0
+
       - name: "Install Tools"
         run: |
           flutter pub global activate melos
-          flutter pub global activate tuneup
+
       - name: Initialize melos
         run: melos bs
+
       - name: Run test
         run: melos run test:all
-  build:
-    needs: [examples]
-    runs-on: ubuntu-latest
-    steps:
-      - name: noop
-        run: echo 'noop'
