@@ -7,12 +7,18 @@ scripts:
   #
   # Tests without coverage
 
+  pub-get:
+    run: melos exec -c 1 --fail-fast  -- pub get 
+    description: Run pub get for all dart packages
+    select-package:
+      flutter: false
+
   test:all:
     run: melos run test:dart --no-select && melos run test:flutter --no-select
     description: Run all tests
 
   test:dart:
-    run: melos exec -c 1 --fail-fast -- dart test --test-randomize-ordering-seed random 
+    run: melos run pub-get --no-select && melos exec -c 1 --fail-fast -- dart test --test-randomize-ordering-seed random 
     description: Run all tests for dart dependent projects
     select-package:
       flutter: false
