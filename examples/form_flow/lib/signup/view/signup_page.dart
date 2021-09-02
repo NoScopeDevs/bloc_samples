@@ -27,7 +27,7 @@ class SignUpView extends StatelessWidget {
     return BlocListener<SignUpBloc, SignUpState>(
       listener: (context, state) {
         if (state.complete) {
-          context.read<AppBloc>().add(AppSignUpComplete(state.user));
+          context.read<AppBloc>().add(AppSignUpCompleted(state.user));
         }
       },
       child: FlowBuilder(

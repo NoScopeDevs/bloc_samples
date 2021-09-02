@@ -7,11 +7,11 @@ part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(AppUnauthenticated()) {
-    on<AppSignUpComplete>(_onSignUpComplete);
+    on<AppSignUpCompleted>(_onSignUpComplete);
     on<AppLogoutRequested>(_onLogoutRequested);
   }
 
-  void _onSignUpComplete(AppSignUpComplete event, Emitter emit) {
+  void _onSignUpComplete(AppSignUpCompleted event, Emitter emit) {
     emit(AppAuthenticated(event.user));
   }
 
