@@ -45,6 +45,7 @@ class _BiographyInput extends StatelessWidget {
       selector: (state) => state.biography,
       builder: (context, state) {
         return TextField(
+          key: const Key('biographyView_biographyInput_textField'),
           autocorrect: false,
           onChanged: (biography) {
             context.read<BiographyCubit>().changeBiography(biography);
@@ -83,6 +84,7 @@ class _SubmitButton extends StatelessWidget {
         }
 
         return FloatingActionButton.extended(
+          key: const Key('biographyPage_submitButton_floatingActionButton'),
           onPressed: () {
             final event = SignUpBiographySubmitted(state.biography.value);
             context.read<SignUpBloc>().add(event);
