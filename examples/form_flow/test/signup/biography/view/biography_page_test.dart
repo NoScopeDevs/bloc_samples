@@ -42,7 +42,6 @@ void main() {
             child: const BiographyView(),
           ),
         );
-
         await tester.enterText(find.byKey(biographyInputKey), 'M');
 
         verify(() => biographyCubit.changeBiography(any())).called(1);
