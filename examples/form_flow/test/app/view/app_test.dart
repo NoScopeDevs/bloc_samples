@@ -10,7 +10,7 @@ import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/view/view.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'helpers/helpers.dart';
+import '../../helpers/helpers.dart';
 
 void main() {
   group('App', () {
