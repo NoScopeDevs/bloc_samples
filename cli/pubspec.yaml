@@ -1,0 +1,12 @@
+name: utils
+description: A set of utility commands.
+version: 0.1.0+1
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dev_dependencies:
+  test: ^1.17.12
+  very_good_analysis: ^2.3.0
+dependencies:
+  path: ^1.8.0
