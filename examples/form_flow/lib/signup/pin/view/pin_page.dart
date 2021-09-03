@@ -46,6 +46,7 @@ class _PinInput extends StatelessWidget {
       selector: (state) => state.pin,
       builder: (context, state) {
         return TextField(
+          key: const Key('pinView_pinInput_textField'),
           autocorrect: false,
           obscureText: true,
           onChanged: (pin) => context.read<PinCubit>().changePin(pin),
@@ -75,6 +76,7 @@ class _SubmitButton extends StatelessWidget {
         }
 
         return FloatingActionButton.extended(
+          key: const Key('pinPage_submitButton_floatingActionButton'),
           onPressed: () {
             final event = SignUpPinSubmitted(state.pin.value);
             context.read<SignUpBloc>().add(event);
