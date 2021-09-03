@@ -27,3 +27,10 @@ jobs:
           path: "./coverage/merged.lcov.info"
           min_coverage: 95
           exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
+
+      - name: Upload coverage data to codecov.io
+        uses: codecov/codecov-action@v2
+        with:
+          files: "./coverage/merged.lcov.info"
+          fail_ci_if_error: true
+          verbose: true
