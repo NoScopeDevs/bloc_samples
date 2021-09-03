@@ -48,6 +48,7 @@ class _SubmitButton extends StatelessWidget {
         }
 
         return FloatingActionButton.extended(
+          key: const Key('credentialsPage_submitButton_floatingActionButton'),
           onPressed: () {
             final event = SignUpCredentialsSubmitted(
               email: state.email.value,

@@ -10,8 +10,13 @@ class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
 
+class MockCredentialsCubit extends MockCubit<CredentialsState>
+    implements CredentialsCubit {}
+
 class MockBiographyCubit extends MockCubit<BiographyState>
     implements BiographyCubit {}
+
+class MockPinCubit extends MockCubit<PinState> implements PinCubit {}
 
 class MockNameFormInput extends Mock implements NameFormInput {}
 

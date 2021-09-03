@@ -29,6 +29,7 @@ class _EmailInput extends StatelessWidget {
       selector: (state) => state.email,
       builder: (context, state) {
         return TextField(
+          key: const Key('credentialsForm_emailInput_textField'),
           autocorrect: false,
           onChanged: (email) {
             context.read<CredentialsCubit>().changeEmail(email);
@@ -53,6 +54,7 @@ class _NameInput extends StatelessWidget {
       selector: (state) => state.name,
       builder: (context, state) {
         return TextField(
+          key: const Key('credentialsForm_nameInput_textField'),
           autocorrect: false,
           textCapitalization: TextCapitalization.words,
           onChanged: (name) {
