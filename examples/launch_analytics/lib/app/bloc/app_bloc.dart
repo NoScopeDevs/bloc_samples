@@ -11,26 +11,22 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   AppBloc({
     required AnalyticsRepository localAnalyticsRepository,
   })  : _localAnalyticsRepository = localAnalyticsRepository,
-        super(const AppInitial());
+        super(const AppInitial()) {
+    on<AppAnalyticsChecked>(_onAnalyticsChecked);
+  }
 
   final AnalyticsRepository _localAnalyticsRepository;
 
-  @override
-  Stream<AppState> mapEventToState(
-    AppEvent event,
-  ) async* {
-    if (event is AppAnalyticsChecked) {
-      yield* _mapAnalyticsChecked(event);
-    }
-  }
-
-  Stream<AppState> _mapAnalyticsChecked(AppAnalyticsChecked event) async* {
+  void _onAnalyticsChecked(
+    AppAnalyticsChecked event,
+    Emitter<AppState> emit,
+  ) {
     try {
       _localAnalyticsRepository.increaseOpeningsCount();
       final openingsCount = _localAnalyticsRepository.getOpeningsCount();
-      yield AppAnalyticsLoaded(openingsCount);
+      emit(AppAnalyticsLoaded(openingsCount));
     } catch (e) {
-      yield const AppAnalyticsError();
+      emit(const AppAnalyticsError());
     }
   }
 
