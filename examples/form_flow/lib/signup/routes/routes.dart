@@ -6,9 +6,7 @@ List<Page> onGenerateSignUpPages(SignUpState state, List<Page> pages) {
     return [CredentialsPage.page()];
   } else if (state.user.biography.isEmpty) {
     return [BiographyPage.page()];
-  } else if (state.user.pin.isEmpty) {
-    return [PinPage.page()];
   } else {
-    return [CredentialsPage.page()];
+    return [PinPage.page()];
   }
 }
