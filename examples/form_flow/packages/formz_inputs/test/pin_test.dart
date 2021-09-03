@@ -20,15 +20,6 @@ void main() {
       });
     });
 
-    group('maxLength', () {
-      const newMaxLength = 6;
-
-      test('sets new value correctly', () {
-        PinFormInput.maxLength = newMaxLength;
-        expect(PinFormInput.maxLength, newMaxLength);
-      });
-    });
-
     group('validator', () {
       test('returns empty error when pin is empty', () {
         expect(
@@ -52,6 +43,14 @@ void main() {
           PinFormInput.dirty(pinString).error,
           isNull,
         );
+      });
+    });
+
+    group('maxLength', () {
+      test('sets new value correctly', () {
+        const newMaxLength = 6;
+        PinFormInput.maxLength = newMaxLength;
+        expect(PinFormInput.maxLength, newMaxLength);
       });
     });
   });
