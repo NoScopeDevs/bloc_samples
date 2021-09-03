@@ -1,9 +1,12 @@
+import 'package:bloc/bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/signup.dart';
 import 'package:formz_inputs/formz_inputs.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:profile/profile.dart';
+
+/// * Mocks
 
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 
@@ -27,3 +30,7 @@ class MockBiographyFormInput extends Mock implements BiographyFormInput {}
 class MockPinFormInput extends Mock implements PinFormInput {}
 
 class MockUser extends Mock implements User {}
+
+/// * Fakes
+
+class FakeBloc extends Fake implements Bloc<Object, Object> {}

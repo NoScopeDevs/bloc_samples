@@ -38,6 +38,7 @@ void main() {
           ),
           appBloc: appBloc,
         );
+
         verify(() => appBloc.add(AppSignUpCompleted(user))).called(1);
       },
     );
