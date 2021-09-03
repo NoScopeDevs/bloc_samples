@@ -20,3 +20,10 @@ jobs:
 
       - name: Run CI workflow (format, analyze, test)
         run: melos run WF:ci
+
+      - name: Check 95% code coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+        with:
+          path: "./coverage/merged.lcov.info"
+          min_coverage: 95
+          exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
