@@ -57,6 +57,12 @@ scripts:
     description: Run tests for all packages in random order.
     run: melos exec --fail-fast --dir-exists=test -- flutter test -x ci-only --no-pub --coverage -r expanded --test-randomize-ordering-seed random
 
+  cov:open:
+    description: Generate and open test coverage html view.
+    run: melos run T:ci  && melos run M
+      && genhtml ./coverage/merged.lcov.info -o coverage
+      && open coverage/index.html
+
   M:
     description: Merge all packages coverage data ignoring data related to generated files.
     run: >
