@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/signup.dart';
 import 'package:formz_inputs/formz_inputs.dart';
@@ -34,3 +35,29 @@ class MockUser extends Mock implements User {}
 /// * Fakes
 
 class FakeBloc extends Fake implements Bloc<Object, Object> {}
+
+class FakeAppState extends Fake implements AppState {}
+
+class FakeAppEvent extends Fake implements AppEvent {}
+
+class FakeSignUpState extends Fake implements SignUpState {}
+
+class FakeSignUpEvent extends Fake implements SignUpEvent {}
+
+class FakeCredentialsState extends Fake implements CredentialsState {}
+
+class FakeBiographyState extends Fake implements BiographyState {}
+
+class FakePinState extends Fake implements PinState {}
+
+/// * Fallback values
+
+void registerFallbackValues() {
+  registerFallbackValue<AppState>(FakeAppState());
+  registerFallbackValue<AppEvent>(FakeAppEvent());
+  registerFallbackValue<SignUpState>(FakeSignUpState());
+  registerFallbackValue<SignUpEvent>(FakeSignUpEvent());
+  registerFallbackValue<CredentialsState>(FakeCredentialsState());
+  registerFallbackValue<BiographyState>(FakeBiographyState());
+  registerFallbackValue<PinState>(FakePinState());
+}

@@ -11,6 +11,8 @@ import 'package:mocktail/mocktail.dart';
 import '../../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(registerFallbackValues);
+
   group('PinPage', () {
     test('is routable', () {
       expect(PinPage.page(), isA<MaterialPage>());

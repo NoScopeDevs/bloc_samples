@@ -6,8 +6,9 @@ publish_to: none
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
-dev_dependencies:
-  test: ^1.17.0
-  very_good_analysis: ^2.1.0
 dependencies:
   equatable: ^2.0.3
+
+dev_dependencies:
+  test: ^1.17.0
+  very_good_analysis: ^2.3.0

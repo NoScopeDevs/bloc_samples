@@ -13,6 +13,8 @@ import 'package:mocktail/mocktail.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(registerFallbackValues);
+
   group('App', () {
     testWidgets(
       'renders SignUpPage when app state is unauthenticated',

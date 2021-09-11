@@ -7,6 +7,8 @@ import 'package:mocktail/mocktail.dart';
 import '../../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(registerFallbackValues);
+
   group('CredentialsForm', () {
     group('EmailInput', () {
       const emailInputKey = Key('credentialsForm_emailInput_textField');

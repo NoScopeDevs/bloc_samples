@@ -16,6 +16,8 @@ void main() {
     Iterable.generate(142, (_) => 1),
   );
 
+  setUpAll(registerFallbackValues);
+
   group('BiographyPage', () {
     test('is routable', () {
       expect(BiographyPage.page(), isA<MaterialPage>());

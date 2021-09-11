@@ -8,6 +8,8 @@ import 'package:mocktail/mocktail.dart';
 import '../../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(registerFallbackValues);
+
   group('CredentialsPage', () {
     const email = EmailFormInput.dirty('marcos@noscope.dev');
     const name = NameFormInput.dirty('marcos');

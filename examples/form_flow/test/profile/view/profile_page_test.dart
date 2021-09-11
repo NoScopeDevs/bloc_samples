@@ -7,6 +7,8 @@ import 'package:mocktail/mocktail.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(registerFallbackValues);
+
   group('ProfilePage', () {
     final user = MockUser();
 
