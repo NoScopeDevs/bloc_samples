@@ -75,39 +75,6 @@ void main() {
         },
       );
 
-      test(
-        'throws PreferenceFailure with typeNotSupported '
-        'when TypeError is thrown',
-        () async {
-          when(() => mockPreferences.setInt(any(), any()))
-              .thenThrow(TypeError());
-          when(() => mockPreferences.setDouble(any(), any()))
-              .thenThrow(TypeError());
-          when(() => mockPreferences.setBool(any(), any()))
-              .thenThrow(TypeError());
-          when(() => mockPreferences.setString(any(), any()))
-              .thenThrow(TypeError());
-          when(() => mockPreferences.setStringList(any(), any()))
-              .thenThrow(TypeError());
-
-          for (final entry in testValues.entries) {
-            final key = entry.key;
-            final value = entry.value;
-
-            await expectLater(
-              repository.saveValue(key, value),
-              throwsA(
-                isA<PreferenceFailure>().having(
-                  (e) => e.reason,
-                  'reason',
-                  PreferenceFailureReason.typeNotSupported,
-                ),
-              ),
-            );
-          }
-        },
-      );
-
       test('rethrows PreferenceError when PreferenceError is thrown', () async {
         when(() => mockPreferences.setInt(any(), any())).thenThrow(
             PreferenceFailure(PreferenceFailureReason.typeNotSupported));
