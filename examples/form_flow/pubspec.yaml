@@ -1,0 +1,33 @@
+name: form_flow
+description: A Flutter project that handles form submission with flow_builder and bloc.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  bloc: ^7.2.0-dev.3
+  equatable: ^2.0.3
+  flow_builder: ^0.0.4
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^7.1.0
+  flutter_localizations:
+    sdk: flutter
+  formz_inputs:
+    path: packages/formz_inputs
+  intl: ^0.17.0
+  profile:
+    path: packages/profile
+
+dev_dependencies:
+  bloc_test: ^8.1.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.1.0
+  very_good_analysis: ^2.3.0
+
+flutter:
+  uses-material-design: true
+  generate: true

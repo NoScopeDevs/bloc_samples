@@ -1,0 +1,3 @@
+tags:
+  sequential:
+    skip: 'should be run sequentially'
