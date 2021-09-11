@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+@Tags(['sequential'])
+
 import 'package:formz_inputs/formz_inputs.dart';
 import 'package:test/test.dart';
 
