@@ -8,5 +8,9 @@ void main() {
     test('can be instantiated', () {
       expect(User(name: '', email: '', biography: '', pin: ''), isNotNull);
     });
+
+    test('supports value equality', () {
+      expect(User.empty(), User.empty());
+    });
   });
 }
