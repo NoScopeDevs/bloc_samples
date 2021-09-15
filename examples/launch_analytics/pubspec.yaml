@@ -11,7 +11,7 @@ environment:
 dependencies:
   analytics_repository:
     path: packages/analytics_repository
-  bloc: ^7.1.0
+  bloc: ^7.2.0-dev.3
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
@@ -22,9 +22,6 @@ dependencies:
   local_analytics_api:
     path: packages/local_analytics_api
   path_provider: ^2.0.2
-
-dependency_overrides:
-  bloc: ^7.2.0-dev.1
 
 dev_dependencies:
   bloc_test: ^8.1.0
