@@ -1,0 +1,14 @@
+name: formz_inputs
+description: A Dart package with common inputs using formz.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  formz: ^0.4.0
+
+dev_dependencies:
+  test: ^1.17.0
+  very_good_analysis: ^2.3.0

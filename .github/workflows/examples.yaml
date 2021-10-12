@@ -5,22 +5,32 @@ on:
   pull_request:
 
 jobs:
-  examples:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.5.0
-      - name: "Install Tools"
+
+      - name: Install Tools
         run: |
           flutter pub global activate melos
-          flutter pub global activate tuneup
-      - name: Initialize melos
+
+      - name: Initialize tools
         run: melos bs
-      - name: Run test
-        run: melos run test:all
-  build:
-    needs: [examples]
-    runs-on: ubuntu-latest
-    steps:
-      - name: noop
-        run: echo 'noop'
+
+      - name: Run CI workflow (format, analyze, test)
+        run: melos run WF:ci
+
+      - name: Check 95% code coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+        with:
+          path: "./coverage/merged.lcov.info"
+          min_coverage: 95
+          exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
+
+      - name: Upload coverage data to codecov.io
+        uses: codecov/codecov-action@v2
+        with:
+          files: "./coverage/merged.lcov.info"
+          fail_ci_if_error: true
+          verbose: true

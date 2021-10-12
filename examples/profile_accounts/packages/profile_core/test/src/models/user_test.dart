@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('User', () {
-    test('can be instantiated', () {
-      expect(User(email: '', name: ''), isNotNull);
+    test('supports value comparisons', () {
+      expect(User(email: '', name: '') == User(email: '', name: ''), false);
     });
   });
 }
