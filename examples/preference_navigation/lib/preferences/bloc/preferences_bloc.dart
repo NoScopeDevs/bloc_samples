@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:preferences_repository/preferences_repository.dart';
@@ -15,59 +13,61 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   PreferencesBloc({
     required PreferencesRepository repository,
   })  : _repository = repository,
-        super(const PreferencesInitial());
+        super(const PreferencesInitial()) {
+    on<PreferenceAdded>(_onPreferenceAdded);
+    on<PreferencesChecked>(_onPreferencesChecked);
+    on<PreferencesCleared>(_onPreferencesCleared);
+  }
 
   final PreferencesRepository _repository;
 
-  @override
-  Stream<PreferencesState> mapEventToState(PreferencesEvent event) async* {
-    if (event is PreferenceAdded) {
-      yield* _mapPreferenceAddedToState(event);
-    } else if (event is PreferencesChecked) {
-      yield* _mapPreferencesCheckedToState();
-    } else if (event is PreferencesCleared) {
-      yield* _mapPreferencesClearedToState();
-    }
-  }
-
-  Stream<PreferencesState> _mapPreferenceAddedToState(
+  Future<void> _onPreferenceAdded(
     PreferenceAdded event,
-  ) async* {
+    Emitter<PreferencesState> emit,
+  ) async {
     try {
       final key = event.entry.keys.first;
       final value = event.entry.values.first as Object;
 
-      yield const PreferencesLoading();
+      emit(const PreferencesLoading());
       await _repository.saveValue(key, value);
 
-      yield* _mapPreferencesCheckedToState();
+      await _onPreferencesChecked(PreferencesChecked(), emit);
     } catch (e) {
-      yield _handleError(e);
+      emit(_handleError(e));
     }
   }
 
-  Stream<PreferencesState> _mapPreferencesCheckedToState() async* {
+  Future<void> _onPreferencesChecked(
+    PreferencesChecked event,
+    Emitter<PreferencesState> emit,
+  ) async {
     try {
       final keys = _repository.getKeys();
-      if (keys.isEmpty) yield const PreferencesEmpty();
+      if (keys.isEmpty) emit(const PreferencesEmpty());
 
       final preferences = <String, dynamic>{};
       for (final key in keys) {
-        preferences.addAll(<String, dynamic>{key: _repository.getValue(key)});
+        preferences.addAll(
+          <String, dynamic>{key: _repository.getValue(key)},
+        );
       }
 
-      yield PreferencesLoaded(preferences);
+      emit(PreferencesLoaded(preferences));
     } catch (e) {
-      yield _handleError(e);
+      emit(_handleError(e));
     }
   }
 
-  Stream<PreferencesState> _mapPreferencesClearedToState() async* {
+  Future<void> _onPreferencesCleared(
+    PreferencesCleared event,
+    Emitter<PreferencesState> emit,
+  ) async {
     try {
       await _repository.clearValues();
-      yield const PreferencesEmpty();
+      emit(const PreferencesEmpty());
     } catch (e) {
-      yield _handleError(e);
+      emit(_handleError(e));
     }
   }
 

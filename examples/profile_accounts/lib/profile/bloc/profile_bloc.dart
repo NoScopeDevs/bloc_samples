@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:profile_core/profile_core.dart';
@@ -8,47 +6,46 @@ part 'profile_event.dart';
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc() : super(const ProfileInitial());
-
-  @override
-  Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    if (event is ProfileAccountAdded) {
-      yield _mapAccountAddedToState(event, state);
-    } else if (event is ProfileCurrentAccountChanged) {
-      yield _mapCurrentAccountChangedToState(event, state);
-    }
+  ProfileBloc() : super(const ProfileInitial()) {
+    on<ProfileAccountAdded>(_onAccountAdded);
+    on<ProfileCurrentAccountChanged>(_onCurrentAccountChanged);
   }
 
-  ProfileState _mapAccountAddedToState(
-    ProfileAccountAdded event,
-    ProfileState state,
-  ) {
+  void _onAccountAdded(ProfileAccountAdded event, Emitter<ProfileState> emit) {
     if (state is ProfileInitial) {
-      return ProfileLoaded(
-        current: event.account,
-        accounts: [event.account],
+      emit(
+        ProfileLoaded(
+          current: event.account,
+          accounts: [event.account],
+        ),
       );
     } else if (state is ProfileLoaded) {
-      return ProfileLoaded(
-        current: state.current,
-        accounts: [...state.accounts, event.account],
+      final _state = state as ProfileLoaded;
+      emit(
+        ProfileLoaded(
+          current: _state.current,
+          accounts: [..._state.accounts, event.account],
+        ),
       );
     } else {
-      return const ProfileError();
+      emit(const ProfileError());
     }
   }
 
-  ProfileState _mapCurrentAccountChangedToState(
+  void _onCurrentAccountChanged(
     ProfileCurrentAccountChanged event,
-    ProfileState state,
+    Emitter<ProfileState> emit,
   ) {
     if (state is ProfileLoaded) {
-      return ProfileLoaded(
-        current: event.account,
-        accounts: state.accounts,
+      final _state = state as ProfileLoaded;
+      emit(
+        ProfileLoaded(
+          current: event.account,
+          accounts: _state.accounts,
+        ),
       );
     } else {
-      return const ProfileError();
+      emit(const ProfileError());
     }
   }
 }

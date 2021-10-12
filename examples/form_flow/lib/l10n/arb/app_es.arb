@@ -1,0 +1,69 @@
+{
+    "@@locale": "es",
+    "nextButtonText": "Siguiente",
+    "@nextButtonText": {
+        "description": "Texto en los botones de siguiente",
+        "type": "text",
+        "placeholders": {}
+    },
+    "completeButtonText": "Completar",
+    "@completeButtonText": {
+        "description": "Texto en los botones de completar",
+        "type": "text",
+        "placeholders": {}
+    },
+    "emailInputLabelText": "Correo electrónico",
+    "@emailInputLabelText": {
+        "description": "Texto de etiqueta para correo electrónico en el campo de correo electrónico",
+        "type": "text",
+        "placeholders": {}
+    },
+    "invalidEmailInputErrorText": "Correo electrónico inválido",
+    "@invalidEmailInputErrorText": {
+        "description": "Texto de error en el campo de correo electrónico cuando el correo es inválido",
+        "type": "text",
+        "placeholders": {}
+    },
+    "nameInputLabelText": "Nombre",
+    "@nameInputLabelText": {
+        "description": "Texto de etiqueta para nombre en el campo de nombre",
+        "type": "text",
+        "placeholders": {}
+    },
+    "shortNameInputErrorText": "Nombre muy corto",
+    "@shortNameInputErrorText": {
+        "description": "Texto de error en el campo de nombre cuando el nombre es muy corto",
+        "type": "text",
+        "placeholders": {}
+    },
+    "biographyInputLabelText": "Biografía",
+    "@biographyInputLabelText": {
+        "description": "Texto de etiqueta para biografía en el campo de biografía",
+        "type": "text",
+        "placeholders": {}
+    },
+    "emptyBiographyInputErrorText": "La biografía no puede estar vacía",
+    "@emptyBiographyInputErrorText": {
+        "description": "Texto de error en el campo de biografía cuando la biografía está vacía",
+        "type": "text",
+        "placeholders": {}
+    },
+    "longBiographyInputErrorText": "Biography is too long",
+    "@longBiographyInputErrorText": {
+        "description": "Texto de error en el campo de biografía cuando la biografía es muy larga",
+        "type": "text",
+        "placeholders": {}
+    },
+    "pinInputLabelText": "Pin",
+    "@pinInputLabelText": {
+        "description": "Texto de etiqueta para pin en el campo de pin",
+        "type": "text",
+        "placeholders": {}
+    },
+    "invalidPinInputErrorText": "Pin inválido",
+    "@invalidPinInputErrorText": {
+        "description": "Texto de error en el campo de pin cuando el pin es inválido",
+        "type": "text",
+        "placeholders": {}
+    }
+}

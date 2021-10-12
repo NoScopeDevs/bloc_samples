@@ -35,9 +35,6 @@ class SharedPreferencesRepository implements PreferencesRepository {
         await _preferences.setStringList(key, value);
         return;
       }
-
-      throw TypeError();
-    } on TypeError {
       throw PreferenceFailure(PreferenceFailureReason.typeNotSupported);
     } on PreferenceFailure {
       rethrow;
