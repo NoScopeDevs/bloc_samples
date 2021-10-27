@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/signup.dart';
-import 'package:form_flow/signup/view/signup_page.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:profile/profile.dart';
 
