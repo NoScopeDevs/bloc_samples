@@ -10,7 +10,7 @@ class SignUpState extends Equatable {
   final bool complete;
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [user, complete];
 
   SignUpState copyWith({
     User? user,

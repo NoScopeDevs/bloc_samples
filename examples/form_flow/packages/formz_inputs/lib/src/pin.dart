@@ -19,15 +19,7 @@ class PinFormInput extends FormzInput<String, PinValidationError> {
   /// {@template max_length}
   /// Maximum length the pin requires to be valid.
   /// {@endtemplate}
-  static int get maxLength {
-    if (_maxLength == null) {
-      assert(() {
-        _maxLength = 4;
-        return true;
-      }());
-    }
-    return _maxLength ??= 4;
-  }
+  static int get maxLength => _maxLength ??= 4;
 
   /// {@macro max_length}
   static set maxLength(int value) => _maxLength = value;

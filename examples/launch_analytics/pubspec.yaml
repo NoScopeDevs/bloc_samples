@@ -1,7 +1,7 @@
 name: launch_analytics
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -11,23 +11,20 @@ environment:
 dependencies:
   analytics_repository:
     path: packages/analytics_repository
-  bloc: ^7.1.0
+  bloc: ^7.2.1
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.2.0
+  flutter_bloc: ^7.3.1
   hive_flutter: ^1.1.0
   hydrated_bloc: ^7.0.1
   local_analytics_api:
     path: packages/local_analytics_api
   path_provider: ^2.0.2
 
-dependency_overrides:
-  bloc: ^7.2.0-dev.1
-
 dev_dependencies:
-  bloc_test: ^8.1.0
+  bloc_test: ^8.3.0
   flutter_test:
     sdk: flutter
   mocktail: ^0.1.4

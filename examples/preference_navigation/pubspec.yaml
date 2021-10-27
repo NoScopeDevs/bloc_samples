@@ -11,7 +11,7 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.1.0
+  flutter_bloc: ^7.3.1
   hive: ^2.0.4
   hive_preferences_repository:
     path: packages/preferences/hive_preferences_repository
@@ -23,7 +23,7 @@ dependencies:
     path: packages/preferences/shared_preferences_repository
 
 dev_dependencies:
-  bloc_test: ^8.1.0
+  bloc_test: ^8.3.0
   flutter_test:
     sdk: flutter
   mockingjay: ^0.1.0
