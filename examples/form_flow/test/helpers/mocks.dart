@@ -49,15 +49,3 @@ class FakeCredentialsState extends Fake implements CredentialsState {}
 class FakeBiographyState extends Fake implements BiographyState {}
 
 class FakePinState extends Fake implements PinState {}
-
-/// * Fallback values
-
-void registerFallbackValues() {
-  registerFallbackValue<AppState>(FakeAppState());
-  registerFallbackValue<AppEvent>(FakeAppEvent());
-  registerFallbackValue<SignUpState>(FakeSignUpState());
-  registerFallbackValue<SignUpEvent>(FakeSignUpEvent());
-  registerFallbackValue<CredentialsState>(FakeCredentialsState());
-  registerFallbackValue<BiographyState>(FakeBiographyState());
-  registerFallbackValue<PinState>(FakePinState());
-}
