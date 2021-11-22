@@ -11,11 +11,6 @@ void main() {
   final anotherMockUser = User(name: 'Elian', email: 'elian@noscope.dev');
   final mockUsers = [mockUser, anotherMockUser];
 
-  setUpAll(() {
-    registerFallbackValue<ProfileState>(FakeProfileState());
-    registerFallbackValue<ProfileEvent>(FakeProfileEvent());
-  });
-
   group('ProfileDrawer', () {
     testWidgets('renders ProfileHeader and ProfileAccountList', (tester) async {
       final profileBloc = MockProfileBloc();
