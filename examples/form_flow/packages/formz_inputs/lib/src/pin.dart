@@ -26,7 +26,7 @@ class PinFormInput extends FormzInput<String, PinValidationError> {
           _maxLength = 4;
           return true;
         }(),
-        'Maximum length the pin requires to be valid.',
+        'Pin’s maximum length defaults to 4.',
       );
     }
     return _maxLength ??= 4;
