@@ -91,11 +91,21 @@ void main() {
             when<dynamic>(
               () => storage.write('AppBloc', any<Map<String, dynamic>>()),
             ).thenAnswer((_) async {});
-            expect(
-              AppBloc(
-                localAnalyticsRepository: analyticsRepository,
-              ).state,
-              AppAnalyticsError(),
+
+            when<void>(() => analyticsRepository.increaseOpeningsCount())
+                .thenReturn(null);
+            when(() => analyticsRepository.getOpeningsCount()).thenReturn(0);
+
+            final bloc = AppBloc(localAnalyticsRepository: analyticsRepository);
+
+            expect(bloc.state, AppInitial());
+
+            bloc.add(AppAnalyticsChecked());
+
+            await expectLater(
+              bloc.stream,
+              emitsInOrder(<AppState>[AppAnalyticsLoaded(0)]),
+
             );
 
             verify<dynamic>(() => storage.read('AppBloc')).called(1);
@@ -164,8 +174,7 @@ void main() {
 
             expect(bloc.state, AppInitial());
 
-            // ignore: avoid_single_cascade_in_expression_statements
-            bloc..add(AppAnalyticsChecked());
+            bloc.add(AppAnalyticsChecked());
 
             await expectLater(
               bloc.stream,
