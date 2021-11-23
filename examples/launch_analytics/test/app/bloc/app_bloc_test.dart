@@ -121,8 +121,7 @@ void main() {
 
             expect(bloc.state, AppInitial());
 
-            // ignore: avoid_single_cascade_in_expression_statements
-            bloc..add(AppAnalyticsChecked());
+            bloc.add(AppAnalyticsChecked());
 
             await expectLater(
               bloc.stream,
@@ -155,8 +154,7 @@ void main() {
 
             expect(bloc.state, AppInitial());
 
-            // ignore: avoid_single_cascade_in_expression_statements
-            bloc..add(AppAnalyticsChecked());
+            bloc.add(AppAnalyticsChecked());
 
             await expectLater(
               bloc.stream,
