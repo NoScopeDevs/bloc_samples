@@ -77,15 +77,20 @@ void main() {
 
       test('rethrows PreferenceError when PreferenceError is thrown', () async {
         when(() => mockPreferences.setInt(any(), any())).thenThrow(
-            PreferenceFailure(PreferenceFailureReason.typeNotSupported));
+          PreferenceFailure(PreferenceFailureReason.typeNotSupported),
+        );
         when(() => mockPreferences.setDouble(any(), any())).thenThrow(
-            PreferenceFailure(PreferenceFailureReason.typeNotSupported));
+          PreferenceFailure(PreferenceFailureReason.typeNotSupported),
+        );
         when(() => mockPreferences.setBool(any(), any())).thenThrow(
-            PreferenceFailure(PreferenceFailureReason.typeNotSupported));
+          PreferenceFailure(PreferenceFailureReason.typeNotSupported),
+        );
         when(() => mockPreferences.setString(any(), any())).thenThrow(
-            PreferenceFailure(PreferenceFailureReason.typeNotSupported));
+          PreferenceFailure(PreferenceFailureReason.typeNotSupported),
+        );
         when(() => mockPreferences.setStringList(any(), any())).thenThrow(
-            PreferenceFailure(PreferenceFailureReason.typeNotSupported));
+          PreferenceFailure(PreferenceFailureReason.typeNotSupported),
+        );
 
         for (final entry in testValues.entries) {
           final key = entry.key;

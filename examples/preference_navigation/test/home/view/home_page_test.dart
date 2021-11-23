@@ -76,7 +76,8 @@ void main() {
       (tester) async {
         final preferencesBloc = MockPreferencesBloc();
         when(() => preferencesBloc.state).thenReturn(
-            const PreferencesLoaded(<String, dynamic>{'key': 'value'}));
+          const PreferencesLoaded(<String, dynamic>{'key': 'value'}),
+        );
 
         await tester.pumpApp(
           const HomeView(),
