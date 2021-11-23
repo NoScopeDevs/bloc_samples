@@ -81,13 +81,12 @@ void main() {
 
     test(
       'initial state should return AppAnalyticsError '
-      'when fromJson returns AppAnalyticsLoaded',
+      'when fromJson returns AppAnalyticsError',
       () {
         HydratedBlocOverrides.runZoned(
           () {
             when<dynamic>(() => storage.read('AppBloc')).thenReturn({
-              'runtimeType': 'AppAnalyticsLoaded',
-              'openingCount': 100,
+              'runtimeType': 'AppAnalyticsError',
             });
             when<dynamic>(
               () => storage.write('AppBloc', any<Map<String, dynamic>>()),
@@ -97,7 +96,7 @@ void main() {
               AppBloc(
                 localAnalyticsRepository: analyticsRepository,
               ).state,
-              AppAnalyticsLoaded(100),
+              AppAnalyticsError(),
             );
 
             verify<dynamic>(() => storage.read('AppBloc')).called(1);
@@ -131,8 +130,7 @@ void main() {
 
               expect(bloc.state, AppInitial());
 
-              // ignore: avoid_single_cascade_in_expression_statements
-              bloc..add(AppAnalyticsChecked());
+              bloc.add(AppAnalyticsChecked());
 
               await expectLater(
                 bloc.stream,
