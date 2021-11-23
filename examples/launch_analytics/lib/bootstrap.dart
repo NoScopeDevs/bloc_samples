@@ -9,7 +9,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:analytics_repository/analytics_repository.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
