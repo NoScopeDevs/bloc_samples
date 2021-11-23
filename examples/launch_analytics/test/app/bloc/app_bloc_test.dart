@@ -86,26 +86,18 @@ void main() {
         HydratedBlocOverrides.runZoned(
           () {
             when<dynamic>(() => storage.read('AppBloc')).thenReturn({
-              'runtimeType': 'AppAnalyticsError',
+              'runtimeType': 'AppAnalyticsLoaded',
+              'openingCount': 100,
             });
             when<dynamic>(
               () => storage.write('AppBloc', any<Map<String, dynamic>>()),
             ).thenAnswer((_) async {});
 
-            when<void>(() => analyticsRepository.increaseOpeningsCount())
-                .thenReturn(null);
-            when(() => analyticsRepository.getOpeningsCount()).thenReturn(0);
-
-            final bloc = AppBloc(localAnalyticsRepository: analyticsRepository);
-
-            expect(bloc.state, AppInitial());
-
-            bloc.add(AppAnalyticsChecked());
-
-            await expectLater(
-              bloc.stream,
-              emitsInOrder(<AppState>[AppAnalyticsLoaded(0)]),
-
+            expect(
+              AppBloc(
+                localAnalyticsRepository: analyticsRepository,
+              ).state,
+              AppAnalyticsLoaded(100),
             );
 
             verify<dynamic>(() => storage.read('AppBloc')).called(1);
