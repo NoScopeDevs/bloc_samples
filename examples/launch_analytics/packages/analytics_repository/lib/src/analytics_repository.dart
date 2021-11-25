@@ -1,7 +1,7 @@
 import 'package:local_analytics_api/local_analytics_api.dart';
 
 /// {@template local_analytics_repository}
-/// A Very Good Project created by Very Good CLI.
+/// Manages analytics business rules.
 /// {@endtemplate}
 class AnalyticsRepository {
   /// {@macro local_analytics_repository}
