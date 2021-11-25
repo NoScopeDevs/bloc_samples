@@ -10,7 +10,7 @@ class PreferencesForm extends StatefulWidget {
   const PreferencesForm({Key? key}) : super(key: key);
 
   @override
-  _PreferencesFormState createState() => _PreferencesFormState();
+  State<PreferencesForm> createState() => _PreferencesFormState();
 }
 
 class _PreferencesFormState extends State<PreferencesForm> {
