@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_flow/app/app.dart';
-import 'package:form_flow/app/routes/routes.dart';
 import 'package:form_flow/l10n/l10n.dart';
 
 class App extends StatelessWidget {
