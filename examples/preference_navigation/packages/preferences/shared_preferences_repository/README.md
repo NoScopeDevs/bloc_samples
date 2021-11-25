@@ -1,9 +1,9 @@
-# shared_preferences_nsd
+# shared_preferences_repository
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
 
-A Very Good Project created by Very Good CLI.
+A Dart package which manages local storage using shared_preferences.
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT

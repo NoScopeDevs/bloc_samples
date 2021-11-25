@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 /// {@template local_analytics_api}
-/// A Very Good Project created by Very Good CLI.
+/// Manages local storage interactions for analytics.
 /// {@endtemplate}
 class LocalAnalyticsApi {
   /// {@macro local_analytics_api}
