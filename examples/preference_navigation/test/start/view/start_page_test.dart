@@ -8,11 +8,6 @@ import 'package:preference_navigation/start/start.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue<PreferencesState>(FakePreferencesState());
-    registerFallbackValue<PreferencesEvent>(FakePreferencesEvent());
-  });
-
   group('StartPage', () {
     testWidgets('renders StartView', (tester) async {
       final preferencesBloc = MockPreferencesBloc();
