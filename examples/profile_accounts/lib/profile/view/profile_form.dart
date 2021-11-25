@@ -7,7 +7,7 @@ class ProfileForm extends StatefulWidget {
   const ProfileForm({Key? key}) : super(key: key);
 
   @override
-  _ProfileFormState createState() => _ProfileFormState();
+  State<ProfileForm> createState() => _ProfileFormState();
 }
 
 class _ProfileFormState extends State<ProfileForm> {

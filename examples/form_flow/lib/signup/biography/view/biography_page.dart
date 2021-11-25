@@ -59,6 +59,7 @@ class _BiographyInput extends StatelessWidget {
                     return l10n.emptyBiographyInputErrorText;
                   case BiographyValidationError.tooLong:
                     return l10n.longBiographyInputErrorText;
+                  // ignore: no_default_cases
                   default:
                     return null;
                 }

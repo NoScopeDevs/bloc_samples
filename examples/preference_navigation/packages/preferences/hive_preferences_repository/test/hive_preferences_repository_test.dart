@@ -51,10 +51,9 @@ void main() {
           .thenAnswer((_) async => Future.value());
       when(() => mockBox.put('String', 'foo'))
           .thenAnswer((m) async => Future.value());
-      when(() => mockBox.put(
-            'List<String>',
-            ['foo', 'bar'],
-          )).thenAnswer((_) async => Future.value());
+      when(
+        () => mockBox.put('List<String>', ['foo', 'bar']),
+      ).thenAnswer((_) async => Future.value());
 
       for (final entry in testValues.entries) {
         final key = entry.key;
@@ -68,7 +67,9 @@ void main() {
           .thenAnswer((_) async => Future<int>.value(0));
 
       expect(
-          hiveRepository.saveValue('object_key', tFakeHiveObject), completes);
+        hiveRepository.saveValue('object_key', tFakeHiveObject),
+        completes,
+      );
     });
 
     test(
