@@ -7,11 +7,6 @@ import 'package:preference_navigation/preferences/preferences.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue<PreferencesState>(FakePreferencesState());
-    registerFallbackValue<PreferencesEvent>(FakePreferencesEvent());
-  });
-
   group('PreferencesPage', () {
     testWidgets('renders PreferencesForm', (tester) async {
       final preferencesBloc = MockPreferencesBloc();

@@ -8,11 +8,6 @@ import 'package:preference_navigation/preferences/preferences.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue<PreferencesState>(FakePreferencesState());
-    registerFallbackValue<PreferencesEvent>(FakePreferencesEvent());
-  });
-
   group('HomePage', () {
     test('is routable', () {
       expect(HomePage.go(), isA<MaterialPageRoute>());
