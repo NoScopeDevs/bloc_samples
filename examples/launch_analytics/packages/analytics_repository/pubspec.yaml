@@ -1,5 +1,5 @@
 name: analytics_repository
-description: A Very Good Project created by Very Good CLI.
+description: A Dart package which manages analytics business rules.
 version: 1.0.0+1
 publish_to: none
 
