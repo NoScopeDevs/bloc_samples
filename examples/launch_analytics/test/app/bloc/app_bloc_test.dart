@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:analytics_repository/analytics_repository.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:launch_analytics/app/bloc/app_bloc.dart';
@@ -17,10 +18,15 @@ void main() {
   group('AppBloc', () {
     late AnalyticsRepository analyticsRepository;
     late Storage storage;
+    late AppBloc appBloc;
 
     setUp(() {
       analyticsRepository = MockAnalyticsRepository();
       storage = MockStorage();
+      appBloc = HydratedBlocOverrides.runZoned(
+        () => AppBloc(localAnalyticsRepository: analyticsRepository),
+        storage: storage,
+      );
     });
 
     test('storage getter returns correct storage instance', () {
@@ -40,10 +46,10 @@ void main() {
             AppAnalyticsLoaded(100),
           );
 
-          verify<dynamic>(() => storage.read('AppBloc')).called(1);
+          verify<dynamic>(() => storage.read('AppBloc')).called(2);
           verify<dynamic>(
             () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-          ).called(1);
+          ).called(2);
         },
         storage: storage,
       );
@@ -69,10 +75,10 @@ void main() {
               AppAnalyticsLoaded(100),
             );
 
-            verify<dynamic>(() => storage.read('AppBloc')).called(1);
+            verify<dynamic>(() => storage.read('AppBloc')).called(2);
             verify<dynamic>(
               () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-            ).called(1);
+            ).called(2);
           },
           storage: storage,
         );
@@ -99,10 +105,10 @@ void main() {
               AppAnalyticsError(),
             );
 
-            verify<dynamic>(() => storage.read('AppBloc')).called(1);
+            verify<dynamic>(() => storage.read('AppBloc')).called(2);
             verify<dynamic>(
               () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-            ).called(1);
+            ).called(2);
           },
           storage: storage,
         );
@@ -110,10 +116,33 @@ void main() {
     );
 
     group('AppAnalyticsChecked', () {
-      test(
+      blocTest<AppBloc, AppState>(
         'emits [AppAnalyticsLoaded] and increases and read openings '
         'when AppAnalyticsChecked is added',
-        () {
+        build: () => appBloc,
+        setUp: () {
+          when<dynamic>(() => storage.read('AppBloc')).thenReturn(null);
+          when<dynamic>(
+            () => storage.write('AppBloc', any<Map<String, dynamic>>()),
+          ).thenAnswer((_) async {});
+          when<void>(() => analyticsRepository.increaseOpeningsCount())
+              .thenReturn(null);
+          when(() => analyticsRepository.getOpeningsCount()).thenReturn(0);
+        },
+        act: (bloc) => bloc.add(AppAnalyticsChecked()),
+        expect: () => <AppState>[AppAnalyticsLoaded(0)],
+        verify: (bloc) {
+          verify<dynamic>(() => storage.read('AppBloc')).called(1);
+          verify<dynamic>(
+            () => storage.write('AppBloc', any<Map<String, dynamic>>()),
+          ).called(2);
+        },
+      );
+
+      blocTest<AppBloc, AppState>(
+        'emits [AppAnalyticsError] '
+        'when AppAnalyticsChecked is added',
+        setUp: () {
           HydratedBlocOverrides.runZoned(
             () async {
               when<dynamic>(() => storage.read('AppBloc')).thenReturn(null);
@@ -121,59 +150,16 @@ void main() {
                 () => storage.write('AppBloc', any<Map<String, dynamic>>()),
               ).thenAnswer((_) async {});
               when<void>(() => analyticsRepository.increaseOpeningsCount())
-                  .thenReturn(null);
+                  .thenThrow(Exception());
               when(() => analyticsRepository.getOpeningsCount()).thenReturn(0);
-
-              final bloc = AppBloc(
-                localAnalyticsRepository: analyticsRepository,
-              );
-
-              expect(bloc.state, AppInitial());
-
-              bloc.add(AppAnalyticsChecked());
-
-              await expectLater(
-                bloc.stream,
-                emitsInOrder(<AppState>[AppAnalyticsLoaded(0)]),
-              );
-
-              verify<dynamic>(() => storage.read('AppBloc')).called(1);
-              verify<dynamic>(
-                () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-              ).called(2);
             },
             storage: storage,
           );
         },
+        build: () => appBloc,
+        act: (bloc) => bloc.add(AppAnalyticsChecked()),
+        expect: () => <AppState>[AppAnalyticsError()],
       );
-
-      test(
-          'emits [AppAnalyticsError] '
-          'when AppAnalyticsChecked is added', () {
-        HydratedBlocOverrides.runZoned(
-          () async {
-            when<dynamic>(() => storage.read('AppBloc')).thenReturn(null);
-            when<dynamic>(
-              () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-            ).thenAnswer((_) async {});
-            when<void>(() => analyticsRepository.increaseOpeningsCount())
-                .thenThrow(Exception());
-            when(() => analyticsRepository.getOpeningsCount()).thenReturn(0);
-
-            final bloc = AppBloc(localAnalyticsRepository: analyticsRepository);
-
-            expect(bloc.state, AppInitial());
-
-            bloc.add(AppAnalyticsChecked());
-
-            await expectLater(
-              bloc.stream,
-              emitsInOrder(<AppState>[AppAnalyticsError()]),
-            );
-          },
-          storage: storage,
-        );
-      });
     });
   });
 }
