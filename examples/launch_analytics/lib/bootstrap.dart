@@ -10,6 +10,7 @@ import 'dart:developer';
 
 import 'package:analytics_repository/analytics_repository.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_services_binding/flutter_services_binding.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:launch_analytics/app/app.dart';
@@ -31,6 +32,7 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap() async {
+  FlutterServicesBinding.ensureInitialized();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
