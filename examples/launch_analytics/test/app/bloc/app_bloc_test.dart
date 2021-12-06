@@ -101,9 +101,6 @@ void main() {
         ),
         setUp: () {
           when<dynamic>(() => storage.read('AppBloc')).thenReturn(null);
-          when<dynamic>(
-            () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-          ).thenAnswer((_) async {});
           when<void>(
             () => analyticsRepository.increaseOpeningsCount(),
           ).thenReturn(null);
@@ -118,9 +115,6 @@ void main() {
         'when AppAnalyticsChecked is added',
         setUp: () {
           when<dynamic>(() => storage.read('AppBloc')).thenReturn(null);
-          when<dynamic>(
-            () => storage.write('AppBloc', any<Map<String, dynamic>>()),
-          ).thenAnswer((_) async {});
           when<void>(
             () => analyticsRepository.increaseOpeningsCount(),
           ).thenThrow(Exception());
