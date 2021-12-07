@@ -18,8 +18,6 @@ void main() {
     pin: '0123',
   );
 
-  setUpAll(registerFallbackValues);
-
   group('SignUpPage', () {
     testWidgets(
       'adds AppSignUpCompleted when SignUpState is complete',

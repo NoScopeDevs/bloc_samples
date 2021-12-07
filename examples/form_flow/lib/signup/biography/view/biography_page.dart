@@ -54,15 +54,12 @@ class _BiographyInput extends StatelessWidget {
             labelText: l10n.biographyInputLabelText,
             errorText: () {
               if (state.invalid) {
-                switch (state.error) {
-                  case BiographyValidationError.empty:
-                    return l10n.emptyBiographyInputErrorText;
-                  case BiographyValidationError.tooLong:
-                    return l10n.longBiographyInputErrorText;
-                  // ignore: no_default_cases
-                  default:
-                    return null;
+                if (state.error == BiographyValidationError.empty) {
+                  return l10n.emptyBiographyInputErrorText;
+                } else if (state.error == BiographyValidationError.tooLong) {
+                  return l10n.longBiographyInputErrorText;
                 }
+                return null;
               }
             }(),
           ),

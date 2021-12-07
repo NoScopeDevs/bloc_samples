@@ -47,7 +47,6 @@ void main() {
             },
           ),
         ],
-        verify: (bloc) => bloc.add(const PreferenceAdded(mockPreferences)),
       );
 
       blocTest<PreferencesBloc, PreferencesState>(
@@ -72,7 +71,6 @@ void main() {
           PreferencesLoading(),
           PreferencesError(),
         ],
-        verify: (bloc) => bloc.add(const PreferenceAdded(mockPreferences)),
       );
     });
 

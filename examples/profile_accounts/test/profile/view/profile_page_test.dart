@@ -7,11 +7,6 @@ import 'package:profile_core/profile_core.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue<ProfileState>(FakeProfileState());
-    registerFallbackValue<ProfileEvent>(FakeProfileEvent());
-  });
-
   group('ProfilePage', () {
     testWidgets('renders a ProfileView', (tester) async {
       await tester.pumpApp(const ProfilePage());

@@ -6,11 +6,7 @@ import 'package:profile_accounts/profile/profile.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  setUpAll(() {
-    registerFallbackValue<ProfileState>(FakeProfileState());
-    registerFallbackValue<ProfileEvent>(FakeProfileEvent());
-    registerFallbackValue<ProfileEvent>(FakeProfileAccountAdded());
-  });
+  setUpAll(() => registerFallbackValue(FakeProfileAccountAdded()));
 
   group('ProfileForm', () {
     const mockName = 'Marcos';
