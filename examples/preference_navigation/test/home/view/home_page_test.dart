@@ -45,7 +45,7 @@ void main() {
       'navigates when PreferencesEmpty is emitted',
       (tester) async {
         final navigator = MockNavigator();
-        when(() => navigator.push(any())).thenAnswer((_) async => null);
+        when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
         final preferencesBloc = MockPreferencesBloc();
         whenListen(
@@ -61,7 +61,9 @@ void main() {
           ),
           preferencesBloc: preferencesBloc,
         );
-        verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+        verify(
+          () => navigator.push<void>(any(that: isRoute<void>())),
+        ).called(1);
       },
     );
 

@@ -21,7 +21,7 @@ void main() {
 
     testWidgets('navigates when PreferencesLoaded is emitted', (tester) async {
       final navigator = MockNavigator();
-      when(() => navigator.push(any())).thenAnswer((_) async => null);
+      when(() => navigator.push<void>(any())).thenAnswer((_) async {});
 
       final preferencesBloc = MockPreferencesBloc();
       whenListen(
@@ -39,7 +39,7 @@ void main() {
         ),
         preferencesBloc: preferencesBloc,
       );
-      verify(() => navigator.push(any(that: isRoute<void>()))).called(1);
+      verify(() => navigator.push<void>(any(that: isRoute<void>()))).called(1);
     });
 
     testWidgets(
@@ -47,8 +47,8 @@ void main() {
       (tester) async {
         final navigator = MockNavigator();
         when(
-          () => navigator.pushReplacement(any()),
-        ).thenAnswer((_) async => null);
+          () => navigator.pushReplacement<void, void>(any()),
+        ).thenAnswer((_) async {});
 
         final preferencesBloc = MockPreferencesBloc();
         whenListen(
@@ -65,7 +65,9 @@ void main() {
           preferencesBloc: preferencesBloc,
         );
         verify(
-          () => navigator.pushReplacement(any(that: isRoute<void>())),
+          () => navigator.pushReplacement<void, void>(
+            any(that: isRoute<void>()),
+          ),
         ).called(1);
       },
     );
