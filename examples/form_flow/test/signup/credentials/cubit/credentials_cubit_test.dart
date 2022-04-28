@@ -10,7 +10,7 @@ void main() {
   group('CredentialsCubit', () {
     blocTest<CredentialsCubit, CredentialsState>(
       'emits state with new email when changeEmail is called.',
-      build: () => CredentialsCubit(),
+      build: CredentialsCubit.new,
       act: (bloc) => bloc.changeEmail(email),
       expect: () => const <CredentialsState>[
         CredentialsState(
@@ -22,7 +22,7 @@ void main() {
 
     blocTest<CredentialsCubit, CredentialsState>(
       'emits state with new name when changeName is called.',
-      build: () => CredentialsCubit(),
+      build: CredentialsCubit.new,
       act: (bloc) => bloc.changeName(name),
       expect: () => const <CredentialsState>[
         CredentialsState(

@@ -42,5 +42,6 @@ class PinFormInput extends FormzInput<String, PinValidationError> {
     if (value.isEmpty || value.length != maxLength) {
       return PinValidationError.invalid;
     }
+    return null;
   }
 }

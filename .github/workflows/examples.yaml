@@ -1,18 +1,16 @@
 name: examples
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1.5.3
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: 2.8.0-3.2.pre
-          channel: "beta"
+          flutter-version: '2.10.5'
+          channel: 'stable'
 
       - name: Install Tools
         run: |
@@ -24,11 +22,10 @@ jobs:
       - name: Run CI workflow (format, analyze, test)
         run: melos run WF:ci
 
-      - name: Check 95% code coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+      - name: Check code coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v1.2.1
         with:
           path: "./coverage/merged.lcov.info"
-          min_coverage: 95
           exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
 
       - name: Upload coverage data to codecov.io

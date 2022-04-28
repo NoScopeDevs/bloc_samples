@@ -31,7 +31,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   @override
   AppState? fromJson(Map<String, dynamic> json) {
     final runtimeType = json['runtimeType'] as String;
-
     switch (runtimeType) {
       case 'AppInitial':
         return const AppInitial();
@@ -39,19 +38,17 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
         return AppAnalyticsLoaded.fromJson(json);
       case 'AppAnalyticsError':
         return const AppAnalyticsError();
+      default:
+        return null;
     }
   }
 
   @override
   Map<String, dynamic>? toJson(AppState state) {
-    final map = <String, dynamic>{
-      'runtimeType': '${state.runtimeType}',
-    };
-
+    final map = <String, dynamic>{'runtimeType': '${state.runtimeType}'};
     if (state is AppAnalyticsLoaded) {
       map.addAll(state.toJson());
     }
-
     return map;
   }
 }

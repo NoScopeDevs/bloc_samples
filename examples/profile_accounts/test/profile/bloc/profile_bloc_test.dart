@@ -20,7 +20,7 @@ void main() {
     group('ProfileAccountAdded', () {
       blocTest<ProfileBloc, ProfileState>(
         'emits [ProfileLoaded] when ProfileAccountAdded is added.',
-        build: () => ProfileBloc(),
+        build: ProfileBloc.new,
         act: (bloc) => bloc.add(ProfileAccountAdded(user)),
         expect: () => <ProfileState>[
           ProfileLoaded(current: user, accounts: [user]),
@@ -30,7 +30,7 @@ void main() {
       blocTest<ProfileBloc, ProfileState>(
         'emits [ProfileLoaded] when ProfileAccountAdded is added '
         'and state is ProfileLoaded.',
-        build: () => ProfileBloc(),
+        build: ProfileBloc.new,
         seed: () => ProfileLoaded(current: user, accounts: [user]),
         act: (bloc) => bloc.add(ProfileAccountAdded(currentUser)),
         expect: () => <ProfileState>[
@@ -41,8 +41,8 @@ void main() {
       blocTest<ProfileBloc, ProfileState>(
         'emits [ProfileError] when ProfileAccountAdded '
         'and state is FakeProfileState.',
-        build: () => ProfileBloc(),
-        seed: () => FakeProfileState(),
+        build: ProfileBloc.new,
+        seed: FakeProfileState.new,
         act: (bloc) => bloc.add(ProfileAccountAdded(user)),
         expect: () => const <ProfileState>[ProfileError()],
       );
@@ -51,7 +51,7 @@ void main() {
     group('ProfileCurrentAccountChanged', () {
       blocTest<ProfileBloc, ProfileState>(
         'emits [ProfileLoaded] when ProfileCurrentAccountChanged is added.',
-        build: () => ProfileBloc(),
+        build: ProfileBloc.new,
         seed: () => ProfileLoaded(current: user, accounts: [user, currentUser]),
         act: (bloc) => bloc.add(ProfileCurrentAccountChanged(currentUser)),
         expect: () => <ProfileState>[
@@ -62,8 +62,8 @@ void main() {
       blocTest<ProfileBloc, ProfileState>(
         'emits [ProfileLoaded] when ProfileCurrentAccountChanged is added '
         'and state is FakeProfileState.',
-        build: () => ProfileBloc(),
-        seed: () => FakeProfileState(),
+        build: ProfileBloc.new,
+        seed: FakeProfileState.new,
         act: (bloc) => bloc.add(ProfileCurrentAccountChanged(currentUser)),
         expect: () => const <ProfileState>[ProfileError()],
       );

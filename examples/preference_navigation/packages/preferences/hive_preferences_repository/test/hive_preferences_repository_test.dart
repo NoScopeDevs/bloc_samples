@@ -149,7 +149,7 @@ void main() {
     });
 
     test('returns value correctly', () {
-      when(() => mockBox.get(any<dynamic>())).thenReturn(testValue);
+      when(() => mockBox.get('key')).thenReturn(testValue);
 
       expect(hiveRepository.getValue('key'), testValue);
     });
@@ -198,7 +198,7 @@ void main() {
 
   group('clearValues', () {
     test('clears correctly', () async {
-      when(() => mockBox.clear()).thenAnswer((_) async => 1);
+      when(mockBox.clear).thenAnswer((_) async => 1);
 
       await expectLater(hiveRepository.clearValues(), completes);
     });

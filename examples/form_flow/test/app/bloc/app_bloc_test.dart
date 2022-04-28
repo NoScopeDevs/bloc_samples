@@ -10,14 +10,14 @@ void main() {
 
     blocTest<AppBloc, AppState>(
       'emits [AppAuthenticated] when AppSignUpComplete is added.',
-      build: () => AppBloc(),
+      build: AppBloc.new,
       act: (bloc) => bloc.add(AppSignUpCompleted(user)),
       expect: () => <AppState>[AppAuthenticated(user)],
     );
 
     blocTest<AppBloc, AppState>(
       'emits [AppUnauthenticated] when AppLogoutRequested is added.',
-      build: () => AppBloc(),
+      build: AppBloc.new,
       act: (bloc) => bloc.add(AppLogoutRequested()),
       expect: () => <AppState>[AppUnauthenticated()],
     );
