@@ -7,7 +7,7 @@ void main() {
   group('BiographyCubit', () {
     blocTest<BiographyCubit, BiographyState>(
       'emits state with new biography when changeBiography is called.',
-      build: () => BiographyCubit(),
+      build: BiographyCubit.new,
       act: (bloc) => bloc.changeBiography('value'),
       expect: () => const <BiographyState>[
         BiographyState(

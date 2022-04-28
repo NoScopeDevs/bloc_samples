@@ -13,7 +13,7 @@ void main() {
     blocTest<SignUpBloc, SignUpState>(
       'emits [SignUpState] with [email, name] '
       'when SignUpCredentialsSubmitted is added.',
-      build: () => SignUpBloc(),
+      build: SignUpBloc.new,
       act: (bloc) {
         bloc.add(const SignUpCredentialsSubmitted(email: email, name: name));
       },
@@ -27,7 +27,7 @@ void main() {
     blocTest<SignUpBloc, SignUpState>(
       'emits [SignUpState] with [email, name, biography] '
       'when SignUpBiographySubmitted is added.',
-      build: () => SignUpBloc(),
+      build: SignUpBloc.new,
       seed: () => const SignUpState(
         user: User(email: email, name: name, biography: '', pin: ''),
       ),
@@ -42,7 +42,7 @@ void main() {
     blocTest<SignUpBloc, SignUpState>(
       'emits [SignUpState] with [email, name, biography, pin] '
       'and complete: true when SignUpBiographySubmitted is added.',
-      build: () => SignUpBloc(),
+      build: SignUpBloc.new,
       seed: () => const SignUpState(
         user: User(email: email, name: name, biography: biography, pin: ''),
       ),

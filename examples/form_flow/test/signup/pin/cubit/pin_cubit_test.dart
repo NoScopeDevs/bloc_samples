@@ -7,7 +7,7 @@ void main() {
   group('PinCubit', () {
     blocTest<PinCubit, PinState>(
       'emits state with new biography when changeBiography is called.',
-      build: () => PinCubit(),
+      build: PinCubit.new,
       act: (bloc) => bloc.changePin('02'),
       expect: () => const <PinState>[
         PinState(
