@@ -21,7 +21,7 @@ void main() {
 
     testWidgets('navigates when PreferencesLoaded is emitted', (tester) async {
       final navigator = MockNavigator();
-      when(() => navigator.push(any())).thenAnswer((_) async {});
+      when(() => navigator.push(any())).thenAnswer((_) async => null);
 
       final preferencesBloc = MockPreferencesBloc();
       whenListen(
@@ -46,7 +46,9 @@ void main() {
       'replaces route when PreferencesError is emitted',
       (tester) async {
         final navigator = MockNavigator();
-        when(() => navigator.pushReplacement(any())).thenAnswer((_) async {});
+        when(
+          () => navigator.pushReplacement(any()),
+        ).thenAnswer((_) async => null);
 
         final preferencesBloc = MockPreferencesBloc();
         whenListen(
