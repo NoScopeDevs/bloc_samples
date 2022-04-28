@@ -23,5 +23,6 @@ class BiographyFormInput extends FormzInput<String, BiographyValidationError> {
   BiographyValidationError? validator(String value) {
     if (value.isEmpty) return BiographyValidationError.empty;
     if (value.length > 140) return BiographyValidationError.tooLong;
+    return null;
   }
 }
