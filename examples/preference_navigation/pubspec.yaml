@@ -8,12 +8,12 @@ environment:
   flutter: "2.10.5"
 
 dependencies:
-  bloc: ^8.0.1
+  bloc: ^8.0.3
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   # https://github.com/flutter/flutter/issues/94123
   flutter_services_binding: ^0.1.0
   hive: ^2.0.4
@@ -27,11 +27,11 @@ dependencies:
     path: packages/preferences/shared_preferences_repository
 
 dev_dependencies:
-  bloc_test: ^9.0.1
+  bloc_test: ^9.0.3
   flutter_test:
     sdk: flutter
-  mockingjay: ^0.2.0-dev.3
-  mocktail: ^0.2.0
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
   very_good_analysis: ^2.4.0
 
 flutter:

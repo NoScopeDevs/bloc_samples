@@ -8,12 +8,12 @@ environment:
   flutter: "2.10.5"
 
 dependencies:
-  bloc: ^8.0.1
+  bloc: ^8.0.3
   equatable: ^2.0.3
   flow_builder: ^0.0.6
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
   formz_inputs:
@@ -23,10 +23,10 @@ dependencies:
     path: packages/profile
 
 dev_dependencies:
-  bloc_test: ^9.0.1
+  bloc_test: ^9.0.3
   flutter_test:
     sdk: flutter
-  mocktail: ^0.2.0
+  mocktail: ^0.3.0
   very_good_analysis: ^2.4.0
 
 flutter:

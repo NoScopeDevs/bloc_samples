@@ -1,8 +1,6 @@
 name: examples
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   build:
@@ -25,7 +23,7 @@ jobs:
         run: melos run WF:ci
 
       - name: Check 95% code coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+        uses: VeryGoodOpenSource/very_good_coverage@v1.2.1
         with:
           path: "./coverage/merged.lcov.info"
           min_coverage: 95
