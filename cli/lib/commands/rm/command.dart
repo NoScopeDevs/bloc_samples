@@ -20,7 +20,7 @@ Future<void> run(List<String> args) async {
       case FileSystemEntityType.notFound:
         print('The element <$elementPath> does not exist');
         break;
-      default:
+      case FileSystemEntityType.link:
         throw UnsupportedError('Unsupported element type');
     }
   } catch (e) {
