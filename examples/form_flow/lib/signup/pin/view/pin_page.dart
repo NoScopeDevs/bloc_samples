@@ -6,7 +6,7 @@ import 'package:form_flow/signup/signup.dart';
 import 'package:formz_inputs/formz_inputs.dart';
 
 class PinPage extends StatelessWidget {
-  const PinPage({Key? key}) : super(key: key);
+  const PinPage({super.key});
 
   static Page page() => const MaterialPage<void>(child: PinPage());
 
@@ -20,7 +20,7 @@ class PinPage extends StatelessWidget {
 }
 
 class PinView extends StatelessWidget {
-  const PinView({Key? key}) : super(key: key);
+  const PinView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class PinView extends StatelessWidget {
 }
 
 class _PinInput extends StatelessWidget {
-  const _PinInput({Key? key}) : super(key: key);
+  const _PinInput();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class _PinInput extends StatelessWidget {
 }
 
 class _SubmitButton extends StatelessWidget {
-  const _SubmitButton({Key? key}) : super(key: key);
+  const _SubmitButton();
 
   @override
   Widget build(BuildContext context) {

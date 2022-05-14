@@ -5,7 +5,7 @@ import 'package:form_flow/app/app.dart';
 import 'package:form_flow/signup/signup.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   static Page page() => const MaterialPage<void>(child: SignUpPage());
 
@@ -19,7 +19,7 @@ class SignUpPage extends StatelessWidget {
 }
 
 class SignUpView extends StatelessWidget {
-  const SignUpView({Key? key}) : super(key: key);
+  const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
