@@ -5,7 +5,7 @@ import 'package:profile_accounts/profile/profile.dart';
 import 'package:profile_core/profile_core.dart';
 
 class ProfileDrawer extends StatelessWidget {
-  const ProfileDrawer({Key? key}) : super(key: key);
+  const ProfileDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ProfileDrawer extends StatelessWidget {
 }
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({Key? key}) : super(key: key);
+  const ProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class ProfileHeader extends StatelessWidget {
 }
 
 class ProfileAccountList extends StatelessWidget {
-  const ProfileAccountList({Key? key}) : super(key: key);
+  const ProfileAccountList({super.key});
 
   @override
   Widget build(BuildContext context) {
