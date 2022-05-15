@@ -14,7 +14,7 @@ class EmailFormInput extends FormzInput<String, EmailValidationError> {
   const EmailFormInput.pure() : super.pure('');
 
   /// {@macro email_form_input}
-  const EmailFormInput.dirty([String value = '']) : super.dirty(value);
+  const EmailFormInput.dirty([super.value = '']) : super.dirty();
 
   static final RegExp _emailRegExp = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',

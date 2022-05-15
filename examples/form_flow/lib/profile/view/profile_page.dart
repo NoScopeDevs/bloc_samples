@@ -36,7 +36,10 @@ class ProfilePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(user.email),
+              Text(
+                user.email,
+                style: const TextStyle(fontSize: 10),
+              ),
               Text(user.biography),
             ],
           ),
