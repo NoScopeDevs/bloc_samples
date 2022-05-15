@@ -17,7 +17,7 @@ class BiographyFormInput extends FormzInput<String, BiographyValidationError> {
   const BiographyFormInput.pure() : super.pure('');
 
   /// {@macro Biography_form_input}
-  const BiographyFormInput.dirty([String value = '']) : super.dirty(value);
+  const BiographyFormInput.dirty([super.value = '']) : super.dirty();
 
   @override
   BiographyValidationError? validator(String value) {

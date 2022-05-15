@@ -4,7 +4,7 @@ import 'package:profile_accounts/profile/profile.dart';
 import 'package:profile_core/profile_core.dart';
 
 class ProfileForm extends StatefulWidget {
-  const ProfileForm({Key? key}) : super(key: key);
+  const ProfileForm({super.key});
 
   @override
   State<ProfileForm> createState() => _ProfileFormState();

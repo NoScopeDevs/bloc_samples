@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:profile_accounts/profile/profile.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
 }
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ProfileView extends StatelessWidget {
 }
 
 class ProfileAddAccountButton extends StatelessWidget {
-  const ProfileAddAccountButton({Key? key}) : super(key: key);
+  const ProfileAddAccountButton({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:preference_navigation/start/start.dart';
 /// {@endtemplate}
 class PreferencesPage extends StatelessWidget {
   /// {@macro preferences_page}
-  const PreferencesPage({Key? key}) : super(key: key);
+  const PreferencesPage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
   static Route go() {

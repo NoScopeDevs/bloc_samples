@@ -10,10 +10,9 @@ import 'package:shared_preferences_repository/shared_preferences_repository.dart
 class App extends StatelessWidget {
   /// {@macro app}
   const App({
-    Key? key,
+    super.key,
     required SharedPreferencesRepository preferencesRepository,
-  })  : _preferencesRepository = preferencesRepository,
-        super(key: key);
+  }) : _preferencesRepository = preferencesRepository;
 
   final SharedPreferencesRepository _preferencesRepository;
 
@@ -38,7 +37,7 @@ class App extends StatelessWidget {
 /// {@endtemplate}
 class AppView extends StatelessWidget {
   /// {@macro app_view}
-  const AppView({Key? key}) : super(key: key);
+  const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {

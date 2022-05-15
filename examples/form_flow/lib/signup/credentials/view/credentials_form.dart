@@ -5,7 +5,7 @@ import 'package:form_flow/signup/signup.dart';
 import 'package:formz_inputs/formz_inputs.dart';
 
 class CredentialsForm extends StatelessWidget {
-  const CredentialsForm({Key? key}) : super(key: key);
+  const CredentialsForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CredentialsForm extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
-  const _EmailInput({Key? key}) : super(key: key);
+  const _EmailInput();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _EmailInput extends StatelessWidget {
 }
 
 class _NameInput extends StatelessWidget {
-  const _NameInput({Key? key}) : super(key: key);
+  const _NameInput();
 
   @override
   Widget build(BuildContext context) {

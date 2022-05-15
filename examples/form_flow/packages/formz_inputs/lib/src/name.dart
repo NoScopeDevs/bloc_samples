@@ -14,7 +14,7 @@ class NameFormInput extends FormzInput<String, NameValidationError> {
   const NameFormInput.pure() : super.pure('');
 
   /// {@macro name_form_input}
-  const NameFormInput.dirty([String value = '']) : super.dirty(value);
+  const NameFormInput.dirty([super.value = '']) : super.dirty();
 
   @override
   NameValidationError? validator(String value) {

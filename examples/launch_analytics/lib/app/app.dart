@@ -5,10 +5,9 @@ import 'package:launch_analytics/app/bloc/app_bloc.dart';
 
 class App extends StatelessWidget {
   const App({
-    Key? key,
+    super.key,
     required AnalyticsRepository localAnalyticsRepository,
-  })  : _localAnalyticsRepository = localAnalyticsRepository,
-        super(key: key);
+  }) : _localAnalyticsRepository = localAnalyticsRepository;
 
   final AnalyticsRepository _localAnalyticsRepository;
 
@@ -29,7 +28,7 @@ class App extends StatelessWidget {
 }
 
 class AppView extends StatelessWidget {
-  const AppView({Key? key}) : super(key: key);
+  const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {

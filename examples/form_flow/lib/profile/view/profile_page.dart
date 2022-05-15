@@ -5,9 +5,9 @@ import 'package:profile/profile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
-    Key? key,
+    super.key,
     required this.user,
-  }) : super(key: key);
+  });
 
   static Page page(User user) {
     return MaterialPage<void>(
@@ -36,7 +36,10 @@ class ProfilePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(user.email),
+              Text(
+                user.email,
+                style: const TextStyle(fontSize: 10),
+              ),
               Text(user.biography),
             ],
           ),

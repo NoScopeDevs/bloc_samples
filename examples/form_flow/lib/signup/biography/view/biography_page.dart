@@ -5,7 +5,7 @@ import 'package:form_flow/signup/signup.dart';
 import 'package:formz_inputs/formz_inputs.dart';
 
 class BiographyPage extends StatelessWidget {
-  const BiographyPage({Key? key}) : super(key: key);
+  const BiographyPage({super.key});
 
   static Page page() => const MaterialPage<void>(child: BiographyPage());
 
@@ -19,7 +19,7 @@ class BiographyPage extends StatelessWidget {
 }
 
 class BiographyView extends StatelessWidget {
-  const BiographyView({Key? key}) : super(key: key);
+  const BiographyView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class BiographyView extends StatelessWidget {
 }
 
 class _BiographyInput extends StatelessWidget {
-  const _BiographyInput({Key? key}) : super(key: key);
+  const _BiographyInput();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _BiographyInput extends StatelessWidget {
 }
 
 class _SubmitButton extends StatelessWidget {
-  const _SubmitButton({Key? key}) : super(key: key);
+  const _SubmitButton();
 
   @override
   Widget build(BuildContext context) {

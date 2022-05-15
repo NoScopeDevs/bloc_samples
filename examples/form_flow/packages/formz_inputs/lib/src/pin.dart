@@ -14,7 +14,7 @@ class PinFormInput extends FormzInput<String, PinValidationError> {
   const PinFormInput.pure() : super.pure('');
 
   /// {@macro pin_form_input}
-  const PinFormInput.dirty([String value = '']) : super.dirty(value);
+  const PinFormInput.dirty([super.value = '']) : super.dirty();
 
   /// {@template max_length}
   /// Maximum length the pin requires to be valid.

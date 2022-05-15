@@ -8,7 +8,7 @@ import 'package:preference_navigation/start/start.dart';
 /// {@endtemplate}
 class HomePage extends StatelessWidget {
   /// {@macro home_page}
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
   static Route go() {
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
 /// {@endtemplate}
 class HomeView extends StatelessWidget {
   /// {@macro home_view}
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +65,9 @@ class HomeView extends StatelessWidget {
 class PreferencesList extends StatelessWidget {
   /// {@macro preferences_list}
   const PreferencesList({
-    Key? key,
+    super.key,
     required this.preferences,
-  }) : super(key: key);
+  });
 
   /// Current preferences stored on device.
   final Map preferences;
