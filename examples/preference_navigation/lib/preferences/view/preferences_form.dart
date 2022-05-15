@@ -7,7 +7,7 @@ import 'package:preference_navigation/preferences/preferences.dart';
 /// {@endtemplate}
 class PreferencesForm extends StatefulWidget {
   /// {@macro preferences_form}
-  const PreferencesForm({Key? key}) : super(key: key);
+  const PreferencesForm({super.key});
 
   @override
   State<PreferencesForm> createState() => _PreferencesFormState();

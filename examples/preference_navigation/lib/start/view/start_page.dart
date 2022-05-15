@@ -8,7 +8,7 @@ import 'package:preference_navigation/preferences/preferences.dart';
 /// {@endtemplate}
 class StartPage extends StatelessWidget {
   /// {@macro start_page}
-  const StartPage({Key? key}) : super(key: key);
+  const StartPage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
   static Route go() {
@@ -26,7 +26,7 @@ class StartPage extends StatelessWidget {
 /// {@endtemplate}
 class StartView extends StatelessWidget {
   /// {@macro start_view}
-  const StartView({Key? key}) : super(key: key);
+  const StartView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class StartView extends StatelessWidget {
 /// {@endtemplate}
 class NoPreferences extends StatelessWidget {
   /// {@macro no_preferences}
-  const NoPreferences({Key? key}) : super(key: key);
+  const NoPreferences({super.key});
 
   @override
   Widget build(BuildContext context) {
