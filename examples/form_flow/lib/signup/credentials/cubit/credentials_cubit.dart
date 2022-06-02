@@ -12,7 +12,6 @@ class CredentialsCubit extends Cubit<CredentialsState> {
     emit(
       state.copyWith(
         email: email,
-        name: state.name,
         status: Formz.validate([email, state.name]),
       ),
     );
@@ -22,7 +21,6 @@ class CredentialsCubit extends Cubit<CredentialsState> {
     final name = NameFormInput.dirty(value);
     emit(
       state.copyWith(
-        email: state.email,
         name: name,
         status: Formz.validate([state.email, name]),
       ),
