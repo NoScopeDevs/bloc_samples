@@ -8,6 +8,7 @@ Future<void> run(List<String> args) async {
     }
     final elementPath = args.first;
     final elementType = FileSystemEntity.typeSync(elementPath);
+    // ignore: exhaustive_cases
     switch (elementType) {
       case FileSystemEntityType.directory:
         final dir = Directory(elementPath);
@@ -21,8 +22,6 @@ Future<void> run(List<String> args) async {
         print('The element <$elementPath> does not exist');
         break;
       case FileSystemEntityType.link:
-      case FileSystemEntityType.pipe:
-      case FileSystemEntityType.unixDomainSock:
         throw UnsupportedError('Unsupported element type');
     }
   } catch (e) {
