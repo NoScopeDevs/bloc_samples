@@ -8,12 +8,12 @@ environment:
   flutter: "3.3.0"
 
 dependencies:
-  bloc: ^8.0.3
+  bloc: ^8.1.0
   equatable: ^2.0.3
   flow_builder: ^0.0.8
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
   formz_inputs:
@@ -23,7 +23,7 @@ dependencies:
     path: packages/profile
 
 dev_dependencies:
-  bloc_test: ^9.0.3
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0

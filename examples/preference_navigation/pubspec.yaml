@@ -8,14 +8,12 @@ environment:
   flutter: "3.3.0"
 
 dependencies:
-  bloc: ^8.0.3
+  bloc: ^8.1.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
-  # https://github.com/flutter/flutter/issues/94123
-  flutter_services_binding: ^0.1.0
+  flutter_bloc: ^8.1.1
   hive: ^2.0.4
   hive_preferences_repository:
     path: packages/preferences_repository/hive_preferences_repository
@@ -25,7 +23,7 @@ dependencies:
     path: packages/preferences_repository/shared_preferences_repository
 
 dev_dependencies:
-  bloc_test: ^9.0.3
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
   mockingjay: ^0.3.0

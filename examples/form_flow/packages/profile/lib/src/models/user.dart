@@ -12,7 +12,7 @@ class User extends Equatable {
     required this.pin,
   });
 
-  /// Returns a `User` object with default properties.
+  /// Returns a [User] object with default properties.
   const User.empty() : this(email: '', name: '', biography: '', pin: '');
 
   /// The user's email address.

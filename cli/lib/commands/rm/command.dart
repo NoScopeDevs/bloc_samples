@@ -8,6 +8,7 @@ Future<void> run(List<String> args) async {
     }
     final elementPath = args.first;
     final elementType = FileSystemEntity.typeSync(elementPath);
+    // ignore: exhaustive_cases
     switch (elementType) {
       case FileSystemEntityType.directory:
         final dir = Directory(elementPath);
