@@ -8,17 +8,17 @@ environment:
   flutter: "3.0.0"
 
 dependencies:
-  bloc: ^8.0.3
+  bloc: ^8.1.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.1.1
   profile_core:
     path: packages/profile_core
 
 dev_dependencies:
-  bloc_test: ^9.0.3
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
