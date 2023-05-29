@@ -22,32 +22,9 @@ jobs:
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2.10.0
-      - name: Flutter Version
-        run: flutter --version
-      - name: 📦 Install Dependencies
-        working-directory: ${{matrix.folder}}
-        run: |
-          flutter pub global activate very_good_cli
-          very_good --analytics false
-          very_good packages get --recursive
-      - name: ✨ Check Formatting
-        working-directory: ${{matrix.folder}}
-        run: dart format --set-exit-if-changed lib
-      - name: 🕵️ Analyze
-        working-directory: ${{matrix.folder}}
-        run: flutter analyze
-      - name: 🧪 Run Tests
-        working-directory: ${{matrix.folder}}
-        run: very_good test --coverage --test-randomize-ordering-seed random
-      - name: 📊 Check Code Coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v2
+      - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
         with:
-          path: ${{matrix.folder}}/coverage/lcov.info
-  build:
-    needs: [examples]
-    runs-on: ubuntu-latest
-    steps:
-      - name: noop
-        run: echo 'noop'
+          coverage_excludes: "*.g.dart"
+          flutter_channel: "stable"
+          working_directory: ${{matrix.folder}}
+          test_recursion: true  
