@@ -26,25 +26,25 @@ jobs:
       - uses: subosito/flutter-action@v2.10.0
       - name: Flutter Version
         run: flutter --version
-      - name: Install Dependencies
-        working-directory: ${{ matrix.folder }}
-        run: flutter packages get
-      - name: Format
-        working-directory: ${{ matrix.folder }}
-        run: dart format --set-exit-if-changed lib
-      - name: Analyze
-        working-directory: ${{ matrix.folder }}
-        run: flutter analyze --fatal-infos --fatal-warnings .
-      - name: Run Tests
+      - name: 📦 Install Dependencies
         working-directory: ${{ matrix.folder }}
         run: |
-          flutter pub global activate coverage 1.2.0
-          flutter test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=lib
-      - name: Check Code Coverage
+          flutter pub global activate very_good_cli
+          very_good --analytics false
+          very_good packages get --recursive
+      - name: ✨ Check Formatting
+        working-directory: ${{ matrix.folder }}
+        run: dart format --set-exit-if-changed lib
+      - name: 🕵️ Analyze
+        working-directory: ${{ matrix.folder }}
+        run: flutter analyze
+      - name: 🧪 Run Tests
+        working-directory: ${{ matrix.folder }}
+        run: very_good test --coverage --test-randomize-ordering-seed random
+      - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           path: ${{ matrix.folder }}
-
   build:
     needs: [examples]
     runs-on: ubuntu-latest
