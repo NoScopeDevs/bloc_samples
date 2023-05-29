@@ -1,6 +1,6 @@
 part of 'profile_bloc.dart';
 
-abstract class ProfileEvent extends Equatable {
+sealed class ProfileEvent extends Equatable {
   const ProfileEvent();
 }
 
@@ -13,7 +13,7 @@ class ProfileAccountAdded extends ProfileEvent {
   List<Object?> get props => [account];
 }
 
-class ProfileCurrentAccountChanged extends ProfileEvent {
+final class ProfileCurrentAccountChanged extends ProfileEvent {
   const ProfileCurrentAccountChanged(this.account);
 
   final User account;

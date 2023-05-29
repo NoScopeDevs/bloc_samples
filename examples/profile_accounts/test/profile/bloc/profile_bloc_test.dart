@@ -5,13 +5,17 @@ import 'package:profile_core/profile_core.dart';
 
 class FakeUser extends Fake implements User {}
 
-class FakeProfileState extends Fake implements ProfileState {}
-
 void main() {
   group('ProfileBloc', () {
     // To differentiate when changing `currentUser`
-    final user = FakeUser();
-    final currentUser = FakeUser();
+    final currentUser = User(
+      name: 'Marcos',
+      email: 'marcos@noscope.dev',
+    );
+    final user = User(
+      name: 'Elian',
+      email: 'elian@noscope.dev',
+    );
 
     test('emits initial state when instantiated', () {
       expect(ProfileBloc().state, const ProfileInitial());
@@ -39,12 +43,17 @@ void main() {
       );
 
       blocTest<ProfileBloc, ProfileState>(
-        'emits [ProfileError] when ProfileAccountAdded '
-        'and state is FakeProfileState.',
+        'emits [ProfileLoaded] when ProfileAccountAdded '
+        'and state is ProfileError.',
         build: ProfileBloc.new,
-        seed: FakeProfileState.new,
+        seed: ProfileError.new,
         act: (bloc) => bloc.add(ProfileAccountAdded(user)),
-        expect: () => const <ProfileState>[ProfileError()],
+        expect: () => <ProfileState>[
+          ProfileLoaded(
+            current: user,
+            accounts: [user],
+          ),
+        ],
       );
     });
 
@@ -63,7 +72,6 @@ void main() {
         'emits [ProfileLoaded] when ProfileCurrentAccountChanged is added '
         'and state is FakeProfileState.',
         build: ProfileBloc.new,
-        seed: FakeProfileState.new,
         act: (bloc) => bloc.add(ProfileCurrentAccountChanged(currentUser)),
         expect: () => const <ProfileState>[ProfileError()],
       );

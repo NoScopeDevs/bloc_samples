@@ -46,7 +46,7 @@ class ProfileAddAccountButton extends StatelessWidget {
     return FloatingActionButton.extended(
       label: const Text('New user'),
       onPressed: () {
-        Scaffold.of(context).showBottomSheet<Widget>(
+        Scaffold.of(context).showBottomSheet<void>(
           (_) => const ProfileCard(),
         );
       },

@@ -12,23 +12,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   void _onAccountAdded(ProfileAccountAdded event, Emitter<ProfileState> emit) {
-    if (state is ProfileInitial) {
+    if (state is ProfileLoaded) {
+      final loadedState = state as ProfileLoaded;
+      emit(
+        ProfileLoaded(
+          current: loadedState.current,
+          accounts: [...loadedState.accounts, event.account],
+        ),
+      );
+    } else {
       emit(
         ProfileLoaded(
           current: event.account,
           accounts: [event.account],
         ),
       );
-    } else if (state is ProfileLoaded) {
-      final _state = state as ProfileLoaded;
-      emit(
-        ProfileLoaded(
-          current: _state.current,
-          accounts: [..._state.accounts, event.account],
-        ),
-      );
-    } else {
-      emit(const ProfileError());
     }
   }
 
@@ -37,11 +35,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) {
     if (state is ProfileLoaded) {
-      final _state = state as ProfileLoaded;
+      final loadedState = state as ProfileLoaded;
       emit(
         ProfileLoaded(
           current: event.account,
-          accounts: _state.accounts,
+          accounts: loadedState.accounts,
         ),
       );
     } else {
