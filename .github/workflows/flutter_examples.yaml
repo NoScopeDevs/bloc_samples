@@ -20,11 +20,9 @@ jobs:
             "examples/profile_accounts",
           ]
       fail-fast: false
-    runs-on: ubuntu-latest
-    steps:
-      - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-        with:
-          coverage_excludes: "*.g.dart"
-          flutter_channel: "stable"
-          working_directory: ${{matrix.folder}}
-          test_recursion: true  
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+        coverage_excludes: "*.g.dart"
+        flutter_channel: "stable"
+        working_directory: ${{matrix.folder}}
+        test_recursion: true  
