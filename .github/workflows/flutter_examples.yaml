@@ -27,24 +27,24 @@ jobs:
       - name: Flutter Version
         run: flutter --version
       - name: 📦 Install Dependencies
-        working-directory: ${{ matrix.folder }}
+        working-directory: ${{matrix.folder}}
         run: |
           flutter pub global activate very_good_cli
           very_good --analytics false
           very_good packages get --recursive
       - name: ✨ Check Formatting
-        working-directory: ${{ matrix.folder }}
+        working-directory: ${{matrix.folder}}
         run: dart format --set-exit-if-changed lib
       - name: 🕵️ Analyze
-        working-directory: ${{ matrix.folder }}
+        working-directory: ${{matrix.folder}}
         run: flutter analyze
       - name: 🧪 Run Tests
-        working-directory: ${{ matrix.folder }}
+        working-directory: ${{matrix.folder}}
         run: very_good test --coverage --test-randomize-ordering-seed random
       - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
-          path: ${{ matrix.folder }}
+          path: ${{matrix.folder}}/coverage/lcov.info
   build:
     needs: [examples]
     runs-on: ubuntu-latest
