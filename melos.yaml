@@ -3,6 +3,9 @@ name: bloc_samples
 packages:
   - "**"
 
+ignore:
+  - "examples/profile_accounts"
+
 scripts:
   c:
     description: Drop the `build/` and `.dart_tool/` folders from a selected package.

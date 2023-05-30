@@ -1,0 +1,36 @@
+name: examples
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.3.0"
+          channel: "stable"
+
+      - name: Install Tools
+        run: |
+          flutter pub global activate melos
+      - name: Initialize tools
+        run: melos bs
+
+      - name: Run CI workflow (format, analyze, test)
+        run: melos run WF:ci
+
+      - name: Check code coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v1.2.1
+        with:
+          path: "./coverage/merged.lcov.info"
+          exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
+
+      - name: Upload coverage data to codecov.io
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "./coverage/merged.lcov.info"
+          fail_ci_if_error: true
+          verbose: true
