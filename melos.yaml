@@ -2,6 +2,7 @@ name: bloc_samples
 
 packages:
   - "examples/**"
+  - "cli"
 
 ignore:
   - "examples/profile_accounts"
