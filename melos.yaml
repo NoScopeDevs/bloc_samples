@@ -1,7 +1,8 @@
 name: bloc_samples
 
 packages:
-  - "**"
+  - "examples/*"
+  - "examples/*/packages"
 
 ignore:
   - "examples/profile_accounts"
