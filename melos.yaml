@@ -1,11 +1,11 @@
 name: bloc_samples
 
 packages:
-  - "examples/*"
-  - "examples/*/packages"
+  - "examples/**"
 
 ignore:
   - "examples/profile_accounts"
+  - "examples/profile_accounts/**"
 
 scripts:
   c:
