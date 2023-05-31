@@ -43,17 +43,12 @@ void main() {
       );
 
       blocTest<ProfileBloc, ProfileState>(
-        'emits [ProfileLoaded] when ProfileAccountAdded '
+        'emits [] when ProfileAccountAdded '
         'and state is ProfileError.',
         build: ProfileBloc.new,
         seed: ProfileError.new,
         act: (bloc) => bloc.add(ProfileAccountAdded(user)),
-        expect: () => <ProfileState>[
-          ProfileLoaded(
-            current: user,
-            accounts: [user],
-          ),
-        ],
+        expect: () => const <ProfileState>[],
       );
     });
 
