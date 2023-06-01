@@ -5,8 +5,12 @@ import 'package:profile_accounts/profile/profile.dart';
 
 import '../../helpers/helpers.dart';
 
+class FakeProfileAcountAdded extends Fake implements ProfileAccountAdded {}
+
 void main() {
-  setUpAll(() => registerFallbackValue(FakeProfileAccountAdded()));
+  setUpAll(() {
+    registerFallbackValue(FakeProfileAcountAdded());
+  });
 
   group('ProfileForm', () {
     const mockName = 'Marcos';
@@ -32,7 +36,23 @@ void main() {
         await tester.ensureVisible(find.byKey(profileSaveButtonKey));
         await tester.tap(find.byKey(profileSaveButtonKey));
 
-        verify(() => profileBloc.add(any<ProfileAccountAdded>())).called(1);
+        verify(
+          () => profileBloc.add(
+            any<ProfileAccountAdded>(
+              that: isA<ProfileAccountAdded>()
+                  .having(
+                    (e) => e.account.name,
+                    'name',
+                    mockName,
+                  )
+                  .having(
+                    (e) => e.account.email,
+                    'email',
+                    mockEmail,
+                  ),
+            ),
+          ),
+        ).called(1);
       },
     );
   });

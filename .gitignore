@@ -78,3 +78,5 @@ firestore-debug.log
 ui-debug.log
 
 coverage/
+
+.fvm/

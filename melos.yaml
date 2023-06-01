@@ -1,7 +1,12 @@
 name: bloc_samples
 
 packages:
-  - "**"
+  - "examples/**"
+  - "cli"
+
+ignore:
+  - "examples/profile_accounts"
+  - "examples/profile_accounts/**"
 
 scripts:
   c:

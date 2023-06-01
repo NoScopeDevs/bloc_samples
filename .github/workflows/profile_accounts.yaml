@@ -1,0 +1,22 @@
+name: profile_accounts
+
+on:
+  push:
+    paths:
+      - ".github/workflows/profile_accounts.yaml"
+      - "examples/profile_accounts/**"
+
+  pull_request:
+    paths:
+      - ".github/workflows/profile_accounts.yaml"
+      - "examples/profile_accounts/**"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      coverage_excludes: "*.g.dart"
+      flutter_channel: "stable"
+      flutter_version: "3.10.2"
+      working_directory: "examples/profile_accounts"
+      test_recursion: true
