@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 @Tags(['sequential'])
+library;
 
 import 'package:formz_inputs/formz_inputs.dart';
 import 'package:test/test.dart';
@@ -13,13 +14,13 @@ void main() {
       test('pure creates correct instance', () {
         final pin = PinFormInput.pure();
         expect(pin.value, '');
-        expect(pin.pure, true);
+        expect(pin.isPure, true);
       });
 
       test('dirty creates correct instance', () {
         final pin = PinFormInput.dirty(pinString);
         expect(pin.value, pinString);
-        expect(pin.pure, false);
+        expect(pin.isPure, false);
       });
     });
 

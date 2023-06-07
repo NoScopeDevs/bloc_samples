@@ -10,13 +10,13 @@ void main() {
       test('pure creates correct instance', () {
         final email = EmailFormInput.pure();
         expect(email.value, '');
-        expect(email.pure, true);
+        expect(email.isPure, true);
       });
 
       test('dirty creates correct instance', () {
         final email = EmailFormInput.dirty(emailString);
         expect(email.value, emailString);
-        expect(email.pure, false);
+        expect(email.isPure, false);
       });
     });
 
