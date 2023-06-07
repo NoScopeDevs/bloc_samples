@@ -9,9 +9,9 @@ class CredentialsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         _EmailInput(),
         _NameInput(),
       ],
@@ -36,7 +36,13 @@ class _EmailInput extends StatelessWidget {
           },
           decoration: InputDecoration(
             labelText: l10n.emailInputLabelText,
-            errorText: state.invalid ? l10n.invalidEmailInputErrorText : null,
+            errorText: () {
+              if (state.isPure) return null;
+              return switch (state.error) {
+                EmailValidationError.invalid => l10n.invalidEmailInputErrorText,
+                null => null,
+              };
+            }(),
           ),
         );
       },
@@ -62,7 +68,13 @@ class _NameInput extends StatelessWidget {
           },
           decoration: InputDecoration(
             labelText: l10n.nameInputLabelText,
-            errorText: state.invalid ? l10n.shortNameInputErrorText : null,
+            errorText: () {
+              if (state.isPure) return null;
+              return switch (state.error) {
+                NameValidationError.tooShort => l10n.shortNameInputErrorText,
+                null => null,
+              };
+            }(),
           ),
         );
       },

@@ -8,7 +8,7 @@ import 'package:formz_inputs/formz_inputs.dart';
 class PinPage extends StatelessWidget {
   const PinPage({super.key});
 
-  static Page page() => const MaterialPage<void>(child: PinPage());
+  static Page<void> page() => const MaterialPage<void>(child: PinPage());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,13 @@ class _PinInput extends StatelessWidget {
           onChanged: (pin) => context.read<PinCubit>().changePin(pin),
           decoration: InputDecoration(
             labelText: l10n.pinInputLabelText,
-            errorText: state.invalid ? l10n.invalidPinInputErrorText : null,
+            errorText: () {
+              if (state.isPure) return null;
+              return switch (state.error) {
+                PinValidationError.invalid => l10n.invalidPinInputErrorText,
+                null => null
+              };
+            }(),
           ),
           inputFormatters: [
             LengthLimitingTextInputFormatter(PinFormInput.maxLength),
@@ -71,7 +77,7 @@ class _SubmitButton extends StatelessWidget {
     final l10n = context.l10n;
     return BlocBuilder<PinCubit, PinState>(
       builder: (context, state) {
-        if (state.status.isInvalid || state.status.isPure) {
+        if (state.pin.isNotValid || state.pin.isPure) {
           return const SizedBox.shrink();
         }
 

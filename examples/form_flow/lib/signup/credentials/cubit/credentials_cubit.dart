@@ -10,20 +10,14 @@ class CredentialsCubit extends Cubit<CredentialsState> {
   void changeEmail(String value) {
     final email = EmailFormInput.dirty(value);
     emit(
-      state.copyWith(
-        email: email,
-        status: Formz.validate([email, state.name]),
-      ),
+      state.copyWith(email: email),
     );
   }
 
   void changeName(String value) {
     final name = NameFormInput.dirty(value);
     emit(
-      state.copyWith(
-        name: name,
-        status: Formz.validate([state.email, name]),
-      ),
+      state.copyWith(name: name),
     );
   }
 }

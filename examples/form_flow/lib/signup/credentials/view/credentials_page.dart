@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_flow/l10n/l10n.dart';
 import 'package:form_flow/signup/signup.dart';
-import 'package:formz_inputs/formz_inputs.dart';
 
 class CredentialsPage extends StatelessWidget {
   const CredentialsPage({super.key});
 
-  static Page page() => const MaterialPage<void>(child: CredentialsPage());
+  static Page<void> page() =>
+      const MaterialPage<void>(child: CredentialsPage());
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _SubmitButton extends StatelessWidget {
     final l10n = context.l10n;
     return BlocBuilder<CredentialsCubit, CredentialsState>(
       builder: (context, state) {
-        if (state.status.isInvalid || state.status.isPure) {
+        if (!state.isValid || state.isPure) {
           return const SizedBox.shrink();
         }
 

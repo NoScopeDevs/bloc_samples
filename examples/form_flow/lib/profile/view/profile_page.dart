@@ -5,11 +5,11 @@ import 'package:profile/profile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
-    super.key,
     required this.user,
+    super.key,
   });
 
-  static Page page(User user) {
+  static Page<void> page(User user) {
     return MaterialPage<void>(
       child: ProfilePage(user: user),
     );

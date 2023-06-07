@@ -11,11 +11,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppLogoutRequested>(_onLogoutRequested);
   }
 
-  void _onSignUpComplete(AppSignUpCompleted event, Emitter emit) {
+  void _onSignUpComplete(AppSignUpCompleted event, Emitter<AppState> emit) {
     emit(AppAuthenticated(event.user));
   }
 
-  void _onLogoutRequested(AppLogoutRequested event, Emitter emit) {
+  void _onLogoutRequested(AppLogoutRequested event, Emitter<AppState> emit) {
     emit(AppUnauthenticated());
   }
 }

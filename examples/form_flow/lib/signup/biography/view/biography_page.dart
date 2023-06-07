@@ -7,7 +7,7 @@ import 'package:formz_inputs/formz_inputs.dart';
 class BiographyPage extends StatelessWidget {
   const BiographyPage({super.key});
 
-  static Page page() => const MaterialPage<void>(child: BiographyPage());
+  static Page<void> page() => const MaterialPage<void>(child: BiographyPage());
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +53,14 @@ class _BiographyInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: l10n.biographyInputLabelText,
             errorText: () {
-              if (state.invalid) {
-                if (state.error == BiographyValidationError.empty) {
-                  return l10n.emptyBiographyInputErrorText;
-                } else if (state.error == BiographyValidationError.tooLong) {
-                  return l10n.longBiographyInputErrorText;
-                }
-                return null;
-              }
+              if (state.isPure) return null;
+              return switch (state.error) {
+                BiographyValidationError.empty =>
+                  l10n.emptyBiographyInputErrorText,
+                BiographyValidationError.tooLong =>
+                  l10n.longBiographyInputErrorText,
+                null => null,
+              };
             }(),
           ),
         );
@@ -77,7 +77,7 @@ class _SubmitButton extends StatelessWidget {
     final l10n = context.l10n;
     return BlocBuilder<BiographyCubit, BiographyState>(
       builder: (context, state) {
-        if (state.status.isInvalid || state.status.isPure) {
+        if (state.biography.isNotValid || state.biography.isPure) {
           return const SizedBox.shrink();
         }
 

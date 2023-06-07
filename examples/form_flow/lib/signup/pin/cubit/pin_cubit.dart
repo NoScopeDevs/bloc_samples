@@ -9,11 +9,6 @@ class PinCubit extends Cubit<PinState> {
 
   void changePin(String value) {
     final pin = PinFormInput.dirty(value);
-    emit(
-      PinState(
-        pin: pin,
-        status: Formz.validate([pin]),
-      ),
-    );
+    emit(PinState(pin: pin));
   }
 }

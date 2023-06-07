@@ -10,11 +10,6 @@ class BiographyCubit extends Cubit<BiographyState> {
 
   void changeBiography(String value) {
     final biography = BiographyFormInput.dirty(value);
-    emit(
-      BiographyState(
-        biography: biography,
-        status: Formz.validate([biography]),
-      ),
-    );
+    emit(BiographyState(biography: biography));
   }
 }
