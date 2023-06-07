@@ -14,13 +14,6 @@ void main() {
       expect(PinState().copyWith(), PinState());
     });
 
-    test('returns object with updated status when status is passed', () {
-      expect(
-        PinState().copyWith(status: FormzStatus.pure),
-        PinState(),
-      );
-    });
-
     test('returns object with updated biography when biography is passed', () {
       expect(
         PinState().copyWith(pin: PinFormInput.dirty('012')),

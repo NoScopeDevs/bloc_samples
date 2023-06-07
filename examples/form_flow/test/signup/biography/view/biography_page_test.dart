@@ -18,7 +18,7 @@ void main() {
 
   group('BiographyPage', () {
     test('is routable', () {
-      expect(BiographyPage.page(), isA<MaterialPage>());
+      expect(BiographyPage.page(), isA<MaterialPage<void>>());
     });
 
     testWidgets('renders BiographyView', (tester) async {
@@ -56,7 +56,6 @@ void main() {
         when(() => biographyCubit.state).thenReturn(
           const BiographyState(
             biography: BiographyFormInput.dirty(),
-            status: FormzStatus.invalid,
           ),
         );
 
@@ -86,7 +85,6 @@ void main() {
         when(() => biographyCubit.state).thenReturn(
           BiographyState(
             biography: BiographyFormInput.dirty(invalidBiography),
-            status: FormzStatus.invalid,
           ),
         );
 
@@ -121,7 +119,6 @@ void main() {
         when(() => biographyCubit.state).thenReturn(
           BiographyState(
             biography: BiographyFormInput.dirty(validBiography),
-            status: FormzStatus.valid,
           ),
         );
 

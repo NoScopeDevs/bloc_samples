@@ -12,7 +12,7 @@ void main() {
       expect(
         onGenerateAppViewPages(AppAuthenticated(MockUser()), []),
         [
-          isA<MaterialPage>().having(
+          isA<MaterialPage<void>>().having(
             (p) => p.child,
             'child',
             isA<ProfilePage>(),
@@ -25,7 +25,7 @@ void main() {
       expect(
         onGenerateAppViewPages(AppUnauthenticated(), []),
         [
-          isA<MaterialPage>().having(
+          isA<MaterialPage<void>>().having(
             (p) => p.child,
             'child',
             isA<SignUpPage>(),

@@ -15,7 +15,6 @@ void main() {
       expect: () => const <CredentialsState>[
         CredentialsState(
           email: EmailFormInput.dirty(email),
-          status: FormzStatus.invalid,
         ),
       ],
     );
@@ -27,7 +26,6 @@ void main() {
       expect: () => const <CredentialsState>[
         CredentialsState(
           name: NameFormInput.dirty(name),
-          status: FormzStatus.invalid,
         ),
       ],
     );

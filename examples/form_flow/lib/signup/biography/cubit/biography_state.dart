@@ -12,7 +12,6 @@ class BiographyState extends Equatable {
 
   BiographyState copyWith({
     BiographyFormInput? biography,
-    FormzSubmissionStatus? status,
   }) {
     return BiographyState(biography: biography ?? this.biography);
   }

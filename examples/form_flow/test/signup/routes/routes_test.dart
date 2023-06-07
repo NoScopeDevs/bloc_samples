@@ -12,7 +12,7 @@ void main() {
         expect(
           onGenerateSignUpPages(const SignUpState(), []),
           [
-            isA<MaterialPage>().having(
+            isA<MaterialPage<void>>().having(
               (p) => p.child,
               'child',
               isA<CredentialsPage>(),
@@ -36,7 +36,7 @@ void main() {
           [],
         ),
         [
-          isA<MaterialPage>().having(
+          isA<MaterialPage<void>>().having(
             (p) => p.child,
             'child',
             isA<BiographyPage>(),
@@ -59,7 +59,7 @@ void main() {
           [],
         ),
         [
-          isA<MaterialPage>().having(
+          isA<MaterialPage<void>>().having(
             (p) => p.child,
             'child',
             isA<PinPage>(),

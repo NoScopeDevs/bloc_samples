@@ -12,7 +12,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<SignUpPinSubmitted>(_onPinSubmitted);
   }
 
-  void _onCredentialsSubmitted(SignUpCredentialsSubmitted event, Emitter emit) {
+  void _onCredentialsSubmitted(
+    SignUpCredentialsSubmitted event,
+    Emitter<SignUpState> emit,
+  ) {
     emit(
       state.copyWith(
         user: User(
@@ -25,7 +28,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _onBiographySubmitted(SignUpBiographySubmitted event, Emitter emit) {
+  void _onBiographySubmitted(
+    SignUpBiographySubmitted event,
+    Emitter<SignUpState> emit,
+  ) {
     emit(
       state.copyWith(
         user: User(
@@ -38,7 +44,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _onPinSubmitted(SignUpPinSubmitted event, Emitter emit) {
+  void _onPinSubmitted(
+    SignUpPinSubmitted event,
+    Emitter<SignUpState> emit,
+  ) {
     emit(
       state.copyWith(
         user: User(
