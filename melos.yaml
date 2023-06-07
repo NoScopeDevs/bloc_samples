@@ -7,6 +7,8 @@ packages:
 ignore:
   - "examples/profile_accounts"
   - "examples/profile_accounts/**"
+  - "examples/form_flow"
+  - "examples/form_flow/**"
 
 scripts:
   c:

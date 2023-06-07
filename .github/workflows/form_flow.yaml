@@ -1,0 +1,22 @@
+name: form_flow
+
+on:
+  push:
+    paths:
+      - ".github/workflows/form_flow.yaml"
+      - "examples/form_flow/**"
+
+  pull_request:
+    paths:
+      - ".github/workflows/form_flow.yaml"
+      - "examples/form_flow/**"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      coverage_excludes: "*.g.dart"
+      flutter_channel: "stable"
+      flutter_version: "3.10.3"
+      working_directory: "examples/form_flow"
+      test_recursion: true
