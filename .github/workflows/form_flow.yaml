@@ -17,6 +17,6 @@ jobs:
     with:
       coverage_excludes: "*.g.dart"
       flutter_channel: "stable"
-      flutter_version: "3.10.3"
+      flutter_version: "3.10.5"
       working_directory: "examples/form_flow"
       test_recursion: true
