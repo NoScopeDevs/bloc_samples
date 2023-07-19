@@ -1,0 +1,21 @@
+name: launch_analytics
+
+on:
+  push:
+    paths:
+      - ".github/workflows/launch_analytics.yaml"
+      - "examples/launch_analytics/**"
+
+  pull_request:
+    paths:
+      - ".github/workflows/launch_analytics.yaml"
+      - "examples/launch_analytics/**"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: "stable"
+      flutter_version: "3.10.5"
+      working_directory: "examples/launch_analytics"
+      test_recursion: true
