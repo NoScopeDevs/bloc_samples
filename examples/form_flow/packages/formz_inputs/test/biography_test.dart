@@ -13,7 +13,7 @@ void main() {
       test('pure creates correct instance', () {
         final biography = BiographyFormInput.pure();
         expect(biography.value, '');
-        expect(biography.isPure, true);
+        expect(biography.isPure, isTrue);
       });
 
       test('dirty creates correct instance', () {
