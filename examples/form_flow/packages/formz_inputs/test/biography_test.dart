@@ -19,7 +19,7 @@ void main() {
       test('dirty creates correct instance', () {
         final biography = BiographyFormInput.dirty(biographyString);
         expect(biography.value, biographyString);
-        expect(biography.isPure, false);
+        expect(biography.isPure, isFalse);
       });
     });
 
