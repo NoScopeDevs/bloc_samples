@@ -16,7 +16,7 @@ void main() {
       test('dirty creates correct instance', () {
         final email = EmailFormInput.dirty(emailString);
         expect(email.value, emailString);
-        expect(email.isPure, false);
+        expect(email.isPure, isFalse);
       });
     });
 
