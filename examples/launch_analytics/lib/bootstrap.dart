@@ -19,47 +19,35 @@ import 'package:path_provider/path_provider.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
-  void onChange(BlocBase bloc, Change change) {
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
     log('onChange(${bloc.runtimeType}, $change)');
   }
 
   @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     log('onError(${bloc.runtimeType}, $error, $stackTrace)');
     super.onError(bloc, error, stackTrace);
   }
 }
 
 Future<void> bootstrap() async {
+  Bloc.observer = AppBlocObserver();
   FlutterServicesBinding.ensureInitialized();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getTemporaryDirectory(),
+  );
 
-  await runZonedGuarded(
-    () async {
-      final storage = await HydratedStorage.build(
-        storageDirectory: await getTemporaryDirectory(),
-      );
+  await Hive.initFlutter();
+  final box = await Hive.openBox<int>('test');
+  final localAnalyticsRepo = AnalyticsRepository(
+    LocalAnalyticsApi(box),
+  );
 
-      await HydratedBlocOverrides.runZoned(
-        () async {
-          await Hive.initFlutter();
-          final box = await Hive.openBox<int>('test');
-
-          final localAnalyticsRepo = AnalyticsRepository(
-            LocalAnalyticsApi(box),
-          );
-
-          runApp(
-            App(localAnalyticsRepository: localAnalyticsRepo),
-          );
-        },
-        storage: storage,
-        blocObserver: AppBlocObserver(),
-      );
-    },
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  runApp(
+    App(localAnalyticsRepository: localAnalyticsRepo),
   );
 }

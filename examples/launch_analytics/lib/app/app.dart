@@ -5,8 +5,8 @@ import 'package:launch_analytics/app/bloc/app_bloc.dart';
 
 class App extends StatelessWidget {
   const App({
-    super.key,
     required AnalyticsRepository localAnalyticsRepository,
+    super.key,
   }) : _localAnalyticsRepository = localAnalyticsRepository;
 
   final AnalyticsRepository _localAnalyticsRepository;
