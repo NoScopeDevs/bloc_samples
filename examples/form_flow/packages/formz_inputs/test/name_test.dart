@@ -10,7 +10,7 @@ void main() {
       test('pure creates correct instance', () {
         final name = NameFormInput.pure();
         expect(name.value, '');
-        expect(name.isPure, true);
+        expect(name.isPure, isTrue);
       });
 
       test('dirty creates correct instance', () {
