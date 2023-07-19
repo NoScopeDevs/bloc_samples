@@ -11,6 +11,10 @@ on:
       - ".github/workflows/form_flow.yaml"
       - "examples/form_flow/**"
 
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
