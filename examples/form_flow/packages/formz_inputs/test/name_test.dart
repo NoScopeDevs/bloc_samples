@@ -16,7 +16,7 @@ void main() {
       test('dirty creates correct instance', () {
         final name = NameFormInput.dirty(nameString);
         expect(name.value, nameString);
-        expect(name.isPure, false);
+        expect(name.isPure, isFalse);
       });
     });
 
