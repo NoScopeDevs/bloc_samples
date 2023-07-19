@@ -5,7 +5,7 @@ import 'package:form_flow/signup/signup.dart';
 
 List<Page<void>> onGenerateAppViewPages(
   AppState state,
-  List<Page<void>> page,
+  List<Page<void>> pages,
 ) {
   if (state is AppAuthenticated) {
     return [ProfilePage.page(state.user)];
