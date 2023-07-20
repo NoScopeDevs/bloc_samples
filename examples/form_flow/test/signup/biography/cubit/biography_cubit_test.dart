@@ -12,7 +12,6 @@ void main() {
       expect: () => const <BiographyState>[
         BiographyState(
           biography: BiographyFormInput.dirty('value'),
-          status: FormzStatus.valid,
         ),
       ],
     );

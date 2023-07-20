@@ -25,7 +25,6 @@ void main() {
             const CredentialsState(
               email: email,
               name: name,
-              status: FormzStatus.valid,
             ),
           );
 

@@ -7,7 +7,7 @@ import 'package:form_flow/signup/signup.dart';
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
-  static Page page() => const MaterialPage<void>(child: SignUpPage());
+  static Page<void> page() => const MaterialPage<void>(child: SignUpPage());
 
   @override
   Widget build(BuildContext context) {

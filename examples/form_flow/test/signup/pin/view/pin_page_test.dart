@@ -13,7 +13,7 @@ import '../../../helpers/helpers.dart';
 void main() {
   group('PinPage', () {
     test('is routable', () {
-      expect(PinPage.page(), isA<MaterialPage>());
+      expect(PinPage.page(), isA<MaterialPage<void>>());
     });
 
     testWidgets('renders PinView', (tester) async {
@@ -51,7 +51,6 @@ void main() {
         when(() => pinCubit.state).thenReturn(
           const PinState(
             pin: PinFormInput.dirty(),
-            status: FormzStatus.invalid,
           ),
         );
 
@@ -86,7 +85,6 @@ void main() {
         when(() => pinCubit.state).thenReturn(
           const PinState(
             pin: PinFormInput.dirty(pin),
-            status: FormzStatus.valid,
           ),
         );
 

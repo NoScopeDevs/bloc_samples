@@ -13,10 +13,10 @@ enum BiographyValidationError {
 /// Biography form input.
 /// {@endtemplate}
 class BiographyFormInput extends FormzInput<String, BiographyValidationError> {
-  /// {@macro Biography_form_input}
+  /// {@macro biography_form_input}
   const BiographyFormInput.pure() : super.pure('');
 
-  /// {@macro Biography_form_input}
+  /// {@macro biography_form_input}
   const BiographyFormInput.dirty([super.value = '']) : super.dirty();
 
   @override

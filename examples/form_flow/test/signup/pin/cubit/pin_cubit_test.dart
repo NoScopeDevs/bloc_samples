@@ -12,7 +12,6 @@ void main() {
       expect: () => const <PinState>[
         PinState(
           pin: PinFormInput.dirty('02'),
-          status: FormzStatus.invalid,
         ),
       ],
     );

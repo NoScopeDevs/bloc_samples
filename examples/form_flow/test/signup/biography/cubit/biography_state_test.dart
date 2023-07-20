@@ -14,13 +14,6 @@ void main() {
       expect(BiographyState().copyWith(), BiographyState());
     });
 
-    test('returns object with updated status when status is passed', () {
-      expect(
-        BiographyState().copyWith(status: FormzStatus.pure),
-        BiographyState(),
-      );
-    });
-
     test('returns object with updated biography when biography is passed', () {
       expect(
         BiographyState().copyWith(biography: BiographyFormInput.dirty('value')),
