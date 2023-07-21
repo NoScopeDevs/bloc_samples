@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
         child: BlocConsumer<PreferencesBloc, PreferencesState>(
           listener: (_, state) async {
             if (state is PreferencesEmpty) {
-              await Navigator.of(context).push<void>(StartPage.go());
+              await Navigator.of(context).push<void>(StartPage.route());
             }
           },
           builder: (context, state) {

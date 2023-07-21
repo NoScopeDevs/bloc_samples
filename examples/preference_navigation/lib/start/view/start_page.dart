@@ -11,7 +11,7 @@ class StartPage extends StatelessWidget {
   const StartPage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route<void> go() {
+  static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const StartPage());
   }
 

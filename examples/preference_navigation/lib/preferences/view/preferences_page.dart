@@ -28,7 +28,7 @@ class PreferencesPage extends StatelessWidget {
             if (state is PreferencesError) {
               // ignore: use_build_context_synchronously
               await Navigator.of(context).pushReplacement<void, void>(
-                StartPage.go(),
+                StartPage.route(),
               );
             }
           },
