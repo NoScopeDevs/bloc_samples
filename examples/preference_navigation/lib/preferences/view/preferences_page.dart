@@ -12,7 +12,7 @@ class PreferencesPage extends StatelessWidget {
   const PreferencesPage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route<void> go() {
+  static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const PreferencesPage());
   }
 
@@ -23,7 +23,7 @@ class PreferencesPage extends StatelessWidget {
         child: BlocListener<PreferencesBloc, PreferencesState>(
           listener: (_, state) async {
             if (state is PreferencesLoaded) {
-              await Navigator.of(context).push<void>(HomePage.go());
+              await Navigator.of(context).push<void>(HomePage.route());
             }
             if (state is PreferencesError) {
               // ignore: use_build_context_synchronously

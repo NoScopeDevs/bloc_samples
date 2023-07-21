@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route<void> go() {
+  static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const HomePage());
   }
 
@@ -70,7 +70,7 @@ class PreferencesList extends StatelessWidget {
   });
 
   /// Current preferences stored on device.
-  final Map<dynamic, dynamic> preferences;
+  final Map<String, dynamic> preferences;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class PreferencesList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: preferences.length,
       itemBuilder: (_, index) {
-        final key = preferences.keys.elementAt(index) as String;
+        final key = preferences.keys.elementAt(index);
         final value = preferences.values.elementAt(index) as String;
         return ListTile(
           title: Text(key),

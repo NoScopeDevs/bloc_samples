@@ -36,13 +36,13 @@ class StartView extends StatelessWidget {
           listener: (_, state) async {
             if (state is PreferencesLoaded) {
               await Navigator.of(context).pushReplacement<void, void>(
-                HomePage.go(),
+                HomePage.route(),
               );
             }
             if (state is PreferencesError) {
               // ignore: use_build_context_synchronously
               await Navigator.of(context).pushReplacement<void, void>(
-                PreferencesPage.go(),
+                PreferencesPage.route(),
               );
             }
           },
@@ -76,7 +76,7 @@ class NoPreferences extends StatelessWidget {
         TextButton(
           key: const Key('noPreferences_go_textButton'),
           onPressed: () => Navigator.of(context).push<void>(
-            PreferencesPage.go(),
+            PreferencesPage.route(),
           ),
           child: const Text('Go to preferences'),
         ),
