@@ -10,8 +10,8 @@ import 'package:shared_preferences_repository/shared_preferences_repository.dart
 class App extends StatelessWidget {
   /// {@macro app}
   const App({
-    super.key,
     required SharedPreferencesRepository preferencesRepository,
+    super.key,
   }) : _preferencesRepository = preferencesRepository;
 
   final SharedPreferencesRepository _preferencesRepository;

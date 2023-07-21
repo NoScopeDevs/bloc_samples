@@ -10,7 +10,7 @@ import '../../helpers/helpers.dart';
 void main() {
   group('HomePage', () {
     test('is routable', () {
-      expect(HomePage.go(), isA<MaterialPageRoute>());
+      expect(HomePage.go(), isA<MaterialPageRoute<void>>());
     });
 
     testWidgets('renders HomePage', (tester) async {

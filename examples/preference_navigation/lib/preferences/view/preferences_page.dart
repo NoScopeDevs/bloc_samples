@@ -12,7 +12,7 @@ class PreferencesPage extends StatelessWidget {
   const PreferencesPage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route go() {
+  static Route<void> go() {
     return MaterialPageRoute<void>(builder: (_) => const PreferencesPage());
   }
 

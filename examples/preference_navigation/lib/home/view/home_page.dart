@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route go() {
+  static Route<void> go() {
     return MaterialPageRoute<void>(builder: (_) => const HomePage());
   }
 
@@ -65,12 +65,12 @@ class HomeView extends StatelessWidget {
 class PreferencesList extends StatelessWidget {
   /// {@macro preferences_list}
   const PreferencesList({
-    super.key,
     required this.preferences,
+    super.key,
   });
 
   /// Current preferences stored on device.
-  final Map preferences;
+  final Map<dynamic, dynamic> preferences;
 
   @override
   Widget build(BuildContext context) {
