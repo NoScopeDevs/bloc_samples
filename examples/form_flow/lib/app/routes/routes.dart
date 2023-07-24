@@ -7,9 +7,8 @@ List<Page<void>> onGenerateAppViewPages(
   AppState state,
   List<Page<void>> pages,
 ) {
-  if (state is AppAuthenticated) {
-    return [ProfilePage.page(state.user)];
-  } else {
-    return [SignUpPage.page()];
-  }
+  return switch (state) {
+    AppAuthenticated() => [ProfilePage.page(state.user)],
+    AppUnauthenticated() => [SignUpPage.page()],
+  };
 }

@@ -35,13 +35,7 @@ class MockUser extends Mock implements User {}
 
 class FakeBloc extends Fake implements Bloc<Object, Object> {}
 
-class FakeAppState extends Fake implements AppState {}
-
-class FakeAppEvent extends Fake implements AppEvent {}
-
 class FakeSignUpState extends Fake implements SignUpState {}
-
-class FakeSignUpEvent extends Fake implements SignUpEvent {}
 
 class FakeCredentialsState extends Fake implements CredentialsState {}
 

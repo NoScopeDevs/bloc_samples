@@ -5,11 +5,12 @@ List<Page<void>> onGenerateSignUpPages(
   SignUpState state,
   List<Page<void>> pages,
 ) {
-  if (state.user.email.isEmpty && state.user.name.isEmpty) {
-    return [CredentialsPage.page()];
-  } else if (state.user.biography.isEmpty) {
-    return [BiographyPage.page()];
-  } else {
-    return [PinPage.page()];
-  }
+  return switch (state) {
+    SignUpState(user: final user) when user.email.isEmpty && user.pin.isEmpty =>
+      [CredentialsPage.page()],
+    SignUpState(user: final user) when user.biography.isEmpty => [
+        BiographyPage.page()
+      ],
+    _ => [PinPage.page()],
+  };
 }
