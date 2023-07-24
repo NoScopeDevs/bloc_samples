@@ -8,19 +8,15 @@ Future<void> run(List<String> args) async {
     }
     final elementPath = args.first;
     final elementType = FileSystemEntity.typeSync(elementPath);
-    // ignore: exhaustive_cases
     switch (elementType) {
       case FileSystemEntityType.directory:
         final dir = Directory(elementPath);
         dir.deleteSync(recursive: true);
-        break;
       case FileSystemEntityType.file:
         final file = File(elementPath);
         file.deleteSync(recursive: true);
-        break;
       case FileSystemEntityType.notFound:
         print('The element <$elementPath> does not exist');
-        break;
       case FileSystemEntityType.pipe:
       case FileSystemEntityType.link:
       case FileSystemEntityType.unixDomainSock:
