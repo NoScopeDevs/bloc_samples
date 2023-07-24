@@ -57,7 +57,7 @@ class _PinInput extends StatelessWidget {
             labelText: l10n.pinInputLabelText,
             errorText: switch (state.error) {
               PinValidationError.invalid => l10n.invalidPinInputErrorText,
-              null => null
+              null => null,
             },
           ),
         );
