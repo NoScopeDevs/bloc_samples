@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   /// Returns a [MaterialPageRoute] to navigate to `this` widget.
-  static Route go() {
+  static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const HomePage());
   }
 
@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
         child: BlocConsumer<PreferencesBloc, PreferencesState>(
           listener: (_, state) async {
             if (state is PreferencesEmpty) {
-              await Navigator.of(context).push<void>(StartPage.go());
+              await Navigator.of(context).push<void>(StartPage.route());
             }
           },
           builder: (context, state) {
@@ -65,12 +65,12 @@ class HomeView extends StatelessWidget {
 class PreferencesList extends StatelessWidget {
   /// {@macro preferences_list}
   const PreferencesList({
-    super.key,
     required this.preferences,
+    super.key,
   });
 
   /// Current preferences stored on device.
-  final Map preferences;
+  final Map<String, dynamic> preferences;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class PreferencesList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: preferences.length,
       itemBuilder: (_, index) {
-        final key = preferences.keys.elementAt(index) as String;
+        final key = preferences.keys.elementAt(index);
         final value = preferences.values.elementAt(index) as String;
         return ListTile(
           title: Text(key),
