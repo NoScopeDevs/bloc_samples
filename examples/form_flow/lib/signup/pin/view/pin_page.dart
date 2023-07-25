@@ -49,20 +49,17 @@ class _PinInput extends StatelessWidget {
           key: const Key('pinView_pinInput_textField'),
           autocorrect: false,
           obscureText: true,
-          onChanged: (pin) => context.read<PinCubit>().changePin(pin),
-          decoration: InputDecoration(
-            labelText: l10n.pinInputLabelText,
-            errorText: () {
-              if (state.isPure) return null;
-              return switch (state.error) {
-                PinValidationError.invalid => l10n.invalidPinInputErrorText,
-                null => null
-              };
-            }(),
-          ),
+          onChanged: context.read<PinCubit>().changePin,
           inputFormatters: [
             LengthLimitingTextInputFormatter(PinFormInput.maxLength),
           ],
+          decoration: InputDecoration(
+            labelText: l10n.pinInputLabelText,
+            errorText: switch (state.error) {
+              PinValidationError.invalid => l10n.invalidPinInputErrorText,
+              null => null,
+            },
+          ),
         );
       },
     );

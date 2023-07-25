@@ -31,18 +31,13 @@ class _EmailInput extends StatelessWidget {
         return TextField(
           key: const Key('credentialsForm_emailInput_textField'),
           autocorrect: false,
-          onChanged: (email) {
-            context.read<CredentialsCubit>().changeEmail(email);
-          },
+          onChanged: context.read<CredentialsCubit>().changeEmail,
           decoration: InputDecoration(
             labelText: l10n.emailInputLabelText,
-            errorText: () {
-              if (state.isPure) return null;
-              return switch (state.error) {
-                EmailValidationError.invalid => l10n.invalidEmailInputErrorText,
-                null => null,
-              };
-            }(),
+            errorText: switch (state.error) {
+              EmailValidationError.invalid => l10n.invalidEmailInputErrorText,
+              null => null,
+            },
           ),
         );
       },
@@ -63,18 +58,13 @@ class _NameInput extends StatelessWidget {
           key: const Key('credentialsForm_nameInput_textField'),
           autocorrect: false,
           textCapitalization: TextCapitalization.words,
-          onChanged: (name) {
-            context.read<CredentialsCubit>().changeName(name);
-          },
+          onChanged: context.read<CredentialsCubit>().changeName,
           decoration: InputDecoration(
             labelText: l10n.nameInputLabelText,
-            errorText: () {
-              if (state.isPure) return null;
-              return switch (state.error) {
-                NameValidationError.tooShort => l10n.shortNameInputErrorText,
-                null => null,
-              };
-            }(),
+            errorText: switch (state.error) {
+              NameValidationError.tooShort => l10n.shortNameInputErrorText,
+              null => null,
+            },
           ),
         );
       },

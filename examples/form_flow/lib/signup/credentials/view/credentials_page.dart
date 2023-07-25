@@ -6,8 +6,11 @@ import 'package:form_flow/signup/signup.dart';
 class CredentialsPage extends StatelessWidget {
   const CredentialsPage({super.key});
 
-  static Page<void> page() =>
-      const MaterialPage<void>(child: CredentialsPage());
+  static Page<void> page() {
+    return const MaterialPage<void>(
+      child: CredentialsPage(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +46,7 @@ class _SubmitButton extends StatelessWidget {
     final l10n = context.l10n;
     return BlocBuilder<CredentialsCubit, CredentialsState>(
       builder: (context, state) {
-        if (!state.isValid || state.isPure) {
-          return const SizedBox.shrink();
-        }
+        if (!state.isValid || state.isPure) return const SizedBox.shrink();
 
         return FloatingActionButton.extended(
           key: const Key('credentialsPage_submitButton_floatingActionButton'),
