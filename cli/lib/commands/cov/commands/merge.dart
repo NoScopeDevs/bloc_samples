@@ -62,16 +62,16 @@ Merge coverage data ignoring info related to files with paths that matches the g
   @override
   Future<void> run() async {
     // Retrieve arguments and validate their value and the state they represent.
-    final _argResults = ArgumentError.checkNotNull(argResults);
+    final argumentResults = ArgumentError.checkNotNull(argResults);
 
     final originPath = ArgumentError.checkNotNull(
-      _argResults[_originOption],
+      argumentResults[_originOption],
     ) as String;
     final destinationPath = ArgumentError.checkNotNull(
-      _argResults[_destinationOption],
+      argumentResults[_destinationOption],
     ) as String;
     final ignorePatterns = ArgumentError.checkNotNull(
-      _argResults[_ignorePatternsOption],
+      argumentResults[_ignorePatternsOption],
     ) as List<String>;
 
     final envVars = Platform.environment;
